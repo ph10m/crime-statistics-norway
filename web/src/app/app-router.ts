@@ -5,10 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { MySiteComponent } from './my-site/my-site.component';
+
 
 
 const appRoutes: Routes = [
-    // Add routes here
+    // Add main routes here
     {
         path:"",
         component: HomeComponent,
@@ -21,6 +23,10 @@ const appRoutes: Routes = [
     {
         path:"newUser",
         component: NewUserComponent,
+    },
+    {
+        path:"mySite",
+        component: MySiteComponent,
     }
 ];
 

@@ -4,11 +4,14 @@ import {FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-router';
+import { DataService } from './data.service';
 
 
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { MySiteComponent } from './my-site/my-site.component';
+
 
 
 
@@ -18,15 +21,18 @@ import { NewUserComponent } from './new-user/new-user.component';
     HomeComponent,
     LogInComponent,
     NewUserComponent,
+    MySiteComponent,
     
   ],
   imports: [
     BrowserModule,
     FormsModule, 
-    AppRoutingModule
+    AppRoutingModule,
 
   ],
-  providers: [],
+  providers: [
+    DataService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

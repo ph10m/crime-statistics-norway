@@ -5,20 +5,20 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
-      <input #mail type="email" class="form-control" id="inputEmail3" placeholder="Email">
+      <input #mail [style.borderColor]='errorColorEmail' type="email" class="form-control" id="inputEmail3" placeholder="Email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input #pass1 type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input #pass1 [style.borderColor]='errorColorPass' type="password" class="form-control" id="inputPassword3" placeholder="Password">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
-      <input #pass2 type="password" class="form-control" id="inputPassword3" placeholder="Password">
+      <input #pass2 [style.borderColor]='errorColorPass' type="password" class="form-control" id="inputPassword3" placeholder="Password">
       <small class="form-text text-muted">Password should be longer than 7 charachters</small>
     </div>
   </div>
@@ -29,10 +29,10 @@
     
   </div>
 </form>
-
+<!-- Only shows after onClik -->
 <div class="container">
   <ul>
-      <li style="color: red;" *ngFor="let message of errorMessage">{{message}}</li>
+      <li style="color: red;" *ngFor="let eMessage of errorMessage">{{eMessage}}</li>
   </ul>
-    
+  <p style="color:green;" >{{sucsessMessage}}</p>
 </div>
