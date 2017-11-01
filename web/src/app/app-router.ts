@@ -7,6 +7,9 @@ import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
 
+//Kristian
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
 
 
 const appRoutes: Routes = [
@@ -27,6 +30,10 @@ const appRoutes: Routes = [
     {
         path:"mySite",
         component: MySiteComponent,
+    },
+    {
+        path:"data",
+        component: FetchDataComponent,
     }
 ];
 

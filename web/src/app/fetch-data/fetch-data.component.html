@@ -1,0 +1,11 @@
+<div>
+    <h2>My crimes</h2>
+    <ul class="munics">
+        <li *ngFor="let municipalicity of munics" [class.selected]="municipalicity === selectedMunic" (click)="onSelect(municipalicity)">
+            <span class="badge">{{municipalicity.id}}</span>
+            <span>{{municipalicity.name}}</span>
+        </li>
+    </ul>
+    <munic-detail [municipalicity]="selectedMunic">
+    </munic-detail>
+</div>

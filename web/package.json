@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@ionic-native/core": "^4.3.3",
+    "angular-sqlite": "^0.1.0",
     "core-js": "^2.4.1",
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.4.2",
