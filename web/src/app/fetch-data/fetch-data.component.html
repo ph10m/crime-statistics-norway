@@ -1,11 +1,52 @@
+<script type="text/javascript " src="js.js "></script>
 <div>
     <h2>My crimes</h2>
     <ul class="munics">
-        <li *ngFor="let municipalicity of munics" [class.selected]="municipalicity === selectedMunic" (click)="onSelect(municipalicity)">
-            <span class="badge">{{municipalicity.id}}</span>
-            <span>{{municipalicity.name}}</span>
+        <p>
+            <span>ID</span>
+            <span> Name</span>
+            <!-- Decide how much information to show in the main list without expanding   
+                         <span>{{municipality.all_1000}}</span>
+            <span>{{municipality.all_abs}}</span>
+            <span>{{municipality.property_1000}} </span>
+            <span>{{municipality.property_abs}}</span>
+            <span>{{municipality.violence_1000}}</span>
+            <span>{{municipality.violence_abs}}</span>
+            <span>{{municipality.drugs_1000}} </span>
+            <span>{{municipality.drugs_abs}}</span>
+            <span>{{municipality.order_1000}}</span>
+            <span>{{municipality.order_abs}}</span>
+            <span>{{municipality.traffic_1000}} </span>
+            <span>{{municipality.traffic_abs}}</span>
+            <span>{{municipality.other_1000}} </span>
+            <span>{{municipality.other_abs}}</span>-->
+        </p>
+        <li *ngFor="let municipality of munics" [class.selected]="municipality === selectedMunic" (click)="onSelect(municipality)">
+            <span class="badge">{{municipality.id}}</span>
+            <span>{{municipality.name}}</span>
+            <span>{{municipality.all_1000}}</span>
+            <span>{{municipality.all_abs}}</span>
+            <!--
+            <span>{{municipality.property_1000}} </span>
+            <span>{{municipality.property_abs}}</span>
+            <span>{{municipality.violence_1000}}</span>
+            <span>{{municipality.violence_abs}}</span>
+            <span>{{municipality.drugs_1000}} </span>
+            <span>{{municipality.drugs_abs}}</span>
+            <span>{{municipality.order_1000}}</span>
+            <span>{{municipality.order_abs}}</span>
+            <span>{{municipality.traffic_1000}} </span>
+            <span>{{municipality.traffic_abs}}</span>
+            <span>{{municipality.other_1000}} </span>
+            <span>{{municipality.other_abs}}</span> -->
         </li>
     </ul>
-    <munic-detail [municipalicity]="selectedMunic">
-    </munic-detail>
+    <!-- rendering component -->
+    <munic-detail [municipality]="selectedMunic"></munic-detail>
+    <div>
+        <h2 style="background-color: yellow; ">Rendered list</h2>
+        <ul class="KrimdataRendered">
+            <li>Item 1 </li>
+        </ul>
+    </div>
 </div>

@@ -1,6 +1,6 @@
-import { Municipalicity } from './municipalicity';
+import { Municipality } from './municipality';
 
-export const MUNICS: Municipalicity[] = [
+export const MUNICS: Municipality[] = [
     {
         id: 1,  
         name: 'Halden', 

@@ -9,6 +9,7 @@ import { MySiteComponent } from './my-site/my-site.component';
 
 //Kristian
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+//import { SearchComponent } from './fetch-data/search.component';
 
 
 
@@ -34,7 +35,12 @@ const appRoutes: Routes = [
     {
         path:"data",
         component: FetchDataComponent,
-    }
+    },
+   /**
+    *
+        path:"search",
+         component: SearchComponent,
+    */ 
 ];
 
 @NgModule({
