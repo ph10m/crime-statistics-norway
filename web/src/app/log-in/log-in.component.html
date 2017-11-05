@@ -1,0 +1,27 @@
+<br>
+<h1>Login</h1>
+
+<form>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input #mail type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input #pass type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div>
+    <!-- RouterLink links to new page -->
+    <a routerLink="/newUser">Register new user</a>
+  </div>
+  <br>
+  
+  <button type="submit" class="btn btn-primary" (click)="logInClick(mail.value, pass.value)">Login</button>
+</form>
+<p>{{user}}</p>
+<div class="container">
+  <ul>
+      <li style="color: red;" *ngFor="let eMessage of errorMessage">{{eMessage}}</li>
+  </ul>
+  <!-- <p style="color:green;" >{{sucsessMessage}}</p> -->
+</div>
