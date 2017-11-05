@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 //Dataservice. 
 import { DataService } from "./data.service";
@@ -17,8 +18,9 @@ export class AppComponent {
   title = 'App works';
   description = 'new App';
   user: string; 
+  search: string;
   
-  constructor(private dataServe: DataService){
+  constructor(private dataServe: DataService, private router: Router){
 
   }
   
@@ -30,6 +32,15 @@ export class AppComponent {
   logOut(){
     //Sets user to "", is then logged out. 
     this.dataServe.changeUser("");
+  }
+
+  searchClick(value: string){
+    if(value.length != 0){
+      this.search = value;
+      this.dataServe.changeSearch(value);
+      this.router.navigate(['/search']);
+    }
+    
   }
   
 }
