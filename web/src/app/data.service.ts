@@ -11,7 +11,9 @@ export class DataService {
   //search
   private search;
   currentSearch;
-  //TODO: Søk må også være i session storage --> Om man refresher siden søket forsvinne.  
+  //TODO: Søk må også være i session storage --> Om man refresher siden søket forsvinne. 
+  
+  storage = ["", ""];
   
   
   constructor() { 
@@ -24,24 +26,36 @@ export class DataService {
     this.currentSearch = this.search.asObservable();
 
     //Session storage for user 
-    let user = sessionStorage.getItem('currentUser');
-    if(user != null){
-      this.changeUser(user);
+    // this.storage = sessionStorage.getItem('currentStorage');
+    this.storage = JSON.parse(sessionStorage.getItem('currentStorage'))
+
+    if(this.storage != null){
+      this.changeUser(this.storage[0]);
+      this.changeSearch(this.storage[1]);
+    }else{
+      this.storage = ["",""];
     }
+    
   }
   
     changeUser(user: string) {
       //Set observable
       this.userSource.next(user)
       //Sessionstorage for user. 
-      sessionStorage.setItem('currentUser', user);
+      // sessionStorage.setItem('currentUser', user);
+      console.log("Storage " + this.storage);
+      this.storage[0] = user;
+      sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));
       if(user == ""){
-        localStorage.clear();  
+        sessionStorage.clear();  
       }
     }
 
     //The search object is changed. 
     changeSearch(search: string){
+      this.storage[1] = search;
+      // sessionStorage.setItem('currentSearch', search);
+      sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));
       this.search.next(search);
     }
 

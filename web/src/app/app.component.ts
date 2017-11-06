@@ -32,8 +32,10 @@ export class AppComponent {
   logOut(){
     //Sets user to "", is then logged out. 
     this.dataServe.changeUser("");
+    this.router.navigate(['/']);
   }
 
+  //Onaction from search-bar. 
   searchClick(value: string){
     if(value.length != 0){
       this.search = value;
