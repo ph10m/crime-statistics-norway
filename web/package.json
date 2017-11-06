@@ -22,11 +22,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
-<<<<<<< HEAD
-    "angular2-cool-storage": "^3.1.2",
-=======
     "body-parser": "^1.18.2",
->>>>>>> backend
     "core-js": "^2.4.1",
     "express": "^4.16.2",
     "js-sha512": "^0.6.0",

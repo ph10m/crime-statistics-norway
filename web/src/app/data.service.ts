@@ -11,7 +11,7 @@ export class DataService {
   //search
   private search;
   currentSearch;
-
+  //TODO: Søk må også være i session storage --> Om man refresher siden søket forsvinne.  
   
   
   constructor() { 
@@ -23,25 +23,24 @@ export class DataService {
     this.search = new BehaviorSubject<string>(""); 
     this.currentSearch = this.search.asObservable();
 
-    //Localstorage for session use. 
-    let user = localStorage.getItem('currentUser');
+    //Session storage for user 
+    let user = sessionStorage.getItem('currentUser');
     if(user != null){
       this.changeUser(user);
     }
-    
-    
   }
   
     changeUser(user: string) {
       //Set observable
       this.userSource.next(user)
-      //Localstorage for session use. 
-      localStorage.setItem('currentUser', user);
+      //Sessionstorage for user. 
+      sessionStorage.setItem('currentUser', user);
       if(user == ""){
         localStorage.clear();  
       }
     }
 
+    //The search object is changed. 
     changeSearch(search: string){
       this.search.next(search);
     }
