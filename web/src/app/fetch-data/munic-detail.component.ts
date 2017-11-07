@@ -13,19 +13,45 @@ import { Municipality } from './municipality';
         <label>name: </label>{{municipality.name}}
       </div>
       <div>
-        <span>{{municipality.all_abs}}</span> 
-        <span>{{municipality.property_1000}} </span>
-        <span>{{municipality.property_abs}}</span>
-        <span>{{municipality.violence_1000}}</span>
-        <span>{{municipality.violence_abs}}</span>
-        <span>{{municipality.drugs_1000}} </span>
-        <span>{{municipality.drugs_abs}}</span>
-        <span>{{municipality.order_1000}}</span>
-        <span>{{municipality.order_abs}}</span>
-        <span>{{municipality.traffic_1000}} </span>
-        <span>{{municipality.traffic_abs}}</span>
-        <span>{{municipality.other_1000}} </span>
-        <span>{{municipality.other_abs}}</span>
+        <div> 
+        <label>Absolutte tall: </label>{{municipality.all_abs}}
+        </div> 
+        <div>
+        <label>Property 1000: </label>{{municipality.property_1000}} 
+        </div>
+        <div> 
+        <label>name: </label>{{municipality.property_abs}}
+        </div>
+        <div>
+        <label>name: </label>{{municipality.violence_1000}}
+        </div>
+        <div>
+        <label>name: </label>{{municipality.violence_abs}}
+        </div>
+        <div>
+        <label>name: </label>{{municipality.drugs_1000}}
+         </div>
+        <div>
+        <label>name: </label>{{municipality.drugs_abs}}
+        </div>
+        <div>
+        <label>name: </label>{{municipality.order_1000}}
+        </div>
+        <div>
+        <label>name: </label>{{municipality.order_abs}}
+        </div>
+        <div>
+        <label>name: </label>{{municipality.traffic_1000}} 
+        </div>
+        <div>
+        <label>name: </label>{{municipality.traffic_abs}}
+        </div>
+        <div>
+        <label>name: </label>{{municipality.other_1000}} 
+        </div>
+        <div>
+        <label>name: </label>{{municipality.other_abs}}
+        </div>
       </div>
     </div>
   `

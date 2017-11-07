@@ -1,6 +1,5 @@
-<script type="text/javascript " src="js.js "></script>
 <div>
-    <h2>My crimes</h2>
+    <h2>Your crime statistics</h2>
     <ul class="munics">
         <p>
             <span>ID</span>
@@ -41,12 +40,16 @@
             <span>{{municipality.other_abs}}</span> -->
         </li>
     </ul>
-    <!-- rendering component -->
     <munic-detail [municipality]="selectedMunic"></munic-detail>
     <div>
         <h2 style="background-color: yellow; ">Rendered list</h2>
-        <ul class="KrimdataRendered">
-            <li>Item 1 </li>
+        <ul class="KrimdataRendered" *ngFor="let municipality of municslist">
+            <li>
+                <span class="badge">{{municipality[0]}}</span>
+                <span>{{municipality[1]}}</span>
+                <span>{{municipality[2]}}</span>
+                <span>{{municipality[3]}}</span>
+            </li>
         </ul>
     </div>
 </div>
