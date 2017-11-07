@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 //Kristian
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
@@ -36,11 +37,10 @@ const appRoutes: Routes = [
         path:"data",
         component: FetchDataComponent,
     },
-   /**
-    *
+    {
         path:"search",
-         component: SearchComponent,
-    */ 
+        component: SearchResultComponent,
+    }
 ];
 
 @NgModule({

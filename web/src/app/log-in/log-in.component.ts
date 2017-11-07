@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 
+
 //ServeComponent
 import { DataService } from '../data.service';
+
 
 @Component({
   selector: 'app-log-in',
@@ -14,15 +16,19 @@ export class LogInComponent implements OnInit{
 
   errorMessage = [];
   user: string;
+  currentUser: string;
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService) {
+    
+  }
 
   
   ngOnInit(){
     //UserListener
     this.dataService.currentUser.subscribe(user => this.user = user);
+    
   }
-  
+
   //Onclick from logIn. 
   logInClick(mail: string, pass: string){
     let check = true;
@@ -38,15 +44,7 @@ export class LogInComponent implements OnInit{
       this.errorMessage = [];
       this.errorMessage.push("No connection to database sry bro");
     }
-     
     //TODO: Check password against database. 
     //TODO: Do error checking like in new user component. 
-    
-    
-
-    
-
   }
-  
-
 }

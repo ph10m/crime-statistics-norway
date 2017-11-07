@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+//DatabaseConnector
+import { DatabaseConnectorService } from '../database-connector.service';
+
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
@@ -14,7 +17,7 @@ export class NewUserComponent implements OnInit {
   errorColorEmail = "";
   errorColorPass = "";
   
-  constructor() { }
+  constructor(private databaseConnector: DatabaseConnectorService) { }
 
   ngOnInit() {
   }
@@ -58,6 +61,7 @@ export class NewUserComponent implements OnInit {
     if(this.error == false){
       //Must check against database if user exists. 
       //If not user is sucsess. 
+      this.databaseConnector.newUser(mail, pass1);
       this.sucsessMessage = "The user '" + mail + "' is created";
        
 

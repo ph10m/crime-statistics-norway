@@ -93,7 +93,7 @@ export class FetchDataComponent {
   }
 }
 
-/*
+  /*
 interface MunicInfo 
   id: number;
   name: string;
