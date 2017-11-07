@@ -4,6 +4,15 @@ var express = require('express')
 , account = require(path.normalize('../models/account'));
 
 //lets the user login
+router.get('/', (req, res) => {
+    res.status(200).json("API works"); 
+  });
+
+router.get('/stuff', (req, res) =>{
+    res.json("yo");
+})
+
+//lets the user login
 router.post('/login/:username:password', function(req, res) {
 
 })
@@ -15,7 +24,7 @@ router.post('/logout', function(req, res) {
 
 //create a new user
 router.post('/registrate/', function(req, res) {
-    console.log(req.body.username + " " + req.body.password)
+    console.log("ONE: "+ req.body.username + " " + "TWO: "+ req.body.password)
     console.log(req.body)
     account.registrate(req.params.username, req.params.password, function(returnVal) {
         console.log(returnVal)
@@ -28,7 +37,7 @@ router.post('/registrate/', function(req, res) {
 
 //get user details
 router.get('/account', function(req, res) {
-
+    
 })
 
 

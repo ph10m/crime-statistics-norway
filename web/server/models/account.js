@@ -14,8 +14,11 @@ exports.testuser = function(cb) {
 
 exports.registrate = function(username, password, cb) {
     //check if user exists. if so, cancel
+    console.log(username);
+    console.log(password);
+
     var result = db.run("SELECT * FROM Users WHERE username='" + username + "'");
-    console.log(result)
+    console.log("Result:" + result);
     cb(result);
 
     //else, registrate user
