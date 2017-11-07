@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
+import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
 
 
 
@@ -27,7 +28,12 @@ const appRoutes: Routes = [
     {
         path:"mySite",
         component: MySiteComponent,
+    },
+    {
+        path:"cloud",
+        component:TagCloudComponent,
     }
+
 ];
 
 @NgModule({
