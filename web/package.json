@@ -2,9 +2,10 @@
   "name": "my-app",
   "version": "0.0.0",
   "license": "MIT",
+  "main": "app.js",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --open",
+    "start": "ng build && node app.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,9 +22,13 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
+    "express": "^4.16.2",
+    "js-sha512": "^0.6.0",
     "ngx-bootstrap": "^1.9.3",
     "rxjs": "^5.4.2",
+    "sqlite3": "^3.1.13",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
