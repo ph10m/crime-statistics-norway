@@ -23,7 +23,7 @@ export class MySiteComponent implements OnInit {
 
   setLogInStatus(status: boolean){
     this.loggedIn = status;
-    console.log("STatus changed");
+    console.log("Status changed");
     
   }
   

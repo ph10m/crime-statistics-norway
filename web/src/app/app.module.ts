@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
+import { RegionsComponent } from './regions/regions.component';
 
 
 
@@ -22,11 +23,11 @@ import { MySiteComponent } from './my-site/my-site.component';
     LogInComponent,
     NewUserComponent,
     MySiteComponent,
-    
+    RegionsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
     AppRoutingModule,
 
   ],
