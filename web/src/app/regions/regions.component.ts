@@ -2,7 +2,7 @@ import { Component, OnInit, NgModule, Injectable } from '@angular/core';
 import { Region } from './region';
 import { RegionService} from './region.service';
 
-
+// Puts together the region page
 @Component({
     selector: 'app-regions',
     templateUrl: './regions.component.html',
@@ -10,6 +10,7 @@ import { RegionService} from './region.service';
     providers: [RegionService]
 })
 
+// Generates the list of regions
 export class RegionsComponent implements OnInit {
     regions: Region[];
 

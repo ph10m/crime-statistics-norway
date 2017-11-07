@@ -1,3 +1,5 @@
+/* Styling for the region page */
+
 .selected {
     background-color: red !important;
     color: white;
@@ -36,7 +38,7 @@
     font-size: small;
     color: white;
     padding: 0.8em 0.7em 0.7em;
-    background-color: green;
+    background-color: darkgrey;
     line-height: 1em;
     position: relative;
     left: -1px;

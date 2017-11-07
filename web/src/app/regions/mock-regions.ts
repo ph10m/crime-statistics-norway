@@ -1,16 +1,20 @@
 import { Region } from './region';
 
+// Declaration of mock regions for testing
 export const REGIONS: Region[] = [
     {
         id: 1,
-        name: 'Oslo'
+        name: 'Oslo',
+        crime: 'Armed robbery'
     },
     {
         id: 2,
-        name: 'Trøndelag'
+        name: 'Trøndelag',
+        crime: 'Drugs'
     },
     {
         id: 3,
-        name: 'Finnmark'
+        name: 'Finnmark',
+        crime: 'Violence'
     }
 ];
