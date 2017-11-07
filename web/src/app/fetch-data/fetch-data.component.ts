@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component, OnInit, Injectable  } from '@angular/core';
 import * as jQuery from 'jquery';
 //mock data from JSON file
 import * as krimData from './krimdata.json';
@@ -12,8 +12,6 @@ There is two kind of main structures :
     (~ models : the classes getting and handling data).
 */
 
-import { Component, OnInit } from '@angular/core';
-import { Injectable } from '@angular/core';
 import { Municipality } from './municipality';
 import { MunicService } from './data.service';
 import { MunicipalityDetailComponent } from './munic-detail.component';
@@ -94,14 +92,8 @@ export class FetchDataComponent {
     this.selectedMunic = municipality;
   }
 }
-/*
-//List of all munics
-var municslist:Array<string[]> = new Array;
-//every munic is represented as a list of its own
-var municinfo:string[] = new Array;
 
-//https://angular.io/guide/http
-/* 
+/*
 interface MunicInfo 
   id: number;
   name: string;
