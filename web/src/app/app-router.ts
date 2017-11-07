@@ -8,6 +8,10 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
+//Kristian
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+//import { SearchComponent } from './fetch-data/search.component';
+
 
 
 const appRoutes: Routes = [
@@ -28,6 +32,10 @@ const appRoutes: Routes = [
     {
         path:"mySite",
         component: MySiteComponent,
+    },
+    {
+        path:"data",
+        component: FetchDataComponent,
     },
     {
         path:"search",
