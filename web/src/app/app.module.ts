@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule } from '@angular/forms';
 import { TagCloudModule } from 'angular-tag-cloud-module';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-router';
@@ -32,6 +33,7 @@ import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
     FormsModule, 
     AppRoutingModule,
     TagCloudModule,
+    HttpClientModule,
 
   ],
   providers: [

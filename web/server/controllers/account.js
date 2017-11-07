@@ -13,6 +13,12 @@ router.post('/logout', function(req, res) {
 
 })
 
+router.get('/meme', function(req, res) {
+    res.json({
+        status : 'hello world'
+    });
+})
+
 //create a new user
 router.post('/registrate/', function(req, res) {
     console.log(req.body.username + " " + req.body.password)
