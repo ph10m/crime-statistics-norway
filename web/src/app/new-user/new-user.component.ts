@@ -59,12 +59,18 @@ export class NewUserComponent implements OnInit {
     
     //If succsess
     if(this.error == false){
-      //Must check against database if user exists. 
-      //If not user is sucsess. 
-      this.databaseConnector.newUser(mail, pass1);
-      this.sucsessMessage = "The user '" + mail + "' is created";
-       
-
+      //Check on database connector who checks if user alerady exist.  
+      let status = this.databaseConnector.newUser(mail, pass1);
+      status.subscribe(data => {
+        if(data['status'] == true){
+          //If database returns true it means that user exists alerady. 
+          this.errorMessage.push("User alerady exist.");
+          this.error = true;
+          this.errorColorEmail = "#FF0000";
+        }else{
+          this.sucsessMessage = "The user '" + mail + "' is created";
+        }
+      });
     }
   }
   //Regex for validating email.
