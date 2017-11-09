@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; //https://medium.com/codingthesmartway-com-blog/angular-4-3-httpclient-accessing-rest-web-services-with-angular-2305b8fd654b
+//import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 //Main component and Routing. 
 import { AppComponent } from './app.component';
@@ -19,6 +20,10 @@ import { MySiteComponent } from './my-site/my-site.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
 
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +33,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MySiteComponent,
     SearchResultComponent,
     
+    FetchDataComponent,
+    MunicipalityDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,4 +48,5 @@ import { SearchResultComponent } from './search-result/search-result.component';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
