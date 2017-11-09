@@ -2,6 +2,8 @@ import { Directive, HostListener, NgZone } from '@angular/core';
 
 /** Link to scroll directive example
  * https://stackoverflow.com/questions/44516017/how-to-handle-window-scroll-event-in-angular-4
+ * waypoints
+ * http://imakewebthings.com/waypoints/shortcuts/infinite-scroll/
  */
 @Directive({
   selector: '[scroller]'
@@ -52,4 +54,8 @@ export class WindowScrollDirective {
   /**
    * If we have to change to angular waypoints, documentation for Angular JS
    * https://github.com/zumba/angular-waypoints
+   * 
+   * 
+   * another 
+   * https://stackoverflow.com/questions/43914699/angular-4-infinite-scroll-not-working
    */

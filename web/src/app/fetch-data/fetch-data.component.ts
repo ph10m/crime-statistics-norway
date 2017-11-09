@@ -17,12 +17,14 @@ import { MunicService } from './data.service';
 import { MunicipalityDetailComponent } from './munic-detail.component';
 //scrolling directive
 import { WindowScrollDirective } from './window-scroll-directive';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { CrimeListComponent } from './crimelist.component';
 
 @Component({
     selector: 'app-home',
     templateUrl: './fetch-data.component.html',
     styleUrls: ['./fetch-data.component.css'],
-    providers: [MunicService]
+    providers: [MunicService, CrimeListComponent]
   })
 /**
  * 
@@ -48,7 +50,7 @@ export class FetchDataComponent {
     this.getMunics();
     this.getKrimData();
     //print the list
-    console.log(this.municslist);
+    //console.log(this.municslist);
   }
 
   //reading data form json file
@@ -57,7 +59,7 @@ export class FetchDataComponent {
     var municslist:Array<string[]> = new Array;
     //every munic is represented as a list of its own
     var municinfo:string[] = new Array;
-    console.log("getting krimdata");
+    //console.log("getting krimdata");
     for (var i = 1; i < 100; i++) {
       municinfo = [];
       const id = i;
@@ -84,7 +86,7 @@ export class FetchDataComponent {
       this.municslist.push(municinfo);
     }
   
-    console.log("slutt")
+    //console.log("slutt")
   }
 
   onSelect(municipality: Municipality): void {

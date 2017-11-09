@@ -23,6 +23,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component';
 import { WindowScrollDirective } from './fetch-data/window-scroll-directive';
+import { CrimeListComponent } from './fetch-data/crimelist.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { WindowScrollDirective } from './fetch-data/window-scroll-directive';
     FetchDataComponent,
     MunicipalityDetailComponent,
     WindowScrollDirective,
+    CrimeListComponent
   ],
   imports: [
     BrowserModule,
