@@ -1,5 +1,4 @@
-var db = require("../db.js")
-// .getConnection();
+var db = require("../db.js").getConnection();
 var sha512 = require("js-sha512");
 
 exports.testuser = function(cb) {
@@ -10,7 +9,7 @@ exports.testuser = function(cb) {
     console.log(db.run("SELECT * FROM sqlite_master"));
     console.log(db.run("INSERT INTO Users (username, password) VALUES ('" + username + "', '" + password + "')" ));
 
-    cb(true)
+    cb(true);
 }
 
 
@@ -21,7 +20,7 @@ exports.registrate = function(username, password, cb) {
     let crypt = sha512(password);
     
     //Check if user exists.
-    db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
+    db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
         console.log("THIS ROW:" + row)
         if (row == undefined) {
             //If row is undefined it means that it is safe to add new user. 
@@ -29,7 +28,7 @@ exports.registrate = function(username, password, cb) {
             result = true;
             if(result){
                 //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
-                db.getConnection().run("INSERT INTO Users (username, password) VALUES ('" + username + "', '" + crypt + "')" );
+                db.run("INSERT INTO Users (username, password) VALUES ('" + username + "', '" + crypt + "')" );
                 cb(false);
             }
         }
@@ -46,7 +45,7 @@ exports.checkLogin = function(username, password, cb){
     let crypt = sha512(password);
 
     //Check if user exists.
-    db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "' AND password='" + crypt + "'", function(err, row){
+    db.get("SELECT * FROM Users WHERE username='" + username + "' AND password='" + crypt + "'", function(err, row){
         console.log("THIS ROW:" + row)
         if (row == undefined) {
             //If undefined there is noe user with this credentials.  
