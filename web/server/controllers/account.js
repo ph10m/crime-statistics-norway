@@ -42,6 +42,35 @@ router.post('/registrate/', function(req, res) {
 
 })
 
+router.post('/searchpost', function(req, res){
+    console.log("WAZZUP IN THA HOOD?");
+    console.log(req.body.username);
+    console.log(req.body.searchkey);
+    console.log(req.body.date);
+
+    account.searchPost(req.body.username, req.body.searchkey, req.body.date, function(returnVal){
+        console.log(returnVal)
+        res.json({
+            status : returnVal
+        })
+    })
+})
+
+router.post('/getsearch', function(req, res){
+    console.log("WAZZUP IN THA HOOD getsearch");
+    console.log(req.body.username);
+    account.getsearch(req.body.username, function(returnVal){
+        console.log(returnVal)
+        res.json({
+            returnVal
+        })
+    })
+
+
+})
+
+
+
 //get user details
 router.get('/account', function(req, res) {
     

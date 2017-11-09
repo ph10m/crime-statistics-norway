@@ -27,11 +27,25 @@ export class DatabaseConnectorService {
     return this.http.post('http://localhost:8084/account/login', body);
   }
 
-  setPreviousSearch(search: string){
+  //Post to current user previous search. 
+  setPreviousSearch(searchkey: string, username: string){
+    let body =  {
+      "username" : username,
+      "searchkey" : searchkey,
+      "date": new Date().toLocaleString(),
+    };
+
+    console.log("set previous search");
+    this.http.post('http://localhost:8084/account/searchpost', body).subscribe(res => console.log("Response: " + res))
     //TODO: Add new search from user to database. 
   }
 
-  getPreviousSearches(){
+  getPreviousSearches(username: string){
     //TODO: Make method that returns list with previous searches. 
+    console.log("YAMAN");
+    let body =  {
+      "username" : username,
+    };
+    return this.http.post('http://localhost:8084/account/getsearch', body);
   }
 }

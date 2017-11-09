@@ -58,3 +58,47 @@ exports.checkLogin = function(username, password, cb){
         }
     });
 }
+
+exports.searchPost = function(username, searchkey, date, cb){
+    let type = 'search';
+
+    db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
+        
+        console.log("THIS ROW:" + row)
+        if (row == undefined) {
+            //If user not exists --> Should really not happen, like ever. 
+            cb(false);
+        }
+        else {
+            //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
+            db.getConnection().run("INSERT INTO Log (type, content, time, userid) VALUES ('"+ type + "', '" + searchkey + "', '" + date + "', '" + row.id + "')" );
+            cb(true);
+        }
+    });
+}
+
+
+exports.getsearch = function(username, cb){
+
+    db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
+        if (row == undefined) {
+            //If user not exists --> Should really not happen, like ever. 
+            console.log("row undefined");
+            cb(false);
+        }
+        else {
+            console.log("ROW ID: " + row.id)
+            //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
+            db.getConnection().all("SELECT * FROM Log WHERE userid = " + row.id + "", function(err, row){
+                if(row == undefined){
+                    cb(false);
+                }else{
+                    console.log("ROW" + row);
+                    cb(row);
+                }
+                
+            });
+            
+        }
+    });
+}
