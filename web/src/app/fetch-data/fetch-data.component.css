@@ -50,7 +50,7 @@
 /*list in crime statistics*/
 span {
   display: inline-block;
-  min-width: 150px;
+  min-width: 80px;
 }
 
 .left-half {

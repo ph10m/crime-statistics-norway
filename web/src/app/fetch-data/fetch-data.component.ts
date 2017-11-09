@@ -15,6 +15,8 @@ There is two kind of main structures :
 import { Municipality } from './municipality';
 import { MunicService } from './data.service';
 import { MunicipalityDetailComponent } from './munic-detail.component';
+//scrolling directive
+import { WindowScrollDirective } from './window-scroll.directive';
 
 @Component({
     selector: 'app-home',
@@ -35,9 +37,6 @@ export class FetchDataComponent {
   munics: Municipality[];
   selectedMunic: Municipality;
   municslist = [];
-
-  //create list with munic info from json
-  //jsonMunics: Municipality[];
 
   constructor(private municService: MunicService) { }
 
@@ -92,23 +91,3 @@ export class FetchDataComponent {
     this.selectedMunic = municipality;
   }
 }
-
-  /*
-interface MunicInfo 
-  id: number;
-  name: string;
-  all_1000: number;
-  all_abs: number;
-  property_1000: number;
-  property_abs: number;
-  violence_1000: number;
-  violence_abs: number;
-  drugs_1000: number;
-  drugs_abs: number;
-  order_1000: number;
-  order_abs: number;
-  traffic_1000: number;
-  traffic_abs: number;
-  other_1000: number;
-  other_abs: number;
-  */
