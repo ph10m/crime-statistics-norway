@@ -16,4 +16,20 @@ router.get('/test/', function(req, res) {
     })
 })
 
+router.get('/test2/', function(req, res) {
+    
+    cloud.test2(function(returnVal) {
+        //console.log(returnVal)
+        res.json(returnVal)
+    })
+})
+
+router.get('/test3/', function(req, res) {
+    
+    cloud.test3(function(returnVal) {
+        //console.log(returnVal)
+        res.json(returnVal)
+    })
+})
+
 module.exports = router;
