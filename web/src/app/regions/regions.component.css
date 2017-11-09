@@ -18,7 +18,7 @@
     margin: .5em;
     padding: .3em 0;
     height: 1.6em;
-    border-radius: 1px;
+    border-radius: 3px;
 }
 .regions li.selected.hover {
     background-color: red !important;

@@ -3,7 +3,9 @@
 <br>
     <h1>Regions</h1>
     <ul class='regions'>
-        <li *ngFor='let region of regions'>
+        <li *ngFor='let region of regions'
+            [class.selected]="region === selectedRegion"
+            (click)="onSelect(hero)">
             <span class='badge'>{{region.id}}</span>
             <span>{{region.name}}</span>
         </li>

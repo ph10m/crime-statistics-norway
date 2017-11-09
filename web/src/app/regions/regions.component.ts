@@ -1,4 +1,5 @@
 import { Component, OnInit, NgModule, Injectable } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Region } from './region';
 import { RegionService} from './region.service';
 
@@ -7,11 +8,12 @@ import { RegionService} from './region.service';
     selector: 'app-regions',
     templateUrl: './regions.component.html',
     styleUrls: ['./regions.component.css'],
-    providers: [RegionService]
+    providers: [RegionService],
 })
 
 // Generates the list of regions
 export class RegionsComponent implements OnInit {
+    selectedRegion: Region;
     regions: Region[];
 
     constructor( private regionService: RegionService) {}
@@ -22,7 +24,8 @@ export class RegionsComponent implements OnInit {
     }
 
     onSelect(region: Region): void {
-        console.log('Testing123');
+        this.selectedRegion = region;
+        console.log('Testing 123');
     }
 
     getRegions(): void {
@@ -30,3 +33,4 @@ export class RegionsComponent implements OnInit {
     }
 
 }
+
