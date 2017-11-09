@@ -16,7 +16,7 @@ import { Municipality } from './municipality';
 import { MunicService } from './data.service';
 import { MunicipalityDetailComponent } from './munic-detail.component';
 //scrolling directive
-import { WindowScrollDirective } from './window-scroll.directive';
+import { WindowScrollDirective } from './window-scroll-directive';
 
 @Component({
     selector: 'app-home',
