@@ -1,27 +1,37 @@
 import { Injectable } from '@angular/core';
-
-import { HttpClient } from '@angular/common/http';
-
-import 'rxjs/add/operator/map';
-
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 //All connections and responses from database is put here. 
 @Injectable()
 export class DatabaseConnectorService {
-
   
-  
-  constructor(private http: HttpClient) {
-    console.log("Databaseconnector service woorking. ");
-   }
+  constructor(private http: HttpClient) {}
 
-  newUser(user: String, password: String){
-    //Server is on port 8084
-    console.log("User: " + user);
-    console.log("Password: " + password);
+  //Returns true if new user is created false otherwise. 
+  newUser(username: string, password: string){
+    
+    let body =  {
+      "username" : username,
+      "password" : password,
+    }; 
+    return this.http.post('http://localhost:8084/account/registrate', body)
+  }
 
-    // let i = this.http.get('http://localhost:8084/account/').subscribe(res => console.log(res));
-  
-    // console.log("I: " + i);    
+  //Checks if right username and password is added, returns a object to the component. 
+  logIn(username: string, password: string){
+    
+    let body =  {
+      "username" : username,
+      "password" : password,
+    };
+    return this.http.post('http://localhost:8084/account/login', body);
+  }
+
+  setPreviousSearch(search: string){
+    //TODO: Add new search from user to database. 
+  }
+
+  getPreviousSearches(){
+    //TODO: Make method that returns list with previous searches. 
   }
 }
