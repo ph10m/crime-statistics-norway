@@ -30,43 +30,29 @@ router.post('/logout', function(req, res) {
 
 //create a new user
 router.post('/registrate/', function(req, res) {
-    // console.log("ONE: "+ req.body.username + " " + "TWO: "+ req.body.password)
-    // console.log(req.body)
-    // console.log(req.params);
     account.registrate(req.body.username, req.body.password, function(returnVal) {
-        console.log(returnVal)
         res.json({
             status : returnVal
         })
     })
-
 })
 
+//Post users previous searches.
 router.post('/searchpost', function(req, res){
-    console.log("WAZZUP IN THA HOOD?");
-    console.log(req.body.username);
-    console.log(req.body.searchkey);
-    console.log(req.body.date);
-
     account.searchPost(req.body.username, req.body.searchkey, req.body.date, function(returnVal){
-        console.log(returnVal)
         res.json({
             status : returnVal
         })
     })
 })
 
+//Get users previous searches. 
 router.post('/getsearch', function(req, res){
-    console.log("WAZZUP IN THA HOOD getsearch");
-    console.log(req.body.username);
     account.getsearch(req.body.username, function(returnVal){
-        console.log(returnVal)
         res.json({
             returnVal
         })
     })
-
-
 })
 
 

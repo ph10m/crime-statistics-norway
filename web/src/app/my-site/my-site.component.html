@@ -2,19 +2,13 @@
   <h1 class="display-3">My site</h1>
   <p class="lead">Previous searches for {{user}}: </p>
   <hr class="my-4">
-  <!-- Must fin a way to list up all previous searches.  -->
-  <p>List up previous searches here. </p>
-
-  <!-- <div>
-    <ul *ngFor="let listSearch og searches">
-      <li>{{listSearch}}</li>
+  <div>
+    <ul class="list-group">
+      <!-- List up all previous searches TODO: MAKE DYNAMIC OF SOME SORT -->
+      <li class="list-group-item" *ngFor="let list of searches" >Searchword: <a routerLink="/search" (click)="clickPreviousSearch(list['content'])">{{list['content']}}</a> <span class="font-italic"> --- {{list['time']}}</span>  </li>
     </ul>
-  </div> -->
-  <p>{{searches}}</p>
+  </div>
 </div>
-<!-- <p class="lead">
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="setLogInStatus(true)">Learn more</a>
-</p> -->
 
 <!-- If not logged in, only log in component should be shown -->
 <app-log-in *ngIf="user.length == 0"></app-log-in>

@@ -16,7 +16,7 @@ export class MySiteComponent implements OnInit {
   loggedIn = false;
   user: string; //User
   search : string; //Searches
-  searches; //Previous searches. 
+  searches = []; //Previous searches. 
 
   constructor(private dataService: DataService, private databaseConnect: DatabaseConnectorService) { }
 
@@ -30,26 +30,22 @@ export class MySiteComponent implements OnInit {
   setLogInStatus(status: boolean){
     this.loggedIn = status;
   }
-  
-  //Skal få en liste ac tidligere søk. 
-  previousSearches(){
-    
-    console.log("LOAD PREVIOS SEARCHES. ")
 
+  //Make a list of previous searches. 
+  previousSearches(){
     if(this.user != ""){
+      console.log("jupp");
       let prevSearches = this.databaseConnect.getPreviousSearches(this.user);
       prevSearches.subscribe(data => {
-        console.log(JSON.stringify(data))
-        console.log(data['returnVal'].length);
-        this.searches = JSON.stringify(data['returnVal']);
-        // this.searches = JSON.stringify(data['returnVal'][0]['content']);
-        
-        
+        //Pushes data to local list. 
+        for (var i = 0; i < data['returnVal'].length; i++){
+          this.searches.push(data['returnVal'][i]);
+       }
       });
     }
-    
   }
 
-  
-
+  clickPreviousSearch(search :string){
+    this.dataService.changeSearch(search);
+  }
 }

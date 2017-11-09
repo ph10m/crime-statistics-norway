@@ -63,8 +63,6 @@ exports.searchPost = function(username, searchkey, date, cb){
     let type = 'search';
 
     db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
-        
-        console.log("THIS ROW:" + row)
         if (row == undefined) {
             //If user not exists --> Should really not happen, like ever. 
             cb(false);
@@ -83,7 +81,6 @@ exports.getsearch = function(username, cb){
     db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
         if (row == undefined) {
             //If user not exists --> Should really not happen, like ever. 
-            console.log("row undefined");
             cb(false);
         }
         else {

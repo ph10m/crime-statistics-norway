@@ -29,13 +29,7 @@ export class SearchResultComponent implements OnInit {
   postSearchToDb(search: string){
     //User must be logged in to post to previous searches. 
     if(this.user != ""){
-      console.log("User is logged in: " + search);
       this.databaseConnect.setPreviousSearch(search, this.user);
-    }else{
-      console.log("NOT POSTING SEARCH TO DATABASE");
     }
-    
-    
   }
-
 }
