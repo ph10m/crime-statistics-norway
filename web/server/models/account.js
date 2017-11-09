@@ -9,7 +9,7 @@ exports.testuser = function(cb) {
     console.log(db.run("SELECT * FROM sqlite_master"));
     console.log(db.run("INSERT INTO Users (username, password) VALUES ('" + username + "', '" + password + "')" ));
 
-    cb(true)
+    cb(true);
 }
 
 
