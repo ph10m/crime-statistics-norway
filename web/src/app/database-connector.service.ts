@@ -27,6 +27,7 @@ export class DatabaseConnectorService {
 
   //Post to current user previous search. 
   setPreviousSearch(searchkey: string, username: string){
+    console.log("setPrevSearch");
     let body =  {
       "username" : username,
       "searchkey" : searchkey,
@@ -36,9 +37,12 @@ export class DatabaseConnectorService {
   }
 
   //Returns object from database with the current users previous searches. 
-  getPreviousSearches(username: string){
+  getPreviousSearches(username: string, name: boolean, date: boolean, unique: boolean){
     let body =  {
       "username" : username,
+      "name" : name,
+      "date" : date,
+      "unique" : unique,
     };
     return this.http.post('http://localhost:8084/account/getsearch', body);
   }

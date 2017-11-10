@@ -13,23 +13,15 @@ export class SearchResultComponent implements OnInit {
 
   search: string;
   user: string;
+  prevSearch = "";
 
-  constructor(private dataService: DataService, private databaseConnect: DatabaseConnectorService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(){
     this.dataService.currentUser.subscribe(user => this.user = user);
     //Search listener
     this.dataService.currentSearch.subscribe(search => {
       this.search = search
-      this.postSearchToDb(search);
     });
-  }
-
-  //When new search is created post to DB. 
-  postSearchToDb(search: string){
-    //User must be logged in to post to previous searches. 
-    if(this.user != ""){
-      this.databaseConnect.setPreviousSearch(search, this.user);
-    }
   }
 }

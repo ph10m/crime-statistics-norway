@@ -48,20 +48,17 @@ router.post('/searchpost', function(req, res){
 
 //Get users previous searches. 
 router.post('/getsearch', function(req, res){
-    account.getsearch(req.body.username, function(returnVal){
+    account.getsearch(req.body.username, req.body.name, req.body.date, req.body.unique, function(returnVal){
         res.json({
             returnVal
         })
     })
 })
 
-
-
 //get user details
 router.get('/account', function(req, res) {
     
 })
-
 
 //todo. fjern denne. brukes kun for å lage en testbruker
 router.post('/testuser', function(req, res) {

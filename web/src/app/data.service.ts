@@ -11,6 +11,8 @@ export class DataService {
   //search
   private search;
   currentSearch;
+
+  prevSearch = "";
   
   //sessionstorage. 
   storage = ["", ""];
@@ -50,11 +52,18 @@ export class DataService {
     //The search object is changed. 
     changeSearch(search: string){
       //Sessionstorage
-      this.storage[1] = search;
-      sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));
+      if(search != this.prevSearch){
+        this.storage[1] = search;
+        
+        sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));
+        
+        //Set observable. 
+        this.search.null;
+        this.search.next(search);
+        this.prevSearch = search;
+      }
       
-      //Set observable. 
-      this.search.next(search);
+      
     }
 
 

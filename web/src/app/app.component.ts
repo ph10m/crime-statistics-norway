@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
-//Dataservice. 
+//Service
 import { DataService } from "./data.service";
+import { DatabaseConnectorService } from './database-connector.service';
 
 
 
@@ -20,7 +21,7 @@ export class AppComponent {
   user: string; 
   search: string;
   
-  constructor(private dataServe: DataService, private router: Router){
+  constructor(private dataServe: DataService, private router: Router, private databaseConnect: DatabaseConnectorService){
 
   }
   
@@ -37,12 +38,26 @@ export class AppComponent {
 
   //Onaction from search-bar. 
   searchClick(value: string){
+    console.log("searchCLickONTHISSJIET");
+
     if(value.length != 0){
       this.search = value;
       this.dataServe.changeSearch(value);
       this.router.navigate(['/search']);
+      this.postSearchToDb(this.search);
     }
     
+  }
+
+  //When new search is created post to DB. 
+  postSearchToDb(search: string){
+    //User must be logged in to post to previous searches. 
+    console.log("POST TO DB")
+    if(this.user != ""){
+      this.databaseConnect.setPreviousSearch(search, this.user);
+        
+      
+    }
   }
   
 }
