@@ -3,7 +3,7 @@ import { Municipality } from './municipality';
 export const MUNICS: Municipality[] = [
     {
         id: 1,  
-        name: 'Halden', 
+        municipacility: 'Halden', 
         all_1000: 111.4, 
         all_abs: 3402, 
         property_1000: 19.7, 
@@ -21,7 +21,7 @@ export const MUNICS: Municipality[] = [
 },
 {
     id: 2,  
-    name: 'Rana', 
+    municipacility: 'Rana', 
     all_1000: 111.4, 
     all_abs: 3402, 
     property_1000: 19.7, 
@@ -39,7 +39,7 @@ export const MUNICS: Municipality[] = [
 },
 {
     id: 3,  
-    name: 'Bodø', 
+    municipacility: 'Bodø', 
     all_1000: 111.4,
     all_abs: 3402, 
     property_1000: 19.7, 
@@ -57,7 +57,7 @@ export const MUNICS: Municipality[] = [
 },
 {
     id: 4,  
-    name: 'Oslo', 
+    municipacility: 'Oslo', 
     all_1000: 111.4, 
     all_abs: 3402, 
     property_1000: 19.7, 

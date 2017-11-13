@@ -14,42 +14,56 @@ import { Municipality } from './municipality';
 })
 
 export class CrimeListComponent implements OnInit, OnDestroy {
-  crimelist: Array<Municipality>;
-
-  private req: any;
-
-  retrieved: any;
-
- /* options: CloudOptions = {
-    // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value  
-    width : 1,
-    height : 400,
-    overflow: false,
-  }*/
+  //list with list holding objects from db
+  crimelist: Array<Array<Municipality>> = [];
+  //reducing the layer once to display objects in HTML
+  renderlist: Array<Municipality> = [];
  
+  //setup db values
+  private req: any;
+  retrieved: any;
 
 
   constructor(private http: HttpClient) {}
 
+  //on initalizing the page
   ngOnInit() {
-    console.log("on init");
-    //this.getData();   
+    this.getLars();
   }
 
-  getData() {
-    this.req = this.http.post('http://localhost:8084/crimestat/crimes', 10).subscribe(data=>{
-      //console.log(this.req);
-      console.log((data[1]).id);
-      //console.log(data.place)
+  //separate function to create html rendering list
+  checkList() {
+    for (let i in this.crimelist) {
+      console.log("in for løkke")
+      //console.log(this.crimelist[i])
+      for (let b in this.crimelist[i]) {
+        //console.log(this.crimelist[i][b].municipacility)
+        this.renderlist.push(this.crimelist[i][b])
+      }
+    }
+  }
+
+  //fetching 10 object from db
+  getLars() {
+    let body = {
+      "from": 10
+    }
+
+    this.req = this.http.post('http://localhost:8084/crimestat/crimes', body).subscribe(data=>{ 
+      console.log("This data : " + (JSON.stringify(data)));
+      //storing data
       this.retrieved = data
       this.changeData(this.retrieved);
     })
   }
   
+  //changing data stored in the file
   changeData(newData){
-    const changedData$: Observable<Array<Municipality>> = Observable.of(newData);
+    const changedData$: Observable<Array<Array<Municipality>>> = Observable.of(newData);
     changedData$.subscribe(res => this.crimelist = res);
     console.log("changed data")
+    //iterate through updated list
+    this.checkList();
   }
   
   ngOnDestroy(){

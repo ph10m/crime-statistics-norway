@@ -48,7 +48,7 @@ export class FetchDataComponent {
 
   ngOnInit(): void {
     this.getMunics();
-    this.getKrimData();
+    //this.getKrimData();
     //print the list
     //console.log(this.municslist);
   }
