@@ -32,19 +32,18 @@ export class CrimeListComponent implements OnInit, OnDestroy {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
+    console.log("on init");
+    //this.getData();   
+  }
 
+  getData() {
     this.req = this.http.post('http://localhost:8084/crimestat/crimes', 10).subscribe(data=>{
       //console.log(this.req);
       console.log((data[1]).id);
       //console.log(data.place)
       this.retrieved = data
       this.changeData(this.retrieved);
-
-     
     })
-    //TODO sende data fra HTTP til ordskyen
-    //TODO få sendt real data fra db til ordsky
-    
   }
   
   changeData(newData){
