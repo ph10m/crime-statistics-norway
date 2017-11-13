@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Municipality } from './municipality';
+import { Municipality } from './../municipality';
 import { MUNICS } from './mock-muni';
 
 @Injectable()

@@ -1,25 +1,6 @@
-<div scroller>
+<div>
     <h2>Your crime statistics</h2>
-    <crime-list-component></crime-list-component>
     <div class="flex-container">
-        <!--div class="left-half">
-            <span>ID</span>
-            <span>Name</span>
-            <span>Amount of crimes</span>
-            <span>Crimes every 1000</span>
-            <ul class="munics" *ngFor="let municipality of municslist" [class.selected]="municipality === selectedMunic" (click)="onSelect(municipality)">
-                <li>
-                    <span class=" badge ">{{municipality[0]}}</span>
-                    <span>{{municipality[1]}}</span>
-                    <span>{{municipality[2]}}</span>
-                    <span>{{municipality[3]}}</span>
-                </li>
-            </ul>
-        </div>
-
-        <div-- class="right-half">
-            <munic-detail [municipality]="selectedMunic"></munic-detail>
-        </div-->
-
+        <crime-list-component></crime-list-component>
     </div>
 </div>

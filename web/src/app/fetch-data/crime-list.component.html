@@ -1,20 +1,16 @@
-<div>
-    <h2>Crimelist</h2>
-    <div>
-        <div class="left-half">
-            <span>ID</span>
-            <span>Name</span>
-            <span>Amount of crimes</span>
-            <span>Crimes every 1000</span>
-            <ul class="munics" *ngFor="let crime of renderlist" [class.selected]="municipality === selectedMunic" (click)="onSelect(municipality)">
-                <li>
-                    <span class=" badge ">{{crime.id}}</span>
-                    <span>{{crime.municipacility}}</span>
-                    <span>{{crime.all_1000}}</span>
-                    <span>{{crime.all_abs}}</span>
-                </li>
-            </ul>
-        </div>
+<div class="left-half" (scroll)="onLoadMore()">
+    <span>ID</span>
+    <span>Name</span>
+    <span>Amount of crimes</span>
+    <span>Crimes every 1000</span>
+    <ul class="munics" *ngFor="let crime of renderlist" [class.selected]="crime === selectedMunic" (click)="onSelect(crime)">
+        <li>
+            <span class=" badge ">{{crime.id}}</span>
+            <span>{{crime.municipacility}}</span>
+            <span>{{crime.all_1000}}</span>
+            <span>{{crime.all_abs}}</span>
+        </li>
 
-    </div>
+
+    </ul>
 </div>

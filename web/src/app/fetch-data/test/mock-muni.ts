@@ -1,4 +1,4 @@
-import { Municipality } from './municipality';
+import { Municipality } from './../municipality';
 
 export const MUNICS: Municipality[] = [
     {
