@@ -11,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/account', require('./server/controllers/account'));
 app.use('/crimestat', require('./server/controllers/crimestat'));
+app.use('/search', require("./server/controllers/search"));
 
 
 
