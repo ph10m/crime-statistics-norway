@@ -24,9 +24,9 @@ router.get('/test2/', function(req, res) {
     })
 })
 
-router.get('/test3/', function(req, res) {
+router.get('/all_1000/', function(req, res) {
     
-    cloud.select_all_1000(function(returnVal) {
+    cloud.all_1000(function(returnVal) {
         //console.log(returnVal)
         res.json(returnVal)
     })
