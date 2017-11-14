@@ -19,3 +19,14 @@ exports.test2 = function(cb) {
             //WHERE municipacility NOT LIKE "i alt" AND municipacility NOT LIKE "Alle fylker" AND municipacility NOT LIKE "Hele landet" AND municipacility NOT LIKE "Alle kommuner" 
         });
     }
+
+    exports.test3 = function(cb) {
+        let obj = new Array();
+        db.each('SELECT municipacility, all_1000 FROM crimestat', function(err, row){
+            //console.log(row.municipacility);
+            obj.push({'text': row.municipacility ,'weight': parseFloat(row.all_1000)});
+            //WHERE municipacility NOT LIKE "i alt" AND municipacility NOT LIKE "Alle fylker" AND municipacility NOT LIKE "Hele landet" AND municipacility NOT LIKE "Alle kommuner" 
+        },function (err, rows) {
+            cb(obj);
+        });
+    }

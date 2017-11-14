@@ -32,8 +32,8 @@ export class TagCloudComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.req = this.http.get('http://localhost:8084/cloud/all_1000').subscribe(data=>{
-      console.log(data);
+    this.req = this.http.get('http://localhost:8084/cloud/test3').subscribe(data=>{
+      //console.log(data);
       this.retrieved = data
       this.changeData(this.retrieved);
      
