@@ -2,11 +2,31 @@
 
 <br>
     <h1>Regions</h1>
-    <ul class='regions'>
-        <li *ngFor='let region of regions'
-            [class.selected]="region === selectedRegion"
-            (click)="onSelect(hero)">
-            <span class='badge'>{{region.id}}</span>
-            <span>{{region.name}}</span>
-        </li>
-    </ul>
+    <div ng-controller="itemsController" class="box">
+        
+        <table border="2">
+            <tr ng-repeat-start="region in regions">
+                <td>
+                    'Skriv regionnavn'
+                    <em>{{expanded}}</em>
+                </td>
+                <td>Id: 'skriv id'</td>
+                <td>
+                    <button (click)="expand($event)">
+                        Expand
+                    </button>
+                </td>
+            </tr>
+            <tr class="expanded">
+                <td colspan="3">
+                    <ul>
+                        <!-- <li ng-repeat="value in group.values"> -->
+                        <li>
+                            'skriv inn verdier'
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+        
+    </div>

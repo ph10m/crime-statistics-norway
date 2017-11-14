@@ -15,6 +15,8 @@ import { RegionService} from './region.service';
 export class RegionsComponent implements OnInit {
     selectedRegion: Region;
     regions: Region[];
+    panelOpenState: boolean;
+    expanded: any = false;
 
     constructor( private regionService: RegionService) {}
 
@@ -30,6 +32,22 @@ export class RegionsComponent implements OnInit {
 
     getRegions(): void {
         this.regionService.getRegions().then(regions => this.regions = regions);
+    }
+
+    expand(event) {
+        console.log('event');
+        if (this.expanded === false) {
+            this.expanded = true;
+        } else {
+            this.expanded = false;
+        }
+        if (this.expanded === true) {
+            console.log(this.expanded);
+            console.log('true');
+        } else {
+            console.log(this.expanded);
+            console.log('false');
+        }
     }
 
 }
