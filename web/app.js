@@ -6,7 +6,7 @@ var express = require('express')
 
 
 app.use(cors());
-app.use(express.static(__dirname + 'dist'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
@@ -14,6 +14,7 @@ app.use('/account', require('./server/controllers/account'));
 app.use('/cloud', require('./server/controllers/cloud'));
 app.use('/crimestat', require('./server/controllers/crimestat'));
 app.use('/search', require("./server/controllers/search"));
+app.use('/', express.static('./dist'));  
 
 
 
