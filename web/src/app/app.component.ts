@@ -38,8 +38,6 @@ export class AppComponent {
 
   //Onaction from search-bar. 
   searchClick(value: string){
-    console.log("searchCLickONTHISSJIET");
-
     if(value.length != 0){
       this.search = value;
       this.dataServe.changeSearch(value);
@@ -52,7 +50,6 @@ export class AppComponent {
   //When new search is created post to DB. 
   postSearchToDb(search: string){
     //User must be logged in to post to previous searches. 
-    console.log("POST TO DB")
     if(this.user != ""){
       this.databaseConnect.setPreviousSearch(search, this.user);
         

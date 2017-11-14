@@ -27,7 +27,6 @@ export class DatabaseConnectorService {
 
   //Post to current user previous search. 
   setPreviousSearch(searchkey: string, username: string){
-    console.log("setPrevSearch");
     let body =  {
       "username" : username,
       "searchkey" : searchkey,

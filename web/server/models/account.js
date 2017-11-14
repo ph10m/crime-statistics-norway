@@ -61,14 +61,14 @@ exports.checkLogin = function(username, password, cb){
 exports.searchPost = function(username, searchkey, date, cb){
     let type = 'search';
 
-    db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
+    db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
         if (row == undefined) {
             //If user not exists --> Should really not happen, like ever. 
             cb(false);
         }
         else {
             //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
-            db.getConnection().run("INSERT INTO Log (type, content, time, userid) VALUES ('"+ type + "', '" + searchkey + "', '" + date + "', '" + row.id + "')" );
+            db.run("INSERT INTO Log (type, content, time, userid) VALUES ('"+ type + "', '" + searchkey + "', '" + date + "', '" + row.id + "')" );
             cb(true);
         }
     });
@@ -77,7 +77,7 @@ exports.searchPost = function(username, searchkey, date, cb){
 
 //Returns from database based on the sql sentence. 
 exports.getsearch = function(username, name, date, unique, cb){
-    db.getConnection().get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
+    db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
         if (row == undefined) {
             //If user not exists --> Should really not happen, like ever. 
             cb(false);
@@ -87,7 +87,7 @@ exports.getsearch = function(username, name, date, unique, cb){
             //Sort by date, not unique
             if((date === true) && (unique === false)){
                 //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
-                db.getConnection().all("SELECT * FROM Log WHERE userid = " + row.id + " ORDER BY Time", function(err, row){
+                db.all("SELECT * FROM Log WHERE userid = " + row.id + " ORDER BY Time", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{
@@ -96,7 +96,7 @@ exports.getsearch = function(username, name, date, unique, cb){
                 });
                 //Sort bt date, unique
             }else if(date === true && unique === true){
-                db.getConnection().all("SELECT DISTINCT * FROM Log WHERE userid = " + row.id + " GROUP BY Content ORDER BY time", function(err, row){
+                db.all("SELECT DISTINCT * FROM Log WHERE userid = " + row.id + " GROUP BY Content ORDER BY time", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{
@@ -106,7 +106,7 @@ exports.getsearch = function(username, name, date, unique, cb){
                 });
             //sort by contentname, not unique
             }else if(name === true && unique === false){
-                db.getConnection().all("SELECT * FROM Log WHERE userid = " + row.id + " ORDER BY content", function(err, row){
+                db.all("SELECT * FROM Log WHERE userid = " + row.id + " ORDER BY content", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{
@@ -115,7 +115,7 @@ exports.getsearch = function(username, name, date, unique, cb){
                 });
             //Sort by contentname, unique
             }else if(name === true && unique === true){
-                db.getConnection().all("SELECT DISTINCT * FROM Log WHERE userid = " + row.id + " GROUP BY Content ORDER BY content", function(err, row){
+                db.all("SELECT DISTINCT * FROM Log WHERE userid = " + row.id + " GROUP BY Content ORDER BY content", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{
