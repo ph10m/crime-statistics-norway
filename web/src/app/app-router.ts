@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
+import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
 //Kristian
@@ -34,6 +35,10 @@ const appRoutes: Routes = [
         component: MySiteComponent,
     },
     {
+        path:"cloud",
+        component:TagCloudComponent,
+    },
+    {
         path:"data",
         component: FetchDataComponent,
     },
@@ -41,6 +46,7 @@ const appRoutes: Routes = [
         path:"search",
         component: SearchResultComponent,
     }
+
 ];
 
 @NgModule({
