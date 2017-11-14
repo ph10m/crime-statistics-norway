@@ -32,14 +32,12 @@ export class TagCloudComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.req = this.http.get('http://localhost:8084/cloud/test3').subscribe(data=>{
+    this.req = this.http.get('http://localhost:8084/cloud/select_all_1000').subscribe(data=>{
       console.log(data);
       this.retrieved = data
       this.changeData(this.retrieved);
      
     })
-    //TODO sende data fra HTTP til ordskyen
-    //TODO få sendt real data fra db til ordsky
     
   }
   

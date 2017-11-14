@@ -12,7 +12,7 @@ exports.test2 = function(cb) {
         });
     }
 
-    exports.test3 = function(cb) {
+    exports.select_all_1000 = function(cb) {
         db.all('SELECT municipacility AS text, all_1000 AS weight FROM crimestat', function(err, row){
             console.log(row);
             cb(row)
