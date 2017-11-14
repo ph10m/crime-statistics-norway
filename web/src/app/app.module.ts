@@ -55,6 +55,7 @@ import { SearchListComponent } from './search-list/search-list.component';
   providers: [
     DataService,
     DatabaseConnectorService,
+    SearchListComponent
   ],
   bootstrap: [AppComponent]
 })

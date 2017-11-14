@@ -4,6 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { DatabaseConnectorService } from '../database-connector.service';
 
+//Showing search list
+import { SearchListComponent } from './../search-list/search-list.component';
+
 @Component({
   selector: 'app-search-result',
   templateUrl: './search-result.component.html',
