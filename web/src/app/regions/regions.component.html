@@ -2,8 +2,6 @@
 
 <br>
     <h1>Regions</h1>
-    <div ng-controller="itemsController" class="box">
-        
         <table border="2">
             <tr ng-repeat-start="region in regions">
                 <td>
@@ -17,7 +15,7 @@
                     </button>
                 </td>
             </tr>
-            <tr class="expanded">
+            <div *ngIf="expanded==true">
                 <td colspan="3">
                     <ul>
                         <!-- <li ng-repeat="value in group.values"> -->
@@ -26,7 +24,5 @@
                         </li>
                     </ul>
                 </td>
-            </tr>
+            </div>
         </table>
-        
-    </div>
