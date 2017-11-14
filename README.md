@@ -20,22 +20,21 @@ Vi har funnet en CSV fil fra SSB (https://www.ssb.no/lovbrudda) som inneholder s
 Vi kommer til å lage en REST basert backend basert på Node.js som vil lese og skrive data til en sqlite database. Grunnen til at vi valgte sqlite er fordi vi vil lære å bruke det i tillegg til at vi slipper å installere og drifte en sql server.
 
 ### Hva vi skal gjøre:
-Arkitektur
-lag database struktur
-Overføre datasett til sqlite
-Angular template
-Registrer bruker/Login
-Registrer bruker
-Liste opp fylker rangert etter kriminalitet
-Sende liste over fylker med kriminalitet til frontend
-min side med oversikt over hva du har søkt på
-Logging av hva man har søkt på
-Dynamisk lasting av flere kommuner
-ordsky over hvilke kommuner som gjør mest kriminalitet
-expand kommuner for å se mer detaljert statistikk
-Sortere listen på absolutte tall og pr 1000 innbygger. og pr kategori 
-søke på kommuner
-Forside med routes til komponenter, eksempel listevisning
+Arkitektur:
+lag database struktur.
+Overføre datasett til sqlite.
+Angular template.
+Registrer bruker/Login.
+Liste opp fylker rangert etter kriminalitet.
+Sende liste over fylker med kriminalitet til frontend.
+min side med oversikt over hva du har søkt på.
+Logging av hva man har søkt på.
+Dynamisk lasting av flere kommuner.
+ordsky over hvilke kommuner som gjør mest kriminalitet.
+expand kommuner for å se mer detaljert statistikk.
+Sortere listen på absolutte tall og pr 1000 innbygger. og pr kategori .
+søke på kommuner.
+Forside med routes til komponenter, eksempel listevisning.
 
 ## Valg av løsning
 Vi har valgt å bruke NodeJs, Angular IO, bootstrap, fontawesome og sqlite3.

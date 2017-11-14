@@ -8,6 +8,12 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
 import { RegionsComponent } from './regions/regions.component';
 
+import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
+import { SearchResultComponent } from './search-result/search-result.component';
+
+//Kristian
+import { FetchDataComponent } from './fetch-data/fetch-data.component';
+//import { SearchComponent } from './fetch-data/search.component';
 
 
 
@@ -33,7 +39,20 @@ const appRoutes: Routes = [
     {
         path: 'regions',
         component: RegionsComponent,
+    },
+    {
+        path:"cloud",
+        component:TagCloudComponent,
+    },
+    {
+        path:"data",
+        component: FetchDataComponent,
+    },
+    {
+        path:"search",
+        component: SearchResultComponent,
     }
+
 ];
 
 @NgModule({

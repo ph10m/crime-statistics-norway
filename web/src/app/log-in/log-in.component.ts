@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 
-//ServeComponent
+
+//Service components. 
 import { DataService } from '../data.service';
+import { DatabaseConnectorService } from '../database-connector.service';
+
 
 @Component({
   selector: 'app-log-in',
@@ -14,39 +17,36 @@ export class LogInComponent implements OnInit{
 
   errorMessage = [];
   user: string;
+  currentUser: string;
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService, private databaseConnector: DatabaseConnectorService) {
+    
+  }
 
-  
   ngOnInit(){
     //UserListener
     this.dataService.currentUser.subscribe(user => this.user = user);
   }
-  
+
   //Onclick from logIn. 
   logInClick(mail: string, pass: string){
     let check = true;
-    //Check this against database...
+    this.errorMessage = [];
     
     if(check){
-      //TODO: Check user against database, and password. 
-
-      //Sets the new user if all errorchecking is passed. 
-      this.dataService.changeUser(mail);
-
+      //Check if user in database. 
+      let status = this.databaseConnector.logIn(mail, pass);
+      status.subscribe(data => {
+        if(data['status'] == true){
+          console.log("IM IN");
+          this.dataService.changeUser(mail);
+        }else{
+          this.errorMessage.push("Wrong username or password");
+        }
+      })
     }else{
       this.errorMessage = [];
       this.errorMessage.push("No connection to database sry bro");
     }
-     
-    //TODO: Check password against database. 
-    //TODO: Do error checking like in new user component. 
-    
-    
-
-    
-
   }
-  
-
 }

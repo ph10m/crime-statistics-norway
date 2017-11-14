@@ -1,13 +1,30 @@
 <div *ngIf="user.length > 0" class="jumbotron">
   <h1 class="display-3">My site</h1>
-  <p class="lead">Previous searches.</p>
+  <p class="lead">Previous searches for {{user}}: </p>
   <hr class="my-4">
-  <p>Funfunfun</p>
-  
+  <p>Sort:</p>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="onRadioClick('name')"> By name
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+    <label class="form-check-label">
+      <input class="form-check-input" checked="" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="onRadioClick()"> By date
+    </label>
+  </div>
+  <div class="form-check form-check-inline">
+      <label class="form-check-label">
+        <input #val class="form-check-input" type="checkbox" id="inlineCheckbox1" (click)="onCheckClicked()"> unique searches
+      </label>
+    </div>
+  <div>
+    <ul class="list-group">
+      <!-- List up all previous searches TODO: MAKE DYNAMIC OF SOME SORT -->
+      <li class="list-group-item" *ngFor="let list of searches" >Searchword: <a routerLink="/search" (click)="clickPreviousSearch(list['content'])">{{list['content']}}</a> <span class="font-italic"> --- {{list['time']}}</span>  </li>
+    </ul>
+  </div>
 </div>
-<!-- <p class="lead">
-  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="setLogInStatus(true)">Learn more</a>
-</p> -->
 
 <!-- If not logged in, only log in component should be shown -->
 <app-log-in *ngIf="user.length == 0"></app-log-in>
