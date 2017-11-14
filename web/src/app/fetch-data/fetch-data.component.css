@@ -70,3 +70,6 @@ span {
 .flex-container {
   display: flex;
 }
+.hidden {
+  display: none;
+}
