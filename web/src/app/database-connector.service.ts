@@ -9,7 +9,6 @@ export class DatabaseConnectorService {
 
   //Returns true if new user is created false otherwise. 
   newUser(username: string, password: string){
-    
     let body =  {
       "username" : username,
       "password" : password,
@@ -19,7 +18,6 @@ export class DatabaseConnectorService {
 
   //Checks if right username and password is added, returns a object to the component. 
   logIn(username: string, password: string){
-    
     let body =  {
       "username" : username,
       "password" : password,
@@ -27,11 +25,24 @@ export class DatabaseConnectorService {
     return this.http.post('http://localhost:8084/account/login', body);
   }
 
-  setPreviousSearch(search: string){
-    //TODO: Add new search from user to database. 
+  //Post to current user previous search. 
+  setPreviousSearch(searchkey: string, username: string){
+    let body =  {
+      "username" : username,
+      "searchkey" : searchkey,
+      "date": new Date().toLocaleString(),
+    };
+    this.http.post('http://localhost:8084/account/searchpost', body).subscribe(res => console.log("Response: " + res))
   }
 
-  getPreviousSearches(){
-    //TODO: Make method that returns list with previous searches. 
+  //Returns object from database with the current users previous searches. 
+  getPreviousSearches(username: string, name: boolean, date: boolean, unique: boolean){
+    let body =  {
+      "username" : username,
+      "name" : name,
+      "date" : date,
+      "unique" : unique,
+    };
+    return this.http.post('http://localhost:8084/account/getsearch', body);
   }
 }
