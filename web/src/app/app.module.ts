@@ -22,7 +22,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
 
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component';
-import { CrimeListComponent } from './fetch-data/crimelist.component';
+import { CrimeListComponent } from './crime-list/crime-list.component';
+import { SearchListComponent } from './search-list/search-list.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CrimeListComponent } from './fetch-data/crimelist.component';
     
     FetchDataComponent,
     MunicipalityDetailComponent,
-    CrimeListComponent
+    CrimeListComponent,
+    SearchListComponent
   ],
   imports: [
     BrowserModule,

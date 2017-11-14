@@ -3,12 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-import { Municipality } from './municipality';
+import { Municipality } from './../fetch-data/municipality';
 
 @Component({
   selector: 'crime-list-component',
   templateUrl: './crime-list.component.html',
-  styleUrls: ['./fetch-data.component.css']
+  styleUrls: ['./../fetch-data/fetch-data.component.css']
 })
 
 export class CrimeListComponent implements OnInit, OnDestroy {

@@ -15,7 +15,7 @@ import { Municipality } from './municipality';
 import { MunicipalityDetailComponent } from './munic-detail.component';
 
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { CrimeListComponent } from './crimelist.component';
+import { CrimeListComponent } from './../crime-list/crime-list.component';
 
 @Component({
     selector: 'app-home',
