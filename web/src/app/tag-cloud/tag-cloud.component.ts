@@ -19,8 +19,8 @@ export class TagCloudComponent implements OnInit, OnDestroy {
   options: CloudOptions = {
     // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value  
     width : 1,
-    height : 400,
-    overflow: false,
+    height : 500,
+    overflow: true,
   }
  
   data: Array<CloudData> = [

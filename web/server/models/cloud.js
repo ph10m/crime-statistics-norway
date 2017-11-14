@@ -14,7 +14,7 @@ exports.test2 = function(cb) {
 
     exports.all_1000 = function(cb) {
         db.all('SELECT municipacility AS text, all_1000 AS weight FROM crimestat', function(err, row){
-            console.log(row);
+            //console.log(row);
             cb(row)
             //WHERE municipacility NOT LIKE "i alt" AND municipacility NOT LIKE "Alle fylker" AND municipacility NOT LIKE "Hele landet" AND municipacility NOT LIKE "Alle kommuner" 
         });
