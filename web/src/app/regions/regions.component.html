@@ -3,8 +3,9 @@
 <br>
     <h1>Regions</h1>
         <table border="2">
+            <!-- Gets all the regions and mekes them into a list -->
             <tr ng-repeat-start="region in regions">
-                <td>
+                <td colspan="3">
                     'Skriv regionnavn'
                     <em>{{expanded}}</em>
                 </td>
@@ -15,10 +16,10 @@
                     </button>
                 </td>
             </tr>
+            <!-- Make the  -->
             <div *ngIf="expanded==true">
                 <td colspan="3">
                     <ul>
-                        <!-- <li ng-repeat="value in group.values"> -->
                         <li>
                             'skriv inn verdier'
                         </li>

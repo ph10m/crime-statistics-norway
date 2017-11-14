@@ -20,20 +20,24 @@ export class RegionsComponent implements OnInit {
 
     constructor( private regionService: RegionService) {}
 
+    // Initialisation of the page
     ngOnInit() {
         console.log('funker');
         this.getRegions();
     }
 
+    // Make an action when clicked on a region
     onSelect(region: Region): void {
         this.selectedRegion = region;
         console.log('Testing 123');
     }
 
+    // Gets the regions that are listed up
     getRegions(): void {
         this.regionService.getRegions().then(regions => this.regions = regions);
     }
 
+    // Fonction to log if list is expanded or not
     expand(event) {
         console.log('event');
         if (this.expanded === false) {
