@@ -4,7 +4,7 @@
 
 export class Municipality {
   id: number;
-  name: string;
+  municipacility: string;
   all_1000: number;
   all_abs: number;
   property_1000: number;
