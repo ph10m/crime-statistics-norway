@@ -56,18 +56,17 @@ export class MySiteComponent implements OnInit {
   }
 
   //On action from search restriction. 
-  onRadioClick(){
+  onRadioClick(value: string){
     //Set variables for getting preivoius search
-    if(this.name == false){
+    if(value == 'name'){
       this.name = true;
       this.date = false;
-      
+      this.previousSearches();
     }else{
       this.name = false;
       this.date = true;
-      
+      this.previousSearches();
     }
-    this.previousSearches();
   }
 
   //Set variable for previous search;
