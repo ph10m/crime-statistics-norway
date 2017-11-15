@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-//trying to connect with search button
-import { Injectable, OnDestroy } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -21,6 +19,8 @@ export class SearchListComponent implements OnInit {
   //reducing the layer once to display objects in HTML
   renderlist: Array<Municipality> = [];
 
+  keyword: any;
+
   //setup db values
   private req: any;
   retrieved: any;
@@ -30,10 +30,17 @@ export class SearchListComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    console.log(this.renderlist);
-    this.checkList();
+    this.getSearch(this.keyword);
+    //console.log(this.renderlist);
+    //this.checkList();
   }
 
+  //trying to fetch search key into a local variable
+  getKeyword(string) {
+    this.keyword = string;
+    console.log("keyword " + string);
+  }
+  
   //fetching objects that matches string from db
   getSearch(string) {
     console.log("søker");

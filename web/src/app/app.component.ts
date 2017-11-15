@@ -46,7 +46,9 @@ export class AppComponent {
       this.router.navigate(['/search']);
       this.postSearchToDb(this.search);
       //send value to search
-      this.searchList.getSearch(value);
+      //this.searchList.getSearch(value);
+      this.searchList.getKeyword(value);
+      console.log("string " + value);
     }
     
   }
