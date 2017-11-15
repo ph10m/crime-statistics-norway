@@ -17,7 +17,6 @@ export class NewUserComponent implements OnInit {
   error = false;
   errorColorEmail = "";
   errorColorPass = "";
-  yot = false;
   
   constructor(private databaseConnector: DatabaseConnectorService) { }
 
@@ -80,11 +79,6 @@ export class NewUserComponent implements OnInit {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
-
-  yo(){
-    this.yot = true;
-  }
-
 
   //For test purposes
   deleteUser(username){
