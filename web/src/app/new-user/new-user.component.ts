@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 //DatabaseConnector
 import { DatabaseConnectorService } from '../database-connector.service';
 
+
 @Component({
   selector: 'app-new-user',
   templateUrl: './new-user.component.html',
@@ -16,6 +17,7 @@ export class NewUserComponent implements OnInit {
   error = false;
   errorColorEmail = "";
   errorColorPass = "";
+  yot = false;
   
   constructor(private databaseConnector: DatabaseConnectorService) { }
 
@@ -23,7 +25,7 @@ export class NewUserComponent implements OnInit {
   }
 
 //Onclick from newUser, takes in arguments, should check them against the database.  
-  private newUserClick(mail: string, pass1: string, pass2: string){
+  newUserClick(mail: string, pass1: string, pass2: string){
     this.errorMessage = [];
     this.sucsessMessage = "";
     this.error = false;
@@ -77,5 +79,15 @@ export class NewUserComponent implements OnInit {
   validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
+  }
+
+  yo(){
+    this.yot = true;
+  }
+
+
+  //For test purposes
+  deleteUser(username){
+    this.databaseConnector.deleteUser(username);
   }
 }
