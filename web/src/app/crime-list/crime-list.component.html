@@ -5,7 +5,7 @@
     <span>Crimes every 1000</span>
     <ul class="munics" *ngFor="let crime of renderlist"
     [class.selected]="crime === selectedMunic" (click)="onSelect(crime)"
-    (click)="expand($event)">
+    [class.hidden]="crime === selectedMunic" (click)="expand($event)">
         <li>
             <span class=" badge ">{{crime.id}}</span>
             <span>{{crime.municipacility}}</span>
@@ -16,7 +16,22 @@
                     <td colspan="3">
                         <ul>
                             <li>
-                                'skriv inn verdier'
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
                             </li>
                         </ul>
                     </td>
