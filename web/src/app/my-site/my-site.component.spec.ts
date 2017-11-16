@@ -11,6 +11,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('MysiteComponent', () => {
+  //SETUP FOR TESTS. 
     let component: MySiteComponent;
     let component1: LogInComponent;
     let fixture: ComponentFixture<MySiteComponent>;
@@ -20,12 +21,37 @@ describe('MysiteComponent', () => {
     let de: DebugElement;
     let de1: DebugElement;
 
- //Fake db connector service. 
+    let testuser = "test@test.no";
+    let testPass = "1234567";
+
+    //Fake db connector service. 
     let dbConnectorStub = {
 
+      //TODO make equal dbObject. 
+      getPreviousSearches(user, date, name, unique){
+        let obj = JSON.parse('{"returnVal": {"Id": 3, "searchname": "dritogdra"}}');
+        let subject = new BehaviorSubject<JSON>(obj);
+        subject.next(obj);
+        return subject.asObservable();
+      },
+
+      //Login to switch user, same as in userLogin. 
+      logIn(mail: string, pass: string){
+        //Makes observable to return to method in component. 
+        if(mail == testuser && pass == testPass){
+            let objt = JSON.parse('{"status": true}');
+            let subject = new BehaviorSubject<JSON>(objt);
+            subject.next(objt);
+            return subject.asObservable();
+        }else{
+            let objf = JSON.parse('{"status": false}');
+            let subjectf = new BehaviorSubject<JSON>(objf);
+            subjectf.next(objf)
+            return subjectf.asObservable();
+        }
+      }
     }
 
-    
     //Behavoiur subject for dataservice stub. 
     let usersub = new BehaviorSubject<string>("");
     let subj = usersub.asObservable();
@@ -40,7 +66,7 @@ describe('MysiteComponent', () => {
         usersub.next(user);
   }
 }
-    //Setup
+  //Setup
   beforeEach(async(() => {
     TestBed.configureTestingModule({
         imports:[RouterTestingModule],
@@ -52,6 +78,7 @@ describe('MysiteComponent', () => {
     .compileComponents();
   }));
 
+  //Setup
   beforeEach(() => {
     fixture = TestBed.createComponent(MySiteComponent);
     fixture1 = TestBed.createComponent(LogInComponent);
@@ -63,9 +90,19 @@ describe('MysiteComponent', () => {
     dataService = TestBed.get(DataService);
   });
 
-  describe('test', () => {
-      it('should add 1+1', ()=>{
-        expect(1+1).toEqual(2);
-      })
-    })
+  //TESTS
+
+  //Check that user is not logged in initially
+  it('Should be no user', ()=>{
+    component.ngOnInit();
+    fixture.detectChanges();
+    expect(component.user).toEqual("");
+  })
+
+  it('User should be logged in', () => {
+    component1.logInClick(testuser, testPass);
+    fixture1.detectChanges();
+    fixture.detectChanges();
+    expect(component.user).toEqual("test@test.no");
+  })
 })
