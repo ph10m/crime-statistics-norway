@@ -70,3 +70,10 @@ span {
 .flex-container {
   display: flex;
 }
+.hidden {
+  font-size: small;
+  color: black;
+  border-radius: 4px;
+  height: 100px;
+  top: 60px;
+} 
