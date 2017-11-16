@@ -47,7 +47,7 @@ export class AppComponent {
       this.postSearchToDb(this.search);
       //send value to search
       //this.searchList.getSearch(value);
-      this.searchList.getKeyword(value);
+      // this.searchList.getKeyword(value);
       console.log("string " + value);
     }
     

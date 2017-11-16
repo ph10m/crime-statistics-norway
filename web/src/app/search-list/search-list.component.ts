@@ -6,6 +6,8 @@ import 'rxjs/add/observable/of';
 
 import { Municipality } from './../fetch-data/municipality';
 
+import { DataService } from '../data.service';
+
 @Component({
   selector: 'app-search-list',
   templateUrl: './search-list.component.html',
@@ -25,14 +27,23 @@ export class SearchListComponent implements OnInit {
   private req: any;
   retrieved: any;
 
+  //This search
+  search: string;
+
   //appending style rules to the selected munic
   selectedMunic: Municipality;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dataService: DataService) { }
+
+
 
   ngOnInit() {
-    this.getSearch(this.keyword);
+    // this.getSearch(this.keyword);
     //console.log(this.renderlist);
     //this.checkList();
+    this.dataService.currentSearch.subscribe(search => {
+      this.search = search
+      this.getSearch(search);
+    });
   }
 
   //trying to fetch search key into a local variable
@@ -43,14 +54,16 @@ export class SearchListComponent implements OnInit {
   
   //fetching objects that matches string from db
   getSearch(string) {
+    this.renderlist = []
     console.log("søker");
     //console.log(string);
     let body = {
       "name": string
     }
     this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
-      //console.log("This data : " + (JSON.stringify(data)));
+      console.log("This data : " + (JSON.stringify(data['crimes'])));
       //storing data
+      
       this.retrieved = data
       this.changeData(this.retrieved);
     })
