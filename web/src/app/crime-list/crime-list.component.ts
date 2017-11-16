@@ -44,6 +44,8 @@ export class CrimeListComponent implements OnInit, OnDestroy {
         this.renderlist.push(this.crimelist[i][b])
       }
     }
+    //is it better to render this?
+    return this.renderlist;
   }
 
   //fetching 10 objects from db starting at int
