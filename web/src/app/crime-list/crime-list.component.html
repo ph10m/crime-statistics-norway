@@ -3,14 +3,40 @@
     <span>Name</span>
     <span>Amount of crimes</span>
     <span>Crimes every 1000</span>
-    <ul class="munics" *ngFor="let crime of renderlist" [class.selected]="crime === selectedMunic" (click)="onSelect(crime)">
+    <ul class="munics" *ngFor="let crime of renderlist"
+    [class.selected]="crime === selectedMunic" (click)="onSelect(crime)"
+    [class.hidden]="crime === selectedMunic" (click)="expand($event)">
         <li>
             <span class=" badge ">{{crime.id}}</span>
             <span>{{crime.municipacility}}</span>
             <span>{{crime.all_1000}}</span>
             <span>{{crime.all_abs}}</span>
+            <div class="hidden" *ngIf="expanded==true">
+                <span>
+                    <td colspan="3">
+                        <ul>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                            <li>
+                                {{crime.all_1000}} totalt antall anmeldelser
+                            </li>
+                        </ul>
+                    </td>
+                </span>
+            </div>
         </li>
-
-
     </ul>
 </div>

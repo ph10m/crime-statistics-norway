@@ -26,6 +26,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component';
 import { CrimeListComponent } from './crime-list/crime-list.component';
 import { SearchListComponent } from './search-list/search-list.component';
+import { HttpClient } from '@angular/common/http/src/client';
+import { RegionsComponent } from './regions/regions.component';
 
 
 @NgModule({
@@ -37,24 +39,24 @@ import { SearchListComponent } from './search-list/search-list.component';
     MySiteComponent,
     TagCloudComponent,
     SearchResultComponent,
-    
     FetchDataComponent,
     MunicipalityDetailComponent,
     CrimeListComponent,
-    SearchListComponent
+    SearchListComponent,
+    RegionsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     TagCloudModule,
     HttpClientModule,
-
   ],
   providers: [
     DataService,
     DatabaseConnectorService,
+    SearchListComponent,
   ],
   bootstrap: [AppComponent]
 })

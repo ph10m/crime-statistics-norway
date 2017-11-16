@@ -5,6 +5,8 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 import { DataService } from "./data.service";
 import { DatabaseConnectorService } from './database-connector.service';
 
+//Search list
+import { SearchListComponent } from './search-list/search-list.component';
 
 
 @Component({
@@ -18,16 +20,16 @@ export class AppComponent {
 
   title = 'App works';
   description = 'new App';
-  user: string; 
+  user: string;
   search: string;
   
-  constructor(private dataServe: DataService, private router: Router, private databaseConnect: DatabaseConnectorService){
+  constructor(private dataServe: DataService, private router: Router, private databaseConnect: DatabaseConnectorService, private searchList: SearchListComponent){
 
   }
   
   ngOnInit(){
     //User listener, if user is changed every other component listening is noticed. 
-    this.dataServe.currentUser.subscribe(user => this.user = user)
+    this.dataServe.currentUser.subscribe(user => this.user = user);
   }
 
   logOut(){
@@ -38,11 +40,15 @@ export class AppComponent {
 
   //Onaction from search-bar. 
   searchClick(value: string){
-    if(value.length != 0){
+    if(value.length !== 0){
       this.search = value;
       this.dataServe.changeSearch(value);
       this.router.navigate(['/search']);
       this.postSearchToDb(this.search);
+      //send value to search
+      //this.searchList.getSearch(value);
+      // this.searchList.getKeyword(value);
+      console.log("string " + value);
     }
     
   }

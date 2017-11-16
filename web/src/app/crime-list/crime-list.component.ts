@@ -16,7 +16,8 @@ export class CrimeListComponent implements OnInit, OnDestroy {
   crimelist: Array<Array<Municipality>> = [];
   //reducing the layer once to display objects in HTML
   renderlist: Array<Municipality> = [];
- 
+  expanded: any = false;
+
   //setup db values
   private req: any;
   retrieved: any;
@@ -34,6 +35,7 @@ export class CrimeListComponent implements OnInit, OnDestroy {
     this.getLars(this.int);
   }
 
+<<<<<<< HEAD
   //separate function to create html rendering list
   checkList() {
     for (let i in this.crimelist) {
@@ -48,6 +50,8 @@ export class CrimeListComponent implements OnInit, OnDestroy {
     return this.renderlist;
   }
 
+=======
+>>>>>>> master
   //fetching 10 objects from db starting at int
   getLars(int) {
     let body = {
@@ -70,6 +74,18 @@ export class CrimeListComponent implements OnInit, OnDestroy {
     this.checkList();
   }
   
+  //separate function to create html rendering list
+  checkList() {
+    for (let i in this.crimelist) {
+      //console.log("in for løkke")
+      //console.log(this.crimelist[i])
+      for (let b in this.crimelist[i]) {
+        //console.log(this.crimelist[i][b].municipacility)
+        this.renderlist.push(this.crimelist[i][b])
+      }
+    }
+  }
+  
   ngOnDestroy(){
     this.req.unsubscribe();
   }
@@ -78,12 +94,27 @@ export class CrimeListComponent implements OnInit, OnDestroy {
    * https://coursetro.com/posts/code/59/Angular-4-Event-Binding
    */
   onLoadMore() {
-    console.log("fetching more data")
-    this.int += 10
+    console.log("fetching more data");
+    this.int += 10;
     this.getLars(this.int);
   }
 
   onSelect(munic: Municipality): void {
     this.selectedMunic = munic;
+  }
+
+  // Fonction to log if list is expanded or not
+  expand(event) {
+    console.log('event test');
+    if (this.expanded === false) {
+        this.expanded = true;
+    } else {
+        this.expanded = false;
+    }
+    if (this.expanded === true) {
+        console.log(this.expanded);
+    } else {
+        console.log(this.expanded);
+    }
   }
 }
