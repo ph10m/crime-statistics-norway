@@ -1,4 +1,9 @@
-<div class="left-half" (scroll)="onLoadMore()">
+<!-- This div makes the list scroll -->
+<div class="left-half"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
     <span>ID</span>
     <span>Name</span>
     <span>Amount of crimes</span>
