@@ -38,48 +38,48 @@ export class SearchListComponent implements OnInit {
 
   ngOnInit() {
     // this.getSearch(this.keyword);
-    //console.log(this.renderlist);
-    //this.checkList();
+    // console.log(this.renderlist);
+    // this.checkList();
     this.dataService.currentSearch.subscribe(search => {
-      this.search = search
+      this.search = search;
       this.getSearch(search);
     });
   }
 
-  //trying to fetch search key into a local variable
+  // trying to fetch search key into a local variable
   getKeyword(string) {
     this.keyword = string;
-    console.log("keyword " + string);
+    console.log('keyword ' + string);
   }
-  
-  //fetching objects that matches string from db
+
+  // fetching objects that matches string from db
   getSearch(string) {
-    this.renderlist = []
-    console.log("søker");
-    //console.log(string);
-    let body = {
-      "name": string
-    }
+    this.renderlist = [];
+    console.log('søker');
+    // console.log(string);
+    const body = {
+      'name': string
+    };
     this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
       // console.log("This data : " + (JSON.stringify(data['crimes'])));
-      //storing data
-      
-      this.retrieved = data
+      // storing data
+
+      this.retrieved = data;
       this.changeData(this.retrieved);
-    })
+    });
   }
-  
-  //changing data stored in the file
-  changeData(newData){
+
+  // changing data stored in the file
+  changeData(newData) {
     const changedData$: Observable<Array<Array<Municipality>>> = Observable.of(newData);
     changedData$.subscribe(res => this.crimelist = res);
     // console.log("changed data")
-    //console.log(newData);
-    //iterate through updated list and update it with new data
+    // console.log(newData);
+    // iterate through updated list and update it with new data
     this.checkList();
   }
-  
-  //separate function to create html rendering list
+
+  // separate function to create html rendering list
   checkList() {
     for (let i in this.crimelist) {
       // console.log("in for løkke")
@@ -98,9 +98,8 @@ export class SearchListComponent implements OnInit {
     this.req.unsubscribe();
   }
 */
-  
+
   onSelect(munic: Municipality): void {
     this.selectedMunic = munic;
   }
 }
-    
