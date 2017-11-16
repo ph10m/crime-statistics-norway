@@ -25,6 +25,7 @@ export class MySiteComponent implements OnInit {
 
   //Listens to both user and, searches. 
   ngOnInit() {
+    console.log("START");
     this.dataService.currentUser.subscribe(user => {
       this.user = user
       this.previousSearches();

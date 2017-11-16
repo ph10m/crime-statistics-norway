@@ -97,7 +97,6 @@ describe('LogInComponent', () => {
     fixture.detectChanges();
     expect(component.user).toEqual(testuser);
 })
-  
 });
 
 
