@@ -11,7 +11,7 @@ import { DataService } from '../data.service';
 @Component({
   selector: 'app-search-list',
   templateUrl: './search-list.component.html',
-  styleUrls: ['./search-list.component.css']
+  styleUrls: ['./../fetch-data/fetch-data.component.css']
 })
 
 @Injectable()
@@ -61,7 +61,7 @@ export class SearchListComponent implements OnInit {
       "name": string
     }
     this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
-      console.log("This data : " + (JSON.stringify(data['crimes'])));
+      // console.log("This data : " + (JSON.stringify(data['crimes'])));
       //storing data
       
       this.retrieved = data
@@ -73,7 +73,7 @@ export class SearchListComponent implements OnInit {
   changeData(newData){
     const changedData$: Observable<Array<Array<Municipality>>> = Observable.of(newData);
     changedData$.subscribe(res => this.crimelist = res);
-    console.log("changed data")
+    // console.log("changed data")
     //console.log(newData);
     //iterate through updated list and update it with new data
     this.checkList();
@@ -82,14 +82,14 @@ export class SearchListComponent implements OnInit {
   //separate function to create html rendering list
   checkList() {
     for (let i in this.crimelist) {
-      console.log("in for løkke")
+      // console.log("in for løkke")
       //console.log(this.crimelist)
       //console.log(this.crimelist[i])
       for (let b in this.crimelist[i]) {
         //console.log(this.crimelist[i][b].municipacility)
         //console.log(this.crimelist[i][b])
         this.renderlist.push(this.crimelist[i][b])
-        console.log(this.renderlist[0])  
+        // console.log(this.renderlist[0])  
       }
     }
   }
