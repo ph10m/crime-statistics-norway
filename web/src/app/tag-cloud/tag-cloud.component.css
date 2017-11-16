@@ -3,13 +3,20 @@ angular-tag-cloud {
     font-family: "Helvetica", "Arial", sans-serif;
     font-size: 10px;
   }
+
+  h1{
+    color: purple;
+  }
   
+  .w10 {color: red;}
+
   /* no decoration for links */
   angular-tag-cloud > span > a {
     text-decoration: none;
   }
    /* font sizes */
-  angular-tag-cloud > span.w10 { font-size: 550%; }
+  angular-tag-cloud > span.w10 { font-size: 550%;
+ }
   angular-tag-cloud > span.w9 { font-size: 500%; }
   angular-tag-cloud > span.w8 { font-size: 450%; }
   angular-tag-cloud > span.w7 { font-size: 400%; }
@@ -24,7 +31,7 @@ angular-tag-cloud {
   angular-tag-cloud > a { color: inherit; }
   angular-tag-cloud > a:hover { color: #0df; }
   angular-tag-cloud > a:hover { color: #0cf; }
-  angular-tag-cloud > span.w10 { color: red; }
+  angular-tag-cloud > span.w10 { color: red !important; }
   angular-tag-cloud > span.w9 { color: #0cf; }
   angular-tag-cloud > span.w8 { color: #0cf; }
   angular-tag-cloud > span.w7 { color: #39d; }

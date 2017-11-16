@@ -35,7 +35,6 @@ import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component
     MySiteComponent,
     TagCloudComponent,
     SearchResultComponent,
-    
     FetchDataComponent,
     MunicipalityDetailComponent,
   ],

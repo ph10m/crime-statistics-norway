@@ -8,7 +8,7 @@ import 'rxjs/add/observable/of';
 @Component({
   selector: 'app-tag-cloud',
   templateUrl: './tag-cloud.component.html',
-  styleUrls: ['./tag-cloud.component.css']
+  styleUrls: ['./tag-cloud.component.css'],
 })
 
 export class TagCloudComponent implements OnInit, OnDestroy {
@@ -20,11 +20,11 @@ export class TagCloudComponent implements OnInit, OnDestroy {
     // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value  
     width : 1,
     height : 500,
-    overflow: true,
+    overflow: false,
   }
  
   data: Array<CloudData> = [
-    {text: 'Loading...', weight: 10, link: 'https://google.com'},
+    {text: 'Loading...', weight: 10},
   ]
 
 
@@ -44,7 +44,7 @@ export class TagCloudComponent implements OnInit, OnDestroy {
   changeData(newData){
     const changedData$: Observable<Array<CloudData>> = Observable.of(newData);
     changedData$.subscribe(res => this.data = res);
-    console.log("changed data")
+    //console.log("changed data")
   }
   
   ngOnDestroy(){

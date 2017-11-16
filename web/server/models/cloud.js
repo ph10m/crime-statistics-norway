@@ -21,12 +21,24 @@ exports.test2 = function(cb) {
     }
 
     exports.test3 = function(cb) {
-        let obj = new Array();
+
+        let result = new Array();
+        let exceptions = ['Østfold', 'Vestfold','Akershus', 'Hedmark', 'Oppland', 'Buskerud', 'Telemark',
+        'Aust-Agder', 'Vest-Agder', 'Rogaland', 'Hordaland', 'Sogn og Fjordane', 'Møre og Romsdal',
+        'Sør-Trøndelag', 'Nord-Trøndelag', 'Nordland', 'Troms', 'Finnmark', 'I alt', 'Alle fylker',
+        'Hele landet', 'Alle kommuner', 'Uoppgitt kommune Østfold', 'Uoppgitt kommune Vestfold',
+        'Uoppgitt kommune Akershus','Uoppgitt kommune Hedmark', 'Uoppgitt kommune Oppland', 
+        'Uoppgitt kommune Buskerud', 'Uoppgitt kommune Telemark','Uoppgitt kommune Aust-Agder',
+        'Uoppgitt kommune Vest-Agder', 'Uoppgitt kommune Rogaland', 'Uoppgitt kommune Hordaland',
+        'Uoppgitt kommune Sogn og Fjordane', 'Uoppgitt kommune Møre og Romsdal',
+        'Uoppgitt kommune Sør-Trøndelag', 'Uoppgitt kommune Nord-Trøndelag', 'Uoppgitt kommune Nordland',
+        'Uoppgitt kommune Troms', 'Uoppgitt kommune Finnmark', 'Uoppgitt fylke'];
+
         db.each('SELECT municipacility, all_1000 FROM crimestat', function(err, row){
-            //console.log(row.municipacility);
-            obj.push({'text': row.municipacility ,'weight': parseFloat(row.all_1000)});
-            //WHERE municipacility NOT LIKE "i alt" AND municipacility NOT LIKE "Alle fylker" AND municipacility NOT LIKE "Hele landet" AND municipacility NOT LIKE "Alle kommuner" 
-        },function (err, rows) {
-            cb(obj);
+            if(exceptions.indexOf(row.municipacility) == -1){
+                result.push({'text': row.municipacility ,'weight': parseFloat(row.all_1000)});
+            }
+           },function (err, rows) {
+            cb(result);
         });
     }
