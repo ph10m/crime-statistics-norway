@@ -35,23 +35,6 @@ export class CrimeListComponent implements OnInit, OnDestroy {
     this.getLars(this.int);
   }
 
-<<<<<<< HEAD
-  //separate function to create html rendering list
-  checkList() {
-    for (let i in this.crimelist) {
-      //console.log("in for løkke")
-      //console.log(this.crimelist[i])
-      for (let b in this.crimelist[i]) {
-        //console.log(this.crimelist[i][b].municipacility)
-        this.renderlist.push(this.crimelist[i][b])
-      }
-    }
-    //is it better to render this?
-    return this.renderlist;
-  }
-
-=======
->>>>>>> master
   //fetching 10 objects from db starting at int
   getLars(int) {
     let body = {
