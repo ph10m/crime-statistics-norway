@@ -19,8 +19,8 @@ export class TagCloudComponent implements OnInit, OnDestroy {
   options: CloudOptions = {
     // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value  
     width : 1,
-    height : 500,
-    overflow: false,
+    height : 600,
+    overflow: true,
   }
  
   data: Array<CloudData> = [
@@ -32,7 +32,7 @@ export class TagCloudComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.req = this.http.get('http://localhost:8084/cloud/test3').subscribe(data=>{
+    this.req = this.http.get('http://localhost:8084/cloud/all_1000').subscribe(data=>{
       //console.log(data);
       this.retrieved = data
       this.changeData(this.retrieved);

@@ -32,12 +32,5 @@ router.get('/all_1000/', function(req, res) {
     })
 })
 
-router.get('/test3/', function(req, res) {
-    
-    cloud.test3(function(returnVal) {
-        //console.log(returnVal)
-        res.json(returnVal)
-    })
-})
 
 module.exports = router;
