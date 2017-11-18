@@ -37,13 +37,13 @@ export class CrimeListComponent implements OnInit, OnDestroy {
 
   // fetching 10 objects from db starting at int
   getLars(int) {
-    let body = {
+    const body = {
       'from': int
     };
-    this.req = this.http.post('http://localhost:8084/crimestat/crimes', body).subscribe(data=>{ 
+    this.req = this.http.post('http://localhost:8084/crimestat/crimes', body).subscribe(data => {
      // console.log("This data : " + (JSON.stringify(data)));
       // storing data
-      this.retrieved = data
+      this.retrieved = data;
       this.changeData(this.retrieved);
     });
   }

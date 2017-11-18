@@ -39,7 +39,7 @@ export class SearchListComponent implements OnInit {
   ngOnInit() {
     // this.getSearch(this.keyword);
     // console.log(this.renderlist);
-    / /this.checkList();
+    this.checkList();
     this.dataService.currentSearch.subscribe(search => {
       this.search = search;
       this.getSearch(search);
@@ -57,7 +57,7 @@ export class SearchListComponent implements OnInit {
     this.renderlist = [];
     console.log('søker');
     // console.log(string);
-    let body = {
+    const body = {
       'name': string
     };
     this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data => {
