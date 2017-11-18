@@ -28,8 +28,12 @@ export class CrimeListComponent implements OnInit {
   //start fetching data at this integer
   int = 0;
   name = undefined;
-  sort = undefined;
+  sort = "all_abs";
   ascDesc = true;
+  
+  //Dropdown title;
+  sortTitle = "all";
+  
 
   //Currentsearch
 
@@ -40,13 +44,6 @@ export class CrimeListComponent implements OnInit {
   
   constructor(private http: HttpClient, private dataService: DataService) {}
 
-  // name, sort, sortAscDesc, cb
-  // Navnet på det du vil søke på
-  // Hvilken liste i databasen
-  // Asc Desc
-
-
-
   //on initalizing the page
   ngOnInit() {
     this.dataService.currentSearch.subscribe(search => {
@@ -55,13 +52,14 @@ export class CrimeListComponent implements OnInit {
     })
     
   }
-  //ALL, property, voilence, drugs, order, traffic, other. 
+   
   //Onaction from dropdown
   dropdownClick(value){
-    console.log("VALUE: " + value)
-    this.sort = value;
+    this.sort = value + "_abs";
+    this.sortTitle = value;
     this.getSearch(this.int);
   }
+
 
   //On action from toggle button
   radioClick(value: string){
@@ -69,31 +67,33 @@ export class CrimeListComponent implements OnInit {
     if(value == 'true'){
       this.ascDesc = true;
     }else{
-      this.ascDesc = false;
+      this.ascDesc = undefined;
     }
     this.getSearch(this.int);
   }
 
   //fetching 10 objects from db starting at int
   getSearch(int) {
-    console.log("Get new search!");
-    console.log("INT: " + int);
-    console.log("NAME: " + this.name);
     console.log("SORT: " + this.sort);
-    console.log("ASCDESC: " + this.ascDesc);
-    let body = {
-      "from": int,
-      "name": this.name,
-      "sort": this.sort,
-      "AscDesc": this.ascDesc
+    this.renderlist = [];
+
+    if(this.name == ""){
+      this.name = undefined;
     }
 
-    // this.req = this.http.post('http://localhost:8084/crimestat/crimes', body).subscribe(data=>{ 
-    //  console.log("This data : " + (JSON.stringify(data)));
-    //   // storing data
-    //   this.retrieved = data
-    //   this.changeData(this.retrieved);
-    // })
+    let body = {
+      "name": this.name,
+      "sort": this.sort,
+      "limit": int,
+      "sortAscDesc": this.ascDesc
+    }
+
+    this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
+      console.log("This data : " + (JSON.stringify(data)));
+      // storing data
+      this.retrieved = data
+      this.changeData(this.retrieved);
+    })
   }
   
   //changing data stored in the file
