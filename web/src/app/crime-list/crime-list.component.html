@@ -1,4 +1,40 @@
-<div class="left-half" (scroll)="onLoadMore()">
+<div class="left-half" (scroll)="onLoadMore()" style="height: 700px;">
+
+    <!-- Dropdown for selecting sort of crime -->
+    <p>Results for <span *ngIf="name != undefined">{{name}}</span></p>
+    <p>{{errorMessage}}</p>
+    <br>
+    <p>Sort:</p>
+    <div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="Hay">
+                {{sortTitle}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" (click)="dropdownClick('all')">All Crimes</a>
+                <a class="dropdown-item" (click)="dropdownClick('property')">Property crimes</a>
+                <a class="dropdown-item" (click)="dropdownClick('violence')">Voilence crimes</a>
+                <a class="dropdown-item" (click)="dropdownClick('drugs')">Drugs crimes</a>
+                <a class="dropdown-item" (click)="dropdownClick('order')">Order crimes</a>
+                <a class="dropdown-item" (click)="dropdownClick('traffic')">Traffic crimes</a>
+                <a class="dropdown-item" (click)="dropdownClick('other')">Other crimes</a>
+            </div>
+        </div>
+        <!-- ASC DESC -->
+        <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" checked="" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="radioClick('true')"> Asc
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="radioClick('false')"> Desc
+                </label>
+        </div>
+    </div>
+    
+    <br>
+
     <span>ID</span>
     <span>Name</span>
     <span>Amount of crimes</span>
