@@ -4,11 +4,11 @@ var express = require('express')
 , crimestat = require(path.normalize('../models/search'));
 
 router.post('/search', function(req, res) {
-    crimestat.search(req.body.name, function(crimes) {
+    crimestat.search(req.body.name, req.body.sort, req.body.sortAscDesc, req.body.limit, function(crimes) {
         res.json({
             crimes
         })
     })
-});
+}); 
 
 module.exports = router;
