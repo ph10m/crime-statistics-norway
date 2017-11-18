@@ -6,13 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
+import { ChartComponent } from './chart/chart.component';
 
 import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 
-//Kristian
+// Kristian
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-//import { SearchComponent } from './fetch-data/search.component';
+// import { SearchComponent } from './fetch-data/search.component';
 
 
 
@@ -46,6 +47,11 @@ const appRoutes: Routes = [
     {
         path:"search",
         component: SearchResultComponent,
+    }
+    ,
+    {
+        path:"chart",
+        component: ChartComponent,
     }
 
 ];

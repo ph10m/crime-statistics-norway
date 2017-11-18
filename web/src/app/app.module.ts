@@ -28,9 +28,12 @@ import { CrimeListComponent } from './crime-list/crime-list.component';
 import { SearchListComponent } from './search-list/search-list.component';
 import { HttpClient } from '@angular/common/http/src/client';
 
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './chart/chart.component'; 
 
 @NgModule({
   declarations: [
+    ChartComponent,
     AppComponent,
     HomeComponent,
     LogInComponent,
@@ -51,6 +54,7 @@ import { HttpClient } from '@angular/common/http/src/client';
     TagCloudModule,
     HttpClientModule,
     InfiniteScrollModule,
+    ChartsModule,
   ],
   providers: [
     DataService,
