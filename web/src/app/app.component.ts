@@ -43,7 +43,7 @@ export class AppComponent {
     if(value.length !== 0){
       this.search = value;
       this.dataServe.changeSearch(value);
-      this.router.navigate(['/search']);
+      this.router.navigate(['/data']);
       this.postSearchToDb(this.search);
       //send value to search
       //this.searchList.getSearch(value);
