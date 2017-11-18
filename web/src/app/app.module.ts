@@ -29,9 +29,12 @@ import { SearchListComponent } from './search-list/search-list.component';
 import { HttpClient } from '@angular/common/http/src/client';
 import { RegionsComponent } from './regions/regions.component';
 
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './chart/chart.component'; 
 
 @NgModule({
   declarations: [
+    ChartComponent,
     AppComponent,
     HomeComponent,
     LogInComponent,
@@ -53,6 +56,7 @@ import { RegionsComponent } from './regions/regions.component';
     TagCloudModule,
     HttpClientModule,
     InfiniteScrollModule,
+    ChartsModule,
   ],
   providers: [
     DataService,
