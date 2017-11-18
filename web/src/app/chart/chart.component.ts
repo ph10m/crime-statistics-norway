@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
  selector: 'ChartComponent',
@@ -6,9 +6,15 @@ import { Component } from '@angular/core';
 })
 export class ChartComponent {
  // Doughnut
- public doughnutChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
- public doughnutChartData:number[] = [350, 450, 100];
- public doughnutChartType:string = 'doughnut';
+
+ @Input()
+ ChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+ 
+ @Input()
+ ChartData:number[] = [350, 450, 100];
+
+ @Input()
+ ChartType:string = 'doughnut';
 
  // events
  public chartClicked(e:any):void {

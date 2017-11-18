@@ -20,7 +20,7 @@
     <div id="collapse{{crime.id}}" class="collapse" role="tabpanel" attr.aria-labelledby="heading{{crime.id}}">
       <div class="card-block">
         In {{crime.municipacility}} as any other municipacility in Norway there are commited crimes. Below you will find statistics about these crimes. 
-        <ChartComponent></ChartComponent>
+        <ChartComponent [ChartLabels]="['drugs', 'traffic']" [ChartData]="[crime.drugs_abs, crime.traffic_abs]"></ChartComponent>
         <ul>
           <li>Total number of charges pressed per 1000 inhabitant: {{crime.all_1000}}</li>
           <li>Total number of charges pressed: {{crime.all_abs}}</li>
