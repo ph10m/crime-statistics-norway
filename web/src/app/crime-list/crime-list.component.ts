@@ -104,4 +104,7 @@ export class CrimeListComponent implements OnInit, OnDestroy {
         console.log(this.expanded);
     }
   }
+
+  trackByCrimes(index: number, munic: Municipality):
+    number { return munic.id; }
 }
