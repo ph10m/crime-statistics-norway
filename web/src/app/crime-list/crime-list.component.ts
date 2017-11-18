@@ -35,23 +35,7 @@ export class CrimeListComponent implements OnInit, OnDestroy {
     this.getLars(this.int);
   }
 
-<<<<<<< HEAD
-  // separate function to create html rendering list
-  checkList() {
-    for (let i in this.crimelist) {
-      //console.log("in for løkke")
-      //console.log(this.crimelist[i])
-      for (let b in this.crimelist[i]) {
-        //console.log(this.crimelist[i][b].municipacility)
-        this.renderlist.push(this.crimelist[i][b])
-      }
-    }
-  }
-
   // fetching 10 objects from db starting at int
-=======
-  //fetching 10 objects from db starting at int
->>>>>>> origin/master
   getLars(int) {
     let body = {
       'from': int
@@ -72,12 +56,8 @@ export class CrimeListComponent implements OnInit, OnDestroy {
     // iterate through updated list and update it with new data
     this.checkList();
   }
-<<<<<<< HEAD
 
-  ngOnDestroy() {
-=======
-  
-  //separate function to create html rendering list
+  // separate function to create html rendering list
   checkList() {
     for (let i in this.crimelist) {
       //console.log("in for løkke")
@@ -88,9 +68,8 @@ export class CrimeListComponent implements OnInit, OnDestroy {
       }
     }
   }
-  
-  ngOnDestroy(){
->>>>>>> origin/master
+
+  ngOnDestroy() {
     this.req.unsubscribe();
   }
 
