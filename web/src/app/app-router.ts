@@ -7,6 +7,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
 import { RegionsComponent } from './regions/regions.component';
+import { ChartComponent } from './chart/chart.component';
 
 import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
 import { SearchResultComponent } from './search-result/search-result.component';
@@ -51,6 +52,11 @@ const appRoutes: Routes = [
     {
         path:"search",
         component: SearchResultComponent,
+    }
+    ,
+    {
+        path:"chart",
+        component: ChartComponent,
     }
 
 ];

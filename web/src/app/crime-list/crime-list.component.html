@@ -1,7 +1,5 @@
-<div class="left-half" (scroll)="onLoadMore()" style="height: 700px;">
 
-    <!-- Dropdown for selecting sort of crime -->
-    <p>Results for <span *ngIf="name != undefined">{{name}}</span></p>
+<p>Results for <span *ngIf="name != undefined">{{name}}</span></p>
     <p>{{errorMessage}}</p>
     <br>
     <p>Sort:</p>
@@ -32,47 +30,78 @@
                 </label>
         </div>
     </div>
-    
-    <br>
+ <div
+  id="accordion"
+  role="tablist"
+  aria-multiselectable="true"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="onScroll()"
+  *ngFor="let crime of renderlist"
+  [class.selected]="crime === selectedMunic">     
 
-    <span>ID</span>
-    <span>Name</span>
-    <span>Amount of crimes</span>
-    <span>Crimes every 1000</span>
-    <ul class="munics" *ngFor="let crime of renderlist"
-    [class.selected]="crime === selectedMunic" (click)="onSelect(crime)"
-    [class.hidden]="crime === selectedMunic" (click)="expand($event)">
-        <li>
-            <span class=" badge ">{{crime.id}}</span>
-            <span>{{crime.municipacility}}</span>
-            <span>{{crime.all_1000}}</span>
-            <span>{{crime.all_abs}}</span>
-            <div class="hidden" *ngIf="expanded==true">
-                <span>
-                    <td colspan="3">
-                        <ul>
-                            <li>
-                                {{crime.all_1000}} totalt antall anmeldelser
-                            </li>
-                            <li>
-                                {{crime.all_1000}} totalt antall anmeldelser
-                            </li>
-                            <li>
-                                {{crime.all_1000}} totalt antall anmeldelser
-                            </li>
-                            <li>
-                                {{crime.all_1000}} totalt antall anmeldelser
-                            </li>
-                            <li>
-                                {{crime.all_1000}} totalt antall anmeldelser
-                            </li>
-                            <li>
-                                {{crime.all_1000}} totalt antall anmeldelser
-                            </li>
-                        </ul>
-                    </td>
-                </span>
-            </div>
-        </li>
-    </ul>
+  <div class="card">
+    <div class="card-header" role="tab" id="heading{{crime.id}}">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{crime.id}}" aria-expanded="false" attr.aria-controls="collapse{{crime.id}}">
+          {{crime.municipacility}}
+        </a>
+      </h5>
+    </div>
+    <div id="collapse{{crime.id}}" class="collapse" role="tabpanel" attr.aria-labelledby="heading{{crime.id}}">
+      <div class="card-block">
+        In {{crime.municipacility}}, as any other municipacility in Norway there are commited crimes. Below you will find statistics about these crimes. The graph shows you the absolute numbers if you click on a color.
+        <br />
+        <ChartComponent [ChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
+        <br />
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Crime</th>
+              <th scope="col">Per thousand inhabitant</th>
+              <th scope="col">Absolute numbers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Everything</th>
+              <td>{{crime.all_1000}}</td>
+              <td>{{crime.all_abs}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Property</th>
+              <td>{{crime.property_1000}}</td>
+              <td>{{crime.property_abs}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Violence</th>
+              <td>{{crime.violence_1000}}</td>
+              <td>{{crime.violence_abs}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Drugs</th>
+              <td>{{crime.drugs_1000}}</td>
+              <td>{{crime.drugs_abs}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Order</th>
+              <td>{{crime.order_1000}}</td>
+              <td>{{crime.order_abs}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Traffic</th>
+              <td>{{crime.traffic_1000}}</td>
+              <td>{{crime.traffic_abs}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Other</th>
+              <td>{{crime.other_1000}}</td>
+              <td>{{crime.other_abs}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

@@ -14,18 +14,19 @@ import { DataService } from '../data.service';
   styleUrls: ['./../fetch-data/fetch-data.component.css']
 })
 
+
 export class CrimeListComponent implements OnInit {
   //list with list holding objects from db
+
   crimelist: Array<Array<Municipality>> = [];
-  //reducing the layer once to display objects in HTML
+  // reducing the layer once to display objects in HTML
   renderlist: Array<Municipality> = [];
   expanded: any = false;
 
-  //setup db values
+  // setup db values
   private req: any;
   retrieved: any;
-  
-  //start fetching data at this integer
+
   int = 0;
   name = undefined;
   sort = "all_abs";
@@ -39,13 +40,13 @@ export class CrimeListComponent implements OnInit {
   //Currentsearch
 
 
-  //appending style rules to the selected munic
+  // appending style rules to the selected munic
   selectedMunic: Municipality;
 
   
   constructor(private http: HttpClient, private dataService: DataService) {}
 
-  //on initalizing the page
+  // on initalizing the page
   ngOnInit() {
     this.dataService.currentSearch.subscribe(search => {
       this.name = search
@@ -72,6 +73,7 @@ export class CrimeListComponent implements OnInit {
     this.getSearch(this.int);
   }
 
+
   //fetching 10 objects from db starting at int
   getSearch(int) {
     this.errorMessage = "";
@@ -97,19 +99,18 @@ export class CrimeListComponent implements OnInit {
       }
       this.retrieved = data
       this.changeData(this.retrieved);
-    })
+    });
   }
-  
-  //changing data stored in the file
-  changeData(newData){
+
+  // changing data stored in the file
+  changeData(newData) {
     const changedData$: Observable<Array<Array<Municipality>>> = Observable.of(newData);
     changedData$.subscribe(res => this.crimelist = res);
-    // console.log("changed data")
-    //iterate through updated list and update it with new data
+
     this.checkList();
   }
-  
-  //separate function to create html rendering list
+
+  // separate function to create html rendering list
   checkList() {
     for (let i in this.crimelist) {
       //console.log("in for løkke")
@@ -120,17 +121,23 @@ export class CrimeListComponent implements OnInit {
       }
     }
   }
+
   
   // ngOnDestroy(){
   //   this.req.unsubscribe();
   // }
 
+
   /** Documentation for event binding in angular
    * https://coursetro.com/posts/code/59/Angular-4-Event-Binding
    */
-  onLoadMore() {
-    console.log("fetching more data");
+
+  // Makes the list longer by 10
+  // every time it's scrolled down
+  onScroll() {
+    console.log('fetching more data');
     this.int += 10;
+
     this.getSearch(this.int);
   }
 
