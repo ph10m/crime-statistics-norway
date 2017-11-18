@@ -27,7 +27,6 @@ import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component
 import { CrimeListComponent } from './crime-list/crime-list.component';
 import { SearchListComponent } from './search-list/search-list.component';
 import { HttpClient } from '@angular/common/http/src/client';
-import { RegionsComponent } from './regions/regions.component';
 
 
 @NgModule({
@@ -43,7 +42,6 @@ import { RegionsComponent } from './regions/regions.component';
     MunicipalityDetailComponent,
     CrimeListComponent,
     SearchListComponent,
-    RegionsComponent
   ],
   imports: [
     BrowserModule,
