@@ -2,10 +2,98 @@
   <h1 class="ov">Welcome to the cloud</h1>
 </div>
 <div>
-  <angular-tag-cloud angular-tag-cloud
-    [data]="data"
+  <button (click)="choose('all')">All</button>
+  <button (click)="choose('property')">Property</button>
+  <button (click)="choose('violence')">Violence</button>
+  <button (click)="choose('drugs')">Drugs</button>
+  <button (click)="choose('order')">Order</button>
+  <button (click)="choose('traffic')">Traffic</button>
+  <button (click)="choose('other')">Other</button>
+</div>
+
+<div [ngSwitch]="type">
+  <angular-tag-cloud *ngSwitchCase="'all'" angular-tag-cloud
+    [data]="data1"
     [width]="options.width"
     [height]="options.height"
     [overflow]="options.overflow">
   </angular-tag-cloud>
+  <angular-tag-cloud *ngSwitchCase="'property'" angular-tag-cloud
+  [data]="data2"
+  [width]="options.width"
+  [height]="options.height"
+  [overflow]="options.overflow">
+</angular-tag-cloud>
+<angular-tag-cloud *ngSwitchCase="'violence'" angular-tag-cloud
+[data]="data3"
+[width]="options.width"
+[height]="options.height"
+[overflow]="options.overflow">
+</angular-tag-cloud>
+<angular-tag-cloud *ngSwitchCase="'drugs'" angular-tag-cloud
+[data]="data4"
+[width]="options.width"
+[height]="options.height"
+[overflow]="options.overflow">
+</angular-tag-cloud>
+<angular-tag-cloud *ngSwitchCase="'order'" angular-tag-cloud
+[data]="data5"
+[width]="options.width"
+[height]="options.height"
+[overflow]="options.overflow">
+</angular-tag-cloud>
+<angular-tag-cloud *ngSwitchCase="'traffic'" angular-tag-cloud
+[data]="data6"
+[width]="options.width"
+[height]="options.height"
+[overflow]="options.overflow">
+</angular-tag-cloud>
+<angular-tag-cloud *ngSwitchCase="'other'" angular-tag-cloud
+[data]="data7"
+[width]="options.width"
+[height]="options.height"
+[overflow]="options.overflow">
+</angular-tag-cloud>
 </div>
+
+<!-- 
+  
+  TODO prøve å bytte width?
+  
+  
+  <div>
+  <h1 class="ov">Welcome to the cloud</h1>
+</div>
+<div>
+  <button (click)="choose('all')">All</button>
+  <button (click)="choose('property')">Property</button>
+  <button (click)="choose('violence')">Violence</button>
+  <button (click)="choose('drugs')">Drugs</button>
+  <button (click)="choose('order')">Order</button>
+  <button (click)="choose('traffic')">Traffic</button>
+  <button (click)="choose('other')">Other</button>
+</div>
+<div>
+  <angular-tag-cloud [ngStyle]="{'display':type === 'all' ? 'block' : 'none' }"
+   angular-tag-cloud [data]="data1" [width]="options.width" [height]="options.height"
+    [overflow]="options.overflow">
+  </angular-tag-cloud>
+  <angular-tag-cloud [ngStyle]="{'display':type === 'property' ? 'block' : 'none' }" angular-tag-cloud [data]="data2" [width]="options.width" [height]="options.height"
+    [overflow]="options.overflow">
+  </angular-tag-cloud>
+  <angular-tag-cloud [ngStyle]="{'display':type === 'violence' ? 'block' : 'none' }" angular-tag-cloud [data]="data3" [width]="options.width" [height]="options.height"
+    [overflow]="options.overflow">
+  </angular-tag-cloud>
+  <angular-tag-cloud [ngStyle]="{'display':type === 'drugs' ? 'block' : 'none' }" angular-tag-cloud [data]="data4" [width]="options.width" [height]="options.height"
+    [overflow]="options.overflow">
+  </angular-tag-cloud>
+  <angular-tag-cloud [ngStyle]="{'display':type === 'order' ? 'block' : 'none' }" angular-tag-cloud [data]="data5" [width]="options.width" [height]="options.height"
+    [overflow]="options.overflow">
+  </angular-tag-cloud>
+  <angular-tag-cloud [ngStyle]="{'display':type === 'traffic' ? 'block' : 'none' }" angular-tag-cloud [data]="data6" [width]="options.width" [height]="options.height"
+    [overflow]="options.overflow">
+  </angular-tag-cloud>
+  <angular-tag-cloud [ngStyle]="{'display':type === 'other' ? 'block' : 'none' }" angular-tag-cloud [data]="data7" [width]="options.width" [height]="options.height"
+    [overflow]="options.overflow">
+  </angular-tag-cloud>
+</div> -->
