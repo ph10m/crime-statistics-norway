@@ -33,6 +33,7 @@ export class CrimeListComponent implements OnInit {
   
   //Dropdown title;
   sortTitle = "all";
+  errorMessage = "";
   
 
   //Currentsearch
@@ -52,7 +53,7 @@ export class CrimeListComponent implements OnInit {
     })
     
   }
-   
+
   //Onaction from dropdown
   dropdownClick(value){
     this.sort = value + "_abs";
@@ -63,7 +64,6 @@ export class CrimeListComponent implements OnInit {
 
   //On action from toggle button
   radioClick(value: string){
-    console.log(value)
     if(value == 'true'){
       this.ascDesc = true;
     }else{
@@ -74,13 +74,13 @@ export class CrimeListComponent implements OnInit {
 
   //fetching 10 objects from db starting at int
   getSearch(int) {
-    console.log("SORT: " + this.sort);
+    this.errorMessage = "";
     this.renderlist = [];
 
     if(this.name == ""){
       this.name = undefined;
     }
-
+    
     let body = {
       "name": this.name,
       "sort": this.sort,
@@ -88,9 +88,13 @@ export class CrimeListComponent implements OnInit {
       "sortAscDesc": this.ascDesc
     }
 
+
     this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
-      console.log("This data : " + (JSON.stringify(data)));
+      // console.log("This data : " + (JSON.stringify(data)));
       // storing data
+      if(data['crimes'].length == 0){
+        this.errorMessage = "No result for this search"
+      }
       this.retrieved = data
       this.changeData(this.retrieved);
     })
@@ -100,7 +104,7 @@ export class CrimeListComponent implements OnInit {
   changeData(newData){
     const changedData$: Observable<Array<Array<Municipality>>> = Observable.of(newData);
     changedData$.subscribe(res => this.crimelist = res);
-    console.log("changed data")
+    // console.log("changed data")
     //iterate through updated list and update it with new data
     this.checkList();
   }
