@@ -9,7 +9,7 @@ import { MySiteComponent } from './my-site/my-site.component';
 import { ChartComponent } from './chart/chart.component';
 
 import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
-import { SearchResultComponent } from './search-result/search-result.component';
+// import { SearchResultComponent } from './search-result/search-result.component';
 
 // Kristian
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
@@ -44,11 +44,11 @@ const appRoutes: Routes = [
         path:"data",
         component: FetchDataComponent,
     },
-    {
-        path:"search",
-        component: SearchResultComponent,
-    }
-    ,
+    // {
+    //     path:"search",
+    //     component: SearchResultComponent,
+    // }
+    // ,
     {
         path:"chart",
         component: ChartComponent,
