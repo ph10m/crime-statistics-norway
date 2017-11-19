@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { NgIf } from '@angular/common';
 
-import { Municipality } from './../fetch-data/municipality';
+import { Municipality } from './municipality';
 
 //SERVICES --> BOTH MUST BE HERE. 
 import { DataService } from '../data.service';

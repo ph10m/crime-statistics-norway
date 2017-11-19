@@ -4,3 +4,11 @@
   /*  overflow: scroll;*/
   height: 500px;
 }
+
+a {
+  color: black;
+}
+
+.card {
+  width: 80%;
+}
