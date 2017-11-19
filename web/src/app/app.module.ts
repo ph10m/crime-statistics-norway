@@ -31,6 +31,7 @@ import { RegionsComponent } from './regions/regions.component';
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component'; 
+import { BarChartComponent } from './barchart/barchart.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ChartComponent } from './chart/chart.component';
     MunicipalityDetailComponent,
     CrimeListComponent,
     SearchListComponent,
-    RegionsComponent
+    RegionsComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
