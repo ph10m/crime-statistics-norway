@@ -20,7 +20,7 @@ export class AppComponent {
 
   title = 'App works';
   description = 'new App';
-  user: string; 
+  user: string;
   search: string;
   
   constructor(private dataServe: DataService, private router: Router, private databaseConnect: DatabaseConnectorService, private searchList: SearchListComponent){
@@ -29,7 +29,7 @@ export class AppComponent {
   
   ngOnInit(){
     //User listener, if user is changed every other component listening is noticed. 
-    this.dataServe.currentUser.subscribe(user => this.user = user)
+    this.dataServe.currentUser.subscribe(user => this.user = user);
   }
 
   logOut(){
@@ -40,7 +40,7 @@ export class AppComponent {
 
   //Onaction from search-bar. 
   searchClick(value: string){
-    if(value.length != 0){
+    if(value.length !== 0){
       this.search = value;
       this.dataServe.changeSearch(value);
       this.router.navigate(['/search']);

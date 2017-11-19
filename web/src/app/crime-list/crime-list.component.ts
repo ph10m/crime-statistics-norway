@@ -2,13 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { NgIf } from '@angular/common';
 
 import { Municipality } from './../fetch-data/municipality';
 
 @Component({
   selector: 'crime-list-component',
   templateUrl: './crime-list.component.html',
-  styleUrls: ['./../fetch-data/fetch-data.component.css']
+  styleUrls: ['./crime-list.component.css']
 })
 
 export class CrimeListComponent implements OnInit, OnDestroy {
@@ -16,7 +17,9 @@ export class CrimeListComponent implements OnInit, OnDestroy {
   crimelist: Array<Array<Municipality>> = [];
   //reducing the layer once to display objects in HTML
   renderlist: Array<Municipality> = [];
- 
+  panelOpenState: boolean;
+  expanded: any = false;
+
   //setup db values
   private req: any;
   retrieved: any;
@@ -76,12 +79,32 @@ export class CrimeListComponent implements OnInit, OnDestroy {
    * https://coursetro.com/posts/code/59/Angular-4-Event-Binding
    */
   onLoadMore() {
-    console.log("fetching more data")
-    this.int += 10
+    console.log("fetching more data");
+    this.int += 10;
     this.getLars(this.int);
   }
 
   onSelect(munic: Municipality): void {
+    console.log("selected");
     this.selectedMunic = munic;
   }
+
+   /**
+    * Feilen under er at funksjonen ikke endrer noen klasse i HTML koden, 
+    den når ikke "lenger ned" i hierarkiet til HTML strukturen, 
+    og får derfor ikke endret klasse i diven lenger ned som skal visees/skjules
+    */
+   expand(event) {
+    console.log('event');
+    if (event.expanded === false) {
+      console.log(event.expanded);
+      console.log('false');
+      event.expanded = true;
+    } 
+    else if (event.expanded === true) {
+      event.expanded = false;
+      console.log(event.expanded);
+      console.log('true');
+    }
+}
 }

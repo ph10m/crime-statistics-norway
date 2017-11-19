@@ -43,6 +43,7 @@ export class SearchListComponent implements OnInit {
   
   //fetching objects that matches string from db
   getSearch(string) {
+    this.renderlist = [];
     console.log("søker");
     //console.log(string);
     let body = {

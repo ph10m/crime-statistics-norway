@@ -70,3 +70,14 @@ span {
 .flex-container {
   display: flex;
 }
+
+/* To hide info in list */
+.hidden {
+  overflow: hidden;
+  height: 50px;
+}
+
+.expanded {
+  height: 500px;
+  z-index: 50;
+}
