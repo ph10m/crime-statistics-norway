@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use('/account', require('./server/controllers/account'));
 app.use('/cloud', require('./server/controllers/cloud'));
-app.use('/crimestat', require('./server/controllers/crimestat'));
 app.use('/search', require("./server/controllers/search"));
 app.use('/', express.static('./dist'));
 app.get('*', function(req, res) {
