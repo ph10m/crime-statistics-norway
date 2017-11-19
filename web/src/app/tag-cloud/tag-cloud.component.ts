@@ -23,7 +23,7 @@ export class TagCloudComponent implements OnInit {
     // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value  
     width: 1,
     height: 600,
-    overflow: true,
+    overflow: false,
   }
 
   data1: Array<CloudData> = [
@@ -68,8 +68,9 @@ export class TagCloudComponent implements OnInit {
 
   }
 
-  choose(type) {
+  choose(event, type) {
     this.type = type;
+    event.target.ClassList.add('selected');
   }
 
 
@@ -106,22 +107,24 @@ export class TagCloudComponent implements OnInit {
 
     let changedData1$: Observable<Array<CloudData>> = Observable.of(parsedData1);
     changedData1$.subscribe(res => this.data1 = res);
+
     let changedData2$: Observable<Array<CloudData>> = Observable.of(parsedData2);
     changedData2$.subscribe(res => this.data2 = res);
+
     let changedData3$: Observable<Array<CloudData>> = Observable.of(parsedData3);
     changedData3$.subscribe(res => this.data3 = res);
+
     let changedData4$: Observable<Array<CloudData>> = Observable.of(parsedData4);
     changedData4$.subscribe(res => this.data4 = res);
+
     let changedData5$: Observable<Array<CloudData>> = Observable.of(parsedData5);
     changedData5$.subscribe(res => this.data5 = res);
+
     let changedData6$: Observable<Array<CloudData>> = Observable.of(parsedData6);
     changedData6$.subscribe(res => this.data6 = res);
+
     let changedData7$: Observable<Array<CloudData>> = Observable.of(parsedData7);
     changedData7$.subscribe(res => this.data7 = res);
   }
-
-  ///ngOnDestroy(){
-  //this.req.unsubscribe();
-  //}
 
 }

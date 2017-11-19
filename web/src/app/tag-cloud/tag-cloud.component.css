@@ -5,24 +5,19 @@ angular-tag-cloud {
     background: darkslategray;
   }
 
-  h1{
-    color: purple;
-  }
-  
-
   /* no decoration for links */
   :host ::ng-deep span > a {
     text-decoration: none;
   }
-  .hide{
-    display: none;
-  }
-
-  .show{
-    display: inline;
+  
+  button:hover{
+    cursor: pointer;
   }
   
 
+
+  /* use of :host and ::ng-deep is depreceated, and !important as well, 
+  but it was the only way to get the styles applied due to how the tag cloud component library works */
   :host ::ng-deep a { color: inherit; }
   :host ::ng-deep a:hover { color: #0df; }
   :host ::ng-deep a:hover { color: #0cf; }
