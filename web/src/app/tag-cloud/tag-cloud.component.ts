@@ -12,6 +12,8 @@ import 'rxjs/add/observable/of';
 })
 
 
+
+//
 export class TagCloudComponent implements OnInit {
   private req: any;
 
