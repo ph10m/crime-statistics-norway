@@ -21,7 +21,8 @@
   <div>
     <ul class="list-group">
       <!-- List up all previous searches TODO: MAKE DYNAMIC OF SOME SORT -->
-      <li class="list-group-item" *ngFor="let list of searches" >Searchword: <a routerLink="/data" (click)="clickPreviousSearch(list['content'])">{{list['content']}}</a> <span class="font-italic"> --- {{list['time']}}</span>  </li>
+      <!-- <li class="list-group-item" *ngFor="let list of searches" >Searchword: <a routerLink="/data" (click)="clickPreviousSearch(list['content'])">{{list['content']}}</a> <span class="font-italic"> --- {{list['time']}}</span>  </li> -->
+      <li class="list-group-item" *ngFor="let list of searches" >Searchword: <span>{{list['content']}}</span> <span class="font-italic"> --- {{list['time']}}</span>  </li>
     </ul>
   </div>
 </div>
