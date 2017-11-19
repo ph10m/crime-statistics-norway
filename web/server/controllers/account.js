@@ -4,14 +4,6 @@ var express = require('express')
 , account = require(path.normalize('../models/account'));
 
 
-// router.get('/', (req, res) => {
-//     res.json("Working..."); 
-//   });
-
-// router.get('/stuff', (req, res) =>{
-//     res.json("yo");
-// })
-
 //lets the user login
 router.post('/login', function(req, res) {
     console.log("LOGIN");
