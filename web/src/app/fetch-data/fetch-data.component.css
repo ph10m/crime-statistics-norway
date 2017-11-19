@@ -56,10 +56,10 @@ span {
   min-width: 80px;
 }
 
-.left-half {
+/* .page {
   flex: 1 0 60%;
   overflow-y: scroll;
-}
+} */
 
 .right-half {
   flex: flex 1 0 30%;
