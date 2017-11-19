@@ -23,6 +23,26 @@ export class CrimeListComponent implements OnInit {
   renderlist: Array<Municipality> = [];
   expanded: any = false;
 
+  //country data
+  allofnorway: any = {
+    all_1000: 0,
+    all_abs: 0,
+    drugs_1000: 0,
+    drugs_abs: 0,
+    id: 0,
+    municipacility: "",
+    order_1000: 0,
+    order_abs: 0,
+    other_1000: 0,
+    other_abs: 0,
+    property_1000: 0,
+    property_abs: 0,
+    traffic_1000: 0,
+    traffic_abs: 0,
+    violence_1000: 0,
+    violence_abs: 0
+  };
+
   // setup db values
   private req: any;
   retrieved: any;
@@ -49,6 +69,14 @@ export class CrimeListComponent implements OnInit {
   // on initalizing the page
   ngOnInit() {
     this.dataService.currentSearch.subscribe(search => {
+
+      //gets statistics from all of norway
+      this.req = this.http.post('http://localhost:8084/search/norway', {} ).subscribe(data=>{ 
+        this.allofnorway = data;
+        this.allofnorway = this.allofnorway.crimes
+      });
+
+
       this.name = search
       this.getSearch(this.int);
     })
@@ -77,7 +105,7 @@ export class CrimeListComponent implements OnInit {
   //fetching 10 objects from db starting at int
   getSearch(int) {
     this.errorMessage = "";
-    this.renderlist = [];
+    //this.renderlist = [];
 
     if(this.name == ""){
       this.name = undefined;

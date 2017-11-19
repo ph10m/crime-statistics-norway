@@ -14,6 +14,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
 
 //Kristian
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { BarChartComponent } from './barchart/barchart.component';
 //import { SearchComponent } from './fetch-data/search.component';
 
 
@@ -57,6 +58,10 @@ const appRoutes: Routes = [
     {
         path:"chart",
         component: ChartComponent,
+    },
+    {
+        path:"barchart",
+        component: BarChartComponent,
     }
 
 ];
