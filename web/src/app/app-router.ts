@@ -13,7 +13,7 @@ import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
 // import { SearchResultComponent } from './search-result/search-result.component';
 
 //Kristian
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { CrimeListComponent } from './crime-list/crime-list.component';
 import { BarChartComponent } from './barchart/barchart.component';
 //import { SearchComponent } from './fetch-data/search.component';
 
@@ -48,13 +48,8 @@ const appRoutes: Routes = [
     },
     {
         path:"data",
-        component: FetchDataComponent,
+        component: CrimeListComponent,
     },
-    // {
-    //     path:"search",
-    //     component: SearchResultComponent,
-    // }
-    // ,
     {
         path:"chart",
         component: ChartComponent,
