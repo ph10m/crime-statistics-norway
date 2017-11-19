@@ -13,7 +13,7 @@ export class DatabaseConnectorService {
       "username" : username,
       "password" : password,
     }; 
-    return this.http.post('http://localhost:8084/account/registrate', body)
+    return this.http.post('/account/registrate', body)
   }
 
   //Checks if right username and password is added, returns a object to the component. 
@@ -22,7 +22,7 @@ export class DatabaseConnectorService {
       "username" : username,
       "password" : password,
     };
-    return this.http.post('http://localhost:8084/account/login', body);
+    return this.http.post('/account/login', body);
   }
 
   //Post to current user previous search. 
@@ -32,7 +32,7 @@ export class DatabaseConnectorService {
       "searchkey" : searchkey,
       "date": new Date().toLocaleString(),
     };
-    this.http.post('http://localhost:8084/account/searchpost', body).subscribe(res => console.log("Response: " + res))
+    this.http.post('/account/searchpost', body).subscribe(res => console.log("Response: " + JSON.stringify(res)))
   }
 
   //Returns object from database with the current users previous searches. 
@@ -43,6 +43,6 @@ export class DatabaseConnectorService {
       "date" : date,
       "unique" : unique,
     };
-    return this.http.post('http://localhost:8084/account/getsearch', body);
+    return this.http.post('/account/getsearch', body);
   }
 }

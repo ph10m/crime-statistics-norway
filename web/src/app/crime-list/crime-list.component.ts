@@ -71,17 +71,10 @@ export class CrimeListComponent implements OnInit {
   // on initalizing the page
   ngOnInit() {
 
-    this.dataService.currentSearch.subscribe(search => {
-
-      //gets statistics from all of norway
-      this.req = this.http.post('http://localhost:8084/search/norway', {} ).subscribe(data=>{ 
-        this.allofnorway = data;
-        this.allofnorway = this.allofnorway.crimes;
-      });
-    })
-    
-
-     
+    this.req = this.http.post('/search/norway', {} ).subscribe(data=>{ 
+      this.allofnorway = data;
+      this.allofnorway = this.allofnorway.crimes;
+    });
       
     this.dataService.currentUser.subscribe(user => {
       this.user = user;
