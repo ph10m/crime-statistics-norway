@@ -54,7 +54,7 @@ export class MySiteComponent implements OnInit {
   }
 
   clickPreviousSearch(search :string){
-    this.dataService.changeSearch(search);
+    this.dataService.mySiteSearchClick(search);
   }
 
   //On action from search restriction. 
