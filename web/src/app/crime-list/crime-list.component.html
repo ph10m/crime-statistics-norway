@@ -49,8 +49,6 @@
   infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="50"
-  [infiniteScrollDisabled]="true"
-  (scrolled)="onScroll()"
   *ngFor="let crime of renderlist"
   [class.selected]="crime === selectedMunic">
 
@@ -66,8 +64,16 @@
       <div class="card-block">
         In {{crime.municipacility}}, as any other municipacility in Norway there are commited crimes. Below you will find statistics about these crimes. The graph shows you the absolute numbers if you click on a color.
         <br />
-        <ChartComponent [ChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
-        <br />
+        <div>
+          <span style="width: 50%">
+              <ChartComponent [ChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
+          </span>
+          <span style="width: 50%; float: right;">
+              <BarChartComponent [BarChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: allofnorway.municipacility}]"></BarChartComponent>
+          </span>
+        </div>
+        
+        
         <table class="table table-hover">
           <thead>
             <tr>

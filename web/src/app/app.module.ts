@@ -31,6 +31,7 @@ import { HttpClient } from '@angular/common/http/src/client';
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component'; 
+import { BarChartComponent } from './barchart/barchart.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ChartComponent } from './chart/chart.component';
     MunicipalityDetailComponent,
     CrimeListComponent,
     SearchListComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
