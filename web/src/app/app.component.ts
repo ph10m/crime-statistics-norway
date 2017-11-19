@@ -3,6 +3,7 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 //Service
 import { DataService } from "./data.service";
+import { DatabaseConnectorService } from './database-connector.service';
 
 
 @Component({

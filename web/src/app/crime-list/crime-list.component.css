@@ -1,0 +1,14 @@
+.search-results {
+  background-color: yellow;
+  padding: 10px;
+  /*  overflow: scroll;*/
+  height: 500px;
+}
+
+a {
+  color: black;
+}
+
+.card {
+  width: 90%;
+}

@@ -5,23 +5,14 @@ import { Component, Input } from '@angular/core';
  templateUrl: './chart.component.html'
 })
 export class ChartComponent {
- // Doughnut
+ // Doughnut. standard default values
 
- @Input()
- ChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
- 
- @Input()
- ChartData:number[] = [350, 450, 100];
+  @Input()
+  ChartLabels:string[] = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
 
- @Input()
- ChartType:string = 'doughnut';
+  @Input()
+  ChartData:number[] = [350, 450, 100];
 
- // events
- public chartClicked(e:any):void {
-   console.log(e);
- }
-
- public chartHovered(e:any):void {
-   console.log(e);
- }
+  @Input()
+  ChartType:string = 'doughnut';
 }

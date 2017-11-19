@@ -11,4 +11,12 @@ router.post('/search', function(req, res) {
     })
 }); 
 
+router.post('/norway', function(req, res) {
+    crimestat.norway(function(crimes) {
+        res.json({
+            crimes
+        })
+    })
+}); 
+
 module.exports = router;

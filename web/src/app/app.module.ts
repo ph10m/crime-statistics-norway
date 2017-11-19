@@ -22,15 +22,16 @@ import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
 // import { SearchResultComponent } from './search-result/search-result.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component';
+//import { FetchDataComponent } from './fetch-data/fetch-data.component';
+//import { MunicipalityDetailComponent } from './fetch-crim/munic-detail.component';
 import { CrimeListComponent } from './crime-list/crime-list.component';
-import { SearchListComponent } from './search-list/search-list.component';
+//import { SearchListComponent } from './search-list/search-list.component';
 import { HttpClient } from '@angular/common/http/src/client';
 import { RegionsComponent } from './regions/regions.component';
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component'; 
+import { BarChartComponent } from './barchart/barchart.component';
 
 @NgModule({
   declarations: [
@@ -41,12 +42,9 @@ import { ChartComponent } from './chart/chart.component';
     NewUserComponent,
     MySiteComponent,
     TagCloudComponent,
-    // SearchResultComponent,
-    FetchDataComponent,
-    MunicipalityDetailComponent,
     CrimeListComponent,
-    SearchListComponent,
-    RegionsComponent
+    RegionsComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +59,6 @@ import { ChartComponent } from './chart/chart.component';
   providers: [
     DataService,
     DatabaseConnectorService,
-    SearchListComponent,
   ],
   bootstrap: [AppComponent]
 })

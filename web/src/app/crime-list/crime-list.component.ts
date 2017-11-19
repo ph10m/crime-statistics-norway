@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import { NgIf } from '@angular/common';
 
-import { Municipality } from './../fetch-data/municipality';
+import { Municipality } from './municipality';
 
 //SERVICES --> BOTH MUST BE HERE. 
 import { DataService } from '../data.service';
@@ -12,7 +13,7 @@ import { DatabaseConnectorService } from '../database-connector.service';
 @Component({
   selector: 'crime-list-component',
   templateUrl: './crime-list.component.html',
-  styleUrls: ['./../fetch-data/fetch-data.component.css']
+  styleUrls: ['./crime-list.component.css']
 })
 
 
@@ -22,7 +23,28 @@ export class CrimeListComponent implements OnInit {
   crimelist: Array<Array<Municipality>> = [];
   // reducing the layer once to display objects in HTML
   renderlist: Array<Municipality> = [];
+  panelOpenState: boolean;
   expanded: any = false;
+
+  //country data
+  allofnorway: any = {
+    all_1000: 0,
+    all_abs: 0,
+    drugs_1000: 0,
+    drugs_abs: 0,
+    id: 0,
+    municipacility: "",
+    order_1000: 0,
+    order_abs: 0,
+    other_1000: 0,
+    other_abs: 0,
+    property_1000: 0,
+    property_abs: 0,
+    traffic_1000: 0,
+    traffic_abs: 0,
+    violence_1000: 0,
+    violence_abs: 0
+  };
 
   // setup db values
   private req: any;
@@ -36,9 +58,7 @@ export class CrimeListComponent implements OnInit {
   //Dropdown title;
   sortTitle = "all";
   errorMessage = "";
-  
 
-  //Currentsearch
   // appending style rules to the selected munic
   selectedMunic: Municipality;
 
@@ -46,12 +66,16 @@ export class CrimeListComponent implements OnInit {
   user;
 
 
-  
   constructor(private http: HttpClient, private dataService: DataService, private dbConnect: DatabaseConnectorService) {}
 
   // on initalizing the page
   ngOnInit() {
-    // this.getSearch(this.int);
+
+    this.req = this.http.post('/search/norway', {} ).subscribe(data=>{ 
+      this.allofnorway = data;
+      this.allofnorway = this.allofnorway.crimes;
+    });
+      
     this.dataService.currentUser.subscribe(user => {
       this.user = user;
     })
@@ -59,8 +83,9 @@ export class CrimeListComponent implements OnInit {
       this.name = search; 
       this.searchClick(this.name);
     })
-    
   }
+    
+  
 
   // SEARCHFIELD METHODS MADE BY LARS....START
 
@@ -119,7 +144,7 @@ export class CrimeListComponent implements OnInit {
   //fetching 10 objects from db starting at int
   getSearch(int) {
     this.errorMessage = "";
-    // this.renderlist = [];
+
 
     if(this.name == ""){
       this.name = undefined;
@@ -176,7 +201,7 @@ export class CrimeListComponent implements OnInit {
 
   // Makes the list longer by 10
   // every time it's scrolled down
-  onScroll() {
+  onScrollDown() {
     console.log('fetching more data');
     this.int += 10;
 
@@ -184,21 +209,26 @@ export class CrimeListComponent implements OnInit {
   }
 
   onSelect(munic: Municipality): void {
+    console.log("selected");
     this.selectedMunic = munic;
   }
 
-  // Fonction to log if list is expanded or not
-  expand(event) {
-    console.log('event test');
-    if (this.expanded === false) {
-        this.expanded = true;
-    } else {
-        this.expanded = false;
+   /**
+    * Feilen under er at funksjonen ikke endrer noen klasse i HTML koden, 
+    den når ikke "lenger ned" i hierarkiet til HTML strukturen, 
+    og får derfor ikke endret klasse i diven lenger ned som skal visees/skjules
+    */
+   expand(event) {
+    console.log('event');
+    if (event.expanded === false) {
+      console.log(event.expanded);
+      console.log('false');
+      event.expanded = true;
+    } 
+    else if (event.expanded === true) {
+      event.expanded = false;
+      console.log(event.expanded);
+      console.log('true');
     }
-    if (this.expanded === true) {
-        console.log(this.expanded);
-    } else {
-        console.log(this.expanded);
-    }
-  }
+}
 }

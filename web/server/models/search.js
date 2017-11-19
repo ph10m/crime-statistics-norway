@@ -1,5 +1,6 @@
 var db = require("../db.js").getConnection();
 
+//builds the query based on input from the browser to return the matching crime statistics
 exports.search = function(name, sort, sortAscDesc, limit, cb) {
 
     var sqlQuery = "SELECT * FROM Crimestat";
@@ -43,4 +44,11 @@ exports.search = function(name, sort, sortAscDesc, limit, cb) {
             cb(row);
         }
     });
+}
+
+//gets only the countrywide statistics that is used for comparison
+exports.norway = function(cb) {
+    db.get("SELECT * FROM Crimestat WHERE municipacility='I alt'", function(err, row) {
+        cb(row);
+    })
 }
