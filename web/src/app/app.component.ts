@@ -3,10 +3,6 @@ import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 //Service
 import { DataService } from "./data.service";
-import { DatabaseConnectorService } from './database-connector.service';
-
-//Search list
-import { SearchListComponent } from './search-list/search-list.component';
 
 
 @Component({
@@ -23,7 +19,7 @@ export class AppComponent {
   user: string;
   search: string;
   
-  constructor(private dataServe: DataService, private router: Router, private databaseConnect: DatabaseConnectorService, private searchList: SearchListComponent){
+  constructor(private dataServe: DataService, private router: Router){
 
   }
   

@@ -105,4 +105,26 @@ describe('MysiteComponent', () => {
     fixture.detectChanges();
     expect(component.user).toEqual("test@test.no");
   })
+
+  //Checks that unique changes value
+  it('Test unique to be true and false', () => {
+    component1.logInClick(testuser, testPass);
+    fixture1.detectChanges();
+    fixture.detectChanges();
+    expect(component.unique).toEqual(false);
+    component.onCheckClicked();
+    expect(component.unique).toEqual(true);
+  })
+
+   //Checks radiobuttons change. 
+   it('Test radiobuttons date and name', () => {
+    component1.logInClick(testuser, testPass);
+    fixture1.detectChanges();
+    fixture.detectChanges();
+    expect(component.name).toEqual(false);
+    expect(component.date).toEqual(true);
+    component.onRadioClick("name");
+    expect(component.name).toEqual(true);
+    expect(component.date).toEqual(false);
+  })  
 })
