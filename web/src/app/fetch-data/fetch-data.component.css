@@ -55,12 +55,6 @@ span {
   display: inline-block;
   min-width: 80px;
 }
-
-/* .page {
-  flex: 1 0 60%;
-  overflow-y: scroll;
-} */
-
 .right-half {
   flex: flex 1 0 30%;
   width: 300px;

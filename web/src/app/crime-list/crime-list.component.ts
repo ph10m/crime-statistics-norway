@@ -43,61 +43,59 @@ export class CrimeListComponent implements OnInit {
   // appending style rules to the selected munic
   selectedMunic: Municipality;
 
-  
+
   constructor(private http: HttpClient, private dataService: DataService) {}
 
   // on initalizing the page
   ngOnInit() {
     this.dataService.currentSearch.subscribe(search => {
-      this.name = search
+      this.name = search;
       this.getSearch(this.int);
-    })
-    
+    });
   }
 
-  //Onaction from dropdown
+  // Onaction from dropdown
   dropdownClick(value){
-    this.sort = value + "_abs";
+    this.sort = value + '_abs';
     this.sortTitle = value;
     this.getSearch(this.int);
   }
 
 
-  //On action from toggle button
-  radioClick(value: string){
-    if(value == 'true'){
+  // On action from toggle button
+  radioClick(value: string) {
+    if (value === 'true') {
       this.ascDesc = true;
-    }else{
+    }else {
       this.ascDesc = undefined;
     }
     this.getSearch(this.int);
   }
 
 
-  //fetching 10 objects from db starting at int
+  // fetching 10 objects from db starting at int
   getSearch(int) {
-    this.errorMessage = "";
-    this.renderlist = [];
+    this.errorMessage = '';
 
-    if(this.name == ""){
+    if (this.name === '') {
       this.name = undefined;
     }
-    
-    let body = {
-      "name": this.name,
-      "sort": this.sort,
-      "limit": int,
-      "sortAscDesc": this.ascDesc
-    }
+
+    const body = {
+      'name': this.name,
+      'sort': this.sort,
+      'limit': int,
+      'sortAscDesc': this.ascDesc
+    };
 
 
     this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
       // console.log("This data : " + (JSON.stringify(data)));
       // storing data
-      if(data['crimes'].length == 0){
-        this.errorMessage = "No result for this search"
+      if (data['crimes'].length === 0) {
+        this.errorMessage = 'No result for this search';
       }
-      this.retrieved = data
+      this.retrieved = data;
       this.changeData(this.retrieved);
     });
   }
@@ -122,7 +120,6 @@ export class CrimeListComponent implements OnInit {
     }
   }
 
-  
   // ngOnDestroy(){
   //   this.req.unsubscribe();
   // }
@@ -137,27 +134,11 @@ export class CrimeListComponent implements OnInit {
   onScroll() {
     console.log('fetching more data');
     this.int += 10;
-
     this.getSearch(this.int);
   }
 
   onSelect(munic: Municipality): void {
     this.selectedMunic = munic;
-  }
-
-  // Fonction to log if list is expanded or not
-  expand(event) {
-    console.log('event test');
-    if (this.expanded === false) {
-        this.expanded = true;
-    } else {
-        this.expanded = false;
-    }
-    if (this.expanded === true) {
-        console.log(this.expanded);
-    } else {
-        console.log(this.expanded);
-    }
   }
 
   trackByCrimes(index: number, munic: Municipality):

@@ -21,6 +21,7 @@ import { MySiteComponent } from './my-site/my-site.component';
 import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { MunicipalityDetailComponent } from './fetch-data/munic-detail.component';
@@ -65,3 +66,5 @@ import { ChartComponent } from './chart/chart.component';
 })
 
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
