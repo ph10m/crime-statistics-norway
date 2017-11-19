@@ -19,7 +19,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
 import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
-import { SearchResultComponent } from './search-result/search-result.component';
+// import { SearchResultComponent } from './search-result/search-result.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
@@ -41,7 +41,7 @@ import { ChartComponent } from './chart/chart.component';
     NewUserComponent,
     MySiteComponent,
     TagCloudComponent,
-    SearchResultComponent,
+    // SearchResultComponent,
     FetchDataComponent,
     MunicipalityDetailComponent,
     CrimeListComponent,
