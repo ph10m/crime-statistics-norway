@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//Pathcomponents
+// Pathcomponents
 import { HomeComponent } from './home/home.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
+import { RegionsComponent } from './regions/regions.component';
+import { ChartComponent } from './chart/chart.component';
+
 import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
-import { SearchResultComponent } from './search-result/search-result.component';
+// import { SearchResultComponent } from './search-result/search-result.component';
 
 //Kristian
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
@@ -18,21 +21,25 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 const appRoutes: Routes = [
     // Add main routes here
     {
-        path:"",
+        path: '',
         component: HomeComponent,
 
     },
     {
-        path:"logIn",
+        path: 'logIn',
         component: LogInComponent,
     },
     {
-        path:"newUser",
+        path: 'newUser',
         component: NewUserComponent,
     },
     {
-        path:"mySite",
+        path: 'mySite',
         component: MySiteComponent,
+    },
+    {
+        path: 'regions',
+        component: RegionsComponent,
     },
     {
         path:"cloud",
@@ -42,9 +49,14 @@ const appRoutes: Routes = [
         path:"data",
         component: FetchDataComponent,
     },
+    // {
+    //     path:"search",
+    //     component: SearchResultComponent,
+    // }
+    // ,
     {
-        path:"search",
-        component: SearchResultComponent,
+        path:"chart",
+        component: ChartComponent,
     }
 
 ];
@@ -60,9 +72,4 @@ const appRoutes: Routes = [
     ]
 })
 
-export class AppRoutingModule{}
-
-
-
-
-
+export class AppRoutingModule {}

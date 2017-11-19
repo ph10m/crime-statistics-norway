@@ -12,6 +12,10 @@ export class DataService {
   private search;
   currentSearch;
 
+  //mysitesearch
+  private searchMy;
+  currentSearchMy;
+
   prevSearch = "";
   
   //sessionstorage. 
@@ -26,6 +30,12 @@ export class DataService {
     //Observable so components can listen to wich search is needed. 
     this.search = new BehaviorSubject<string>(""); 
     this.currentSearch = this.search.asObservable();
+
+    //Observable so components can listen to wich search is needed. 
+    this.searchMy = new BehaviorSubject<string>(""); 
+    this.currentSearchMy = this.searchMy.asObservable();
+
+    //Observable for myserach click
 
     //Sessionstorage
     this.storage = JSON.parse(sessionStorage.getItem('currentStorage'))
@@ -49,22 +59,23 @@ export class DataService {
       }
     }
 
+    mySiteSearchClick(search: string){
+      this.searchMy.null;
+      this.searchMy.next(search);
+    }
+
     //The search object is changed. 
     changeSearch(search: string){
       //Sessionstorage
       if(search != this.prevSearch){
-        this.storage[1] = search;
+        // this.storage[1] = search;
         
-        sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));
+        // sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));
         
         //Set observable. 
         this.search.null;
         this.search.next(search);
         this.prevSearch = search;
-      }
-      
-      
+      }  
     }
-
-
 }

@@ -50,18 +50,30 @@
 /*list in crime statistics*/
 span {
   display: inline-block;
-  min-width: 150px;
+  min-width: 80px;
 }
 
 .left-half {
   flex: 1 0 60%;
+  overflow-y: scroll;
 }
 
 .right-half {
   flex: flex 1 0 30%;
   width: 300px;
+  position: fixed;
+  right: 0;
+  top: 60px;
+  background-color: grey;
 }
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/flex */
 .flex-container {
   display: flex;
 }
+.hidden {
+  font-size: small;
+  color: black;
+  border-radius: 4px;
+  height: 100px;
+  top: 60px;
+} 
