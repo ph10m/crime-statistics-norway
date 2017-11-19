@@ -44,3 +44,9 @@ exports.search = function(name, sort, sortAscDesc, limit, cb) {
         }
     });
 }
+
+exports.norway = function(cb) {
+    db.get("SELECT * FROM Crimestat WHERE municipacility='I alt'", function(err, row) {
+        cb(row);
+    })
+}
