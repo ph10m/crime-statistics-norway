@@ -40,14 +40,15 @@ export class AppComponent {
 
   //Onaction from search-bar. 
   searchClick(value: string){
+    this.search = value;
+    this.dataServe.changeSearch(value);
+    this.router.navigate(['/data']);
+    //Dont post to db if not logged in
     if(value.length !== 0){
-      this.search = value;
-      this.dataServe.changeSearch(value);
-      this.router.navigate(['/search']);
       this.postSearchToDb(this.search);
       //send value to search
       //this.searchList.getSearch(value);
-      this.searchList.getKeyword(value);
+      // this.searchList.getKeyword(value);
       console.log("string " + value);
     }
     
@@ -57,12 +58,9 @@ export class AppComponent {
   postSearchToDb(search: string){
     //User must be logged in to post to previous searches. 
     if(this.user != ""){
-      this.databaseConnect.setPreviousSearch(search, this.user);
-        
-      
+      this.databaseConnect.setPreviousSearch(search, this.user); 
     }
   }
-  
 }
 
 
