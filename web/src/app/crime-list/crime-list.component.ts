@@ -5,8 +5,9 @@ import 'rxjs/add/observable/of';
 
 import { Municipality } from './../fetch-data/municipality';
 
-//Dataservice for search. 
+//SERVICES --> BOTH MUST BE HERE. 
 import { DataService } from '../data.service';
+import { DatabaseConnectorService } from '../database-connector.service';
 
 @Component({
   selector: 'crime-list-component',
@@ -50,7 +51,7 @@ export class CrimeListComponent implements OnInit {
   int = 0;
   name = undefined;
   sort = "all_abs";
-  ascDesc = true;
+  ascDesc = undefined;
   
   //Dropdown title;
   sortTitle = "all";
@@ -58,16 +59,19 @@ export class CrimeListComponent implements OnInit {
   
 
   //Currentsearch
-
-
   // appending style rules to the selected munic
   selectedMunic: Municipality;
 
+  //USER VALUE BY LARS
+  user;
+
+
   
-  constructor(private http: HttpClient, private dataService: DataService) {}
+  constructor(private http: HttpClient, private dataService: DataService, private dbConnect: DatabaseConnectorService) {}
 
   // on initalizing the page
   ngOnInit() {
+
     this.dataService.currentSearch.subscribe(search => {
 
       //gets statistics from all of norway
@@ -79,20 +83,62 @@ export class CrimeListComponent implements OnInit {
 
       this.name = search
       this.getSearch(this.int);
+    this.dataService.currentUser.subscribe(user => {
+      this.user = user;
+    })
+    this.dataService.currentSearchMy.subscribe(search =>{
+      this.name = search; 
+      this.searchClick(this.name);
+
     })
     
   }
 
+  // SEARCHFIELD METHODS MADE BY LARS....START
+
+  //Onaction from search-bar. 
+  searchClick(value: string){
+    
+    this.renderlist = [];
+    this.name = value;
+    this.dataService.changeSearch(value);
+    //Set new search.
+    this.int = 0 
+    this.getSearch(this.int);
+    
+    //Dont post to db if not logged in
+    if(value.length !== 0){
+      this.postSearchToDb(this.name);
+      console.log("string " + value);
+    }
+    
+  }
+
+  //When new search is created post to DB. 
+  postSearchToDb(search: string){
+    //User must be logged in to post to previous searches. 
+    if(this.user != ""){
+      this.dbConnect.setPreviousSearch(search, this.user); 
+    }
+  }
+
+
+  // SEARCHFIELD METHODS MADE BY LARS ....END
+
   //Onaction from dropdown
   dropdownClick(value){
+    this.renderlist = [];
     this.sort = value + "_abs";
     this.sortTitle = value;
+    this.int = 0;
     this.getSearch(this.int);
   }
 
 
   //On action from toggle button
   radioClick(value: string){
+    this.renderlist = [];
+    this.int = 0;
     if(value == 'true'){
       this.ascDesc = true;
     }else{
@@ -105,7 +151,7 @@ export class CrimeListComponent implements OnInit {
   //fetching 10 objects from db starting at int
   getSearch(int) {
     this.errorMessage = "";
-    //this.renderlist = [];
+
 
     if(this.name == ""){
       this.name = undefined;

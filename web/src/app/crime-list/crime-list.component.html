@@ -1,4 +1,14 @@
+<!-- SEARCH FIELD LARS -->
+<div>
+    <form class="form-inline my-2 my-lg-0">
+        <input #search class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchClick(search.value)">Search</button>
+        <!-- Only to show is someone is logged in.  -->
+    </form>
+</div>
+<!-- SEARCHFIELD LARS -->
 
+<!-- DROPDOWN AND CHECKBOXES LARS -->
 <p>Results for <span *ngIf="name != undefined">{{name}}</span></p>
     <p>{{errorMessage}}</p>
     <br>
@@ -30,6 +40,7 @@
                 </label>
         </div>
     </div>
+    <!-- DROPDOWN CHECKBOXES LARS -->
  <div
   id="accordion"
   role="tablist"
