@@ -14,6 +14,10 @@ import { TagCloudComponent} from './tag-cloud/tag-cloud.component';
 
 //Kristian
 import { CrimeListComponent } from './crime-list/crime-list.component';
+import { BarChartComponent } from './barchart/barchart.component';
+//import { SearchComponent } from './fetch-data/search.component';
+
+
 
 const appRoutes: Routes = [
     // Add main routes here
@@ -49,6 +53,10 @@ const appRoutes: Routes = [
     {
         path:"chart",
         component: ChartComponent,
+    },
+    {
+        path:"barchart",
+        component: BarChartComponent,
     }
 
 ];
