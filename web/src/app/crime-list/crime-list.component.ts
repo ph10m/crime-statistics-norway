@@ -77,22 +77,23 @@ export class CrimeListComponent implements OnInit {
       //gets statistics from all of norway
       this.req = this.http.post('http://localhost:8084/search/norway', {} ).subscribe(data=>{ 
         this.allofnorway = data;
-        this.allofnorway = this.allofnorway.crimes
+        this.allofnorway = this.allofnorway.crimes;
       });
+    })
+    
 
-
-      this.name = search
-      this.getSearch(this.int);
+     
+      
     this.dataService.currentUser.subscribe(user => {
       this.user = user;
     })
     this.dataService.currentSearchMy.subscribe(search =>{
       this.name = search; 
       this.searchClick(this.name);
-
     })
-    
   }
+    
+  
 
   // SEARCHFIELD METHODS MADE BY LARS....START
 
