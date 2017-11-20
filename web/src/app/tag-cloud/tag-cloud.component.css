@@ -2,6 +2,8 @@
 angular-tag-cloud {
     font-family: "Helvetica", "Arial", sans-serif;
     font-size: 10px;
+    border-radius: 25px;
+    padding: 20px;
     background: darkslategray;
   }
 
@@ -10,10 +12,15 @@ angular-tag-cloud {
     text-decoration: none;
   }
   
-  button:hover{
+  .btn:hover{
     cursor: pointer;
+    filter: brightness(70%);
   }
-  
+
+  .selected{
+    filter: brightness(70%);
+  }
+
 
 
   /* use of :host and ::ng-deep is depreceated, and !important as well, 

@@ -11,8 +11,6 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./tag-cloud.component.css'],
 })
 
-
-
 // class that that is used to create the component used for the word clouds
 // the way we chose to implement it has 7 different cloud objects rendered, and only showing 1 at a time,
 // instead of having 1 cloud object that changes its data based on what is selected. 
@@ -66,7 +64,6 @@ export class TagCloudComponent implements OnInit {
   ngOnInit() {
 
     this.req = this.http.get('http://localhost:8084/cloud/cloudData').subscribe(data => {
-      //console.log(data);
       this.retrieved = data
       this.changeData(this.retrieved);
       this.req.unsubscribe();
@@ -76,7 +73,8 @@ export class TagCloudComponent implements OnInit {
 
   choose(event, type) {
     this.type = type;
-    event.target.ClassList.add('selected');
+    $('.selected').removeClass('selected');
+    $(event.target).addClass('selected');
   }
 
 
