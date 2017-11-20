@@ -12,3 +12,7 @@ a {
 .card {
   width: 90%;
 }
+
+.card-block {
+  padding: 15px;
+}
