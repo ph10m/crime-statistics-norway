@@ -37,12 +37,12 @@
     <!-- ASC DESC -->
     <div class="form-check form-check-inline">
       <label class="form-check-label">
-        <input class="form-check-input" type="radio" checked="" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="radioClick('true')"> Asc
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="radioClick('true')"> Asc
       </label>
     </div>
     <div class="form-check form-check-inline">
       <label class="form-check-label">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="radioClick('false')"> Desc
+        <input class="form-check-input" type="radio" checked="" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="radioClick('false')"> Desc
       </label>
     </div>
     <div infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="300" [scrollWindow]="true" (scrolled)="onScrollDown()">
@@ -66,7 +66,7 @@
                   <ChartComponent [ChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
                 </span>
                 <span style="width: 50%; float: right;">
-                  <BarChartComponent [BarChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: allofnorway.municipacility}]"></BarChartComponent>
+                  <BarChartComponent [BarChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: 'Norway'}]"></BarChartComponent>
                 </span>
               </div>
 

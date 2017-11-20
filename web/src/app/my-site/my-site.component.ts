@@ -39,7 +39,9 @@ export class MySiteComponent implements OnInit {
 
   //Make a list of previous searches. 
   previousSearches(){
+    console.log("go");
     if(this.user != ""){
+      console.log("Where");
       this.searches = []
       let prevSearches = this.databaseConnect.getPreviousSearches(this.user, this.name, this.date, this.unique);
       prevSearches.subscribe(data => {
