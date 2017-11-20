@@ -20,7 +20,7 @@
   </div>
   <div>
     <div class="sort-options">
-      <h6 class="menuItem">Sort by:</h6>
+      <!--<h6- class="menuItem">Sort by:</h6-->
       <div class="dropdown menuItem">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false" [value]="Hay">
@@ -49,7 +49,7 @@
         </label>
       </div>
     </div>
-    <div infiniteScroll [infiniteScrollDistance]="0.5" [infiniteScrollThrottle]="300" [scrollWindow]="true" (scrolled)="onScrollDown()">
+    <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" [scrollWindow]="true" (scrolled)="onScrollDown()">
       <div id="accordion" role="tablist" aria-multiselectable="true" *ngFor="let crime of renderlist" [class.selected]="crime === selectedMunic">
 
         <div class="card">

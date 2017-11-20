@@ -1,0 +1,13 @@
+.jumbotron {
+  min-height: 100vh;
+  margin-top: -50px;
+}
+
+.container {
+  margin-top: 60px;
+}
+
+.searchResults {
+  margin: auto;
+  width: 60%;
+}

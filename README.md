@@ -33,7 +33,7 @@ Vi har funnet en CSV fil fra SSB (https://www.ssb.no/lovbrudda) som inneholder s
 - Koden er testet med noen skrevne tester, unit testing og er tilsynelatende feilfri. Siden fungerer som forventet.
 - Prosjektet er godt dokumentert med kommentarer i kode samt denne dokumentasjonsfilen.
 
-###notat
-    Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.
+### notat
+Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.
     
-    Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen. 
+Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen. 

@@ -68,7 +68,7 @@ export class CrimeListComponent implements OnInit {
 
   // on initalizing the page
   ngOnInit() {
-
+    //fetching all data on load
     this.req = this.http.post('/search/norway', {} ).subscribe(data=>{ 
       this.allofnorway = data;
       this.allofnorway = this.allofnorway.crimes;
@@ -82,11 +82,8 @@ export class CrimeListComponent implements OnInit {
       this.searchClick(this.name);
     })
   }
-    
-  
 
   // SEARCHFIELD METHODS MADE BY LARS....START
-
   //Onaction from search-bar. 
   searchClick(value: string){
     
@@ -100,7 +97,6 @@ export class CrimeListComponent implements OnInit {
     //Dont post to db if not logged in
     if(value.length !== 0){
       this.postSearchToDb(this.name);
-      console.log("string " + value);
     }
     
   }
@@ -113,7 +109,6 @@ export class CrimeListComponent implements OnInit {
     }
   }
 
-
   // SEARCHFIELD METHODS MADE BY LARS ....END
 
   //Onaction from dropdown
@@ -124,7 +119,6 @@ export class CrimeListComponent implements OnInit {
     this.int = 0;
     this.getSearch(this.int);
   }
-
 
   //On action from toggle button
   radioClick(value: string){
@@ -189,23 +183,20 @@ export class CrimeListComponent implements OnInit {
     this.getSearch(this.int);
   }
 
+
   onSelect(munic: Municipality): void {
-    console.log("selected");
     this.selectedMunic = munic;
   }
 
   //expand list elements 
    expand(event) {
-    console.log('event');
     if (event.expanded === false) {
       console.log(event.expanded);
-      console.log('false');
       event.expanded = true;
     } 
     else if (event.expanded === true) {
       event.expanded = false;
       console.log(event.expanded);
-      console.log('true');
     }
 }
 }
