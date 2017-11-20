@@ -11,46 +11,8 @@ let exceptions = ['Østfold', 'Vestfold', 'Akershus', 'Hedmark', 'Oppland', 'Bus
     'Uoppgitt kommune Sør-Trøndelag', 'Uoppgitt kommune Nord-Trøndelag', 'Uoppgitt kommune Nordland',
     'Uoppgitt kommune Troms', 'Uoppgitt kommune Finnmark', 'Uoppgitt fylke'];
 
-exports.all_1000 = function (cb) {
 
-    let result = new Array();
-
-    db.each('SELECT municipacility, all_1000 FROM crimestat', function (err, row) {
-        if (exceptions.indexOf(row.municipacility) == -1) {
-            result.push({ 'text': row.municipacility, 'weight': parseFloat(row.all_1000) });
-        }
-    }, function (err, rows) {
-        cb(result);
-    });
-}
-
-exports.property_1000 = function (cb) {
-
-    let result = new Array();
-
-    db.each('SELECT municipacility, property_1000 FROM crimestat', function (err, row) {
-        if (exceptions.indexOf(row.municipacility) == -1) {
-            result.push({ 'text': row.municipacility, 'weight': parseFloat(row.property_1000) });
-        }
-    }, function (err, rows) {
-        cb(result);
-    });
-}
-
-exports.violence_1000 = function (cb) {
-
-    let result = new Array();
-
-    db.each('SELECT municipacility, violence_1000 FROM crimestat', function (err, row) {
-        if (exceptions.indexOf(row.municipacility) == -1) {
-            result.push({ 'text': row.municipacility, 'weight': parseFloat(row.violence_1000) });
-        }
-    }, function (err, rows) {
-        cb(result);
-    });
-}
-
-exports.everything = function (cb) {
+exports.cloudData = function (cb) {
     
         let result = new Array();
     
