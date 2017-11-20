@@ -1,4 +1,4 @@
-# Dokumentasjon arkitektur og systemvalg
+# Dokumentasjon av system
 
 ## Beskrivelse
 Vi har valgt å lage en nettside som skal vise statistikk over kriminalitet i kommuner og fylker i Norge.
@@ -16,55 +16,24 @@ Vi har funnet en CSV fil fra SSB (https://www.ssb.no/lovbrudda) som inneholder s
 - Trafikkforseelser (absolutt og pr 1000 innbygger)
 - Annen kriminalitet (inkludert seksualforbrytelser) (absolutt og pr 1000 innbygger)
 
-## Planlagt implementasjon
-Vi kommer til å lage en REST basert backend basert på Node.js som vil lese og skrive data til en sqlite database. Grunnen til at vi valgte sqlite er fordi vi vil lære å bruke det i tillegg til at vi slipper å installere og drifte en sql server.
+## Hvordan vi har løst oppgavekravene
+- Systemet kjører på vår virtuelle maskin http://it2810-10.idi.ntnu.no:8084/ og er utviklet med AngularIO (V4) Vi bruker også Node.js på serversiden. 
+- Backend databasen vår ligger under web/server og er db.db, vi bruker Sqlite3 til dette etter REST prinsippene.
+- Vi skriver til databasen ved lagring og innlogging av brukere, mens vi leser fra den både under brukerhåndtering samt datafremvisning under Crimes-siden.
+- I denne listen kan du søke etter statistikk basert på navn (eller bokstaver i navnene, du vil få gyldig søk på "a" for eksempel).
+- Vi har en listebasert visning som viser mer info om stedene med en expand/collapse funksjon, når du klikker på navnet til stedet (ikke selve listeelementet)
+- Denne listen kan sorteres etter stigende/synkende verdi baser på navn. 
+- For hvert søk du gjør lagres søkene under min side, her kan du filtreres og sorteres basert på navn eller dato, i tillegg kan du luke av unike søk (altså bare en visning per by istedenfor flere for samme by)
+- 1 notat
+- 2 notat
+- Vi laster data dynamisk ved at når du scroller ned på siden vil det lastes flere treff, gitt at det er flere gyldige treff
+- Under "My site" kan du se informasjon om søk du har gjort tidligere.
+- Vi bruker session-håndtering til å vite hvem som er logget inn
+- Vi har en fancy visuell visning med ordsky under siden word clouds
+- Koden er testet med noen skrevne tester, unit testing og er tilsynelatende feilfri. Siden fungerer som forventet.
+- Prosjektet er godt dokumentert med kommentarer i kode samt denne dokumentasjonsfilen.
 
-### Hva vi skal gjøre:
-Arkitektur:
-lag database struktur.
-Overføre datasett til sqlite.
-Angular template.
-Registrer bruker/Login.
-Liste opp fylker rangert etter kriminalitet.
-Sende liste over fylker med kriminalitet til frontend.
-min side med oversikt over hva du har søkt på.
-Logging av hva man har søkt på.
-Dynamisk lasting av flere kommuner.
-ordsky over hvilke kommuner som gjør mest kriminalitet.
-expand kommuner for å se mer detaljert statistikk.
-Sortere listen på absolutte tall og pr 1000 innbygger. og pr kategori .
-søke på kommuner.
-Forside med routes til komponenter, eksempel listevisning.
-
-## Valg av løsning
-Vi har valgt å bruke NodeJs, Angular IO, bootstrap, fontawesome og sqlite3.
-
-# Initial Readme
-
-# MyApp
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+###notat
+    Den listebaserte visningen skal kunne sorteres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne bytte mellom forskjellige sorteringer.
+    
+    Den listebaserte visningen skal kunne filtreres på minimum to forskjellge egenskaper. Eksempel: etter at brukeren har fått returnert en liste etter et søk skal brukeren kunne krysse av på en egenskap for å få begrenset antallet enheter i resultatsettet til kun de som har denne egenskapen. 

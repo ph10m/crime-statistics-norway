@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// https://medium.com/codingthesmartway-com-blog/angular-4-3-httpclient-accessing-rest-web-services-with-angular-2305b8fd654b
-import { HttpClientModule } from '@angular/common/http'; // import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { TagCloudModule } from 'angular-tag-cloud-module';
 
@@ -19,15 +18,10 @@ import { LogInComponent } from './log-in/log-in.component';
 import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
 import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
-// import { SearchResultComponent } from './search-result/search-result.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-//import { FetchDataComponent } from './fetch-data/fetch-data.component';
-//import { MunicipalityDetailComponent } from './fetch-crim/munic-detail.component';
 import { CrimeListComponent } from './crime-list/crime-list.component';
-//import { SearchListComponent } from './search-list/search-list.component';
 import { HttpClient } from '@angular/common/http/src/client';
-import { RegionsComponent } from './regions/regions.component';
 
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './chart/chart.component'; 
@@ -43,7 +37,6 @@ import { BarChartComponent } from './barchart/barchart.component';
     MySiteComponent,
     TagCloudComponent,
     CrimeListComponent,
-    RegionsComponent,
     BarChartComponent
   ],
   imports: [
