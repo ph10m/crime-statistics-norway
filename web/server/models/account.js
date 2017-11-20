@@ -28,6 +28,23 @@ exports.registrate = function(username, password, cb) {
     });
 }
 
+//DELETE USER FOR TEST PURPOSES
+exports.delete = function(username, cd){
+    db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
+        if (row == undefined) {
+            //If user not exists --> Should really not happen, like ever. 
+            cb(false);
+        }
+        else {
+            //DELETE SEARCHES
+            db.run("DELETE FROM Log WHERE userid ='" + row.id +"'");
+            //DELETE USER
+            db.run("DELETE FROM Users WHERE username ='" + username + "'");
+            cd(true)    
+        }
+    });    
+}
+
 exports.checkLogin = function(username, password, cb){
     console.log(username);
     console.log(password);

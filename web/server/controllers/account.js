@@ -20,10 +20,13 @@ router.post('/logout', function(req, res) {
 
 })
 
-router.get('/meme', function(req, res) {
-    res.json({
-        status : 'hello world'
-    });
+router.get('/deleteuser', function(req, res) {
+    account.delete(req.body.username, function(returnVal){
+        res.json({
+            status : returnVal
+        });
+    })
+    
 })
 
 //create a new user
