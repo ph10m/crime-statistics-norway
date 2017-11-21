@@ -5,7 +5,7 @@
   Here you can see word clouds for various types of crimes in Norway, the numbers used are crimes per 1000 inhabiants. Loading
   the various clouds may take several seconds.
 </p>
-<div>
+<div class="buttonPanel">
   <button class="btn selected" (click)="choose($event,'all')">All</button>
   <button class="btn" (click)="choose($event,'property')">Property</button>
   <button class="btn" (click)="choose($event,'violence')">Violence</button>
@@ -15,7 +15,7 @@
   <button class="btn" (click)="choose($event,'other')">Other</button>
 </div>
 <br/>
-<div [ngSwitch]="type">
+<div class="bg-primary tagCloud" [ngSwitch]="type">
   <angular-tag-cloud *ngSwitchCase="'all'" angular-tag-cloud [data]="data1" [width]="options.width" [height]="options.height"
     [overflow]="options.overflow">
   </angular-tag-cloud>
@@ -38,4 +38,3 @@
     [overflow]="options.overflow">
   </angular-tag-cloud>
 </div>
-
