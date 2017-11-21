@@ -2,16 +2,17 @@
   <h1 class="ov">Welcome to the cloud</h1>
 </div>
 <p>
-  Here you can see word clouds for various types of crimes in Norway, the numbers used are crimes per 1000 inhabiants. Loading the various clouds may take several seconds.
+  Here you can see word clouds for various types of crimes in Norway, the numbers used are crimes per 1000 inhabiants. Loading
+  the various clouds may take several seconds.
 </p>
-<div>
-  <button (click)="choose($event,'all')">All</button>
-  <button (click)="choose($event,'property')">Property</button>
-  <button (click)="choose($event,'violence')">Violence</button>
-  <button (click)="choose($event,'drugs')">Drugs</button>
-  <button (click)="choose($event,'order')">Order</button>
-  <button (click)="choose($event,'traffic')">Traffic</button>
-  <button (click)="choose($event,'other')">Other</button>
+<div class="buttonPanel">
+  <button class="btn btn-secondary" (click)="choose($event,'all')">All</button>
+  <button class="btn btn-secondary" (click)="choose($event,'property')">Property</button>
+  <button class="btn btn-secondary" (click)="choose($event,'violence')">Violence</button>
+  <button class="btn btn-secondary" (click)="choose($event,'drugs')">Drugs</button>
+  <button class="btn btn-secondary" (click)="choose($event,'order')">Order</button>
+  <button class="btn btn-secondary" (click)="choose($event,'traffic')">Traffic</button>
+  <button class="btn btn-secondary" (click)="choose($event,'other')">Other</button>
 </div>
 
 <div [ngSwitch]="type">

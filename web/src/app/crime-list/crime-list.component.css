@@ -1,14 +1,49 @@
-.search-results {
-  background-color: yellow;
-  padding: 10px;
-  /*  overflow: scroll;*/
-  height: 500px;
-}
-
 a {
   color: black;
 }
 
 .card {
-  width: 90%;
+  width: 100%;
+  margin: 2px;
+}
+
+.card-block {
+  padding: 15px;
+}
+
+.search-field {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.sort-options {
+  margin: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.menuItem {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.chartElement {
+  width: 50%;
+  float: right;
+}
+
+.tableElement {
+  width: 50%;
+  float: left;
+}
+
+#dropdownMenuButton {
+  width: 100px;
+}
+
+.btn {
+  height: 40px;
 }
