@@ -1,18 +1,7 @@
 var db = require("../db.js").getConnection();
 var sha512 = require("js-sha512");
 
-exports.testuser = function(cb) {
-
-    var username = "test";
-    var password = sha512("test");
-
-    console.log(db.run("SELECT * FROM sqlite_master"));
-    console.log(db.run("INSERT INTO Users (username, password) VALUES ('" + username + "', '" + password + "')" ));
-
-    cb(true);
-}
-
-
+//registrates a user
 exports.registrate = function(username, password, cb) {
     console.log(username);
     console.log(password);
@@ -37,6 +26,23 @@ exports.registrate = function(username, password, cb) {
             cb(true);
         }
     });
+}
+
+//DELETE USER FOR TEST PURPOSES
+exports.delete = function(username, cd){
+    db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
+        if (row == undefined) {
+            //If user not exists --> Should really not happen, like ever. 
+            cb(false);
+        }
+        else {
+            //DELETE SEARCHES
+            db.run("DELETE FROM Log WHERE userid ='" + row.id +"'");
+            //DELETE USER
+            db.run("DELETE FROM Users WHERE username ='" + username + "'");
+            cd(true)    
+        }
+    });    
 }
 
 exports.checkLogin = function(username, password, cb){

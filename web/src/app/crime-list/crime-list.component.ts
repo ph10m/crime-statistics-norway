@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+//import { NgIf } from '@angular/common';
 
-import { Municipality } from './../fetch-data/municipality';
+import { Municipality } from './municipality';
 
 //SERVICES --> BOTH MUST BE HERE. 
 import { DataService } from '../data.service';
@@ -12,16 +13,16 @@ import { DatabaseConnectorService } from '../database-connector.service';
 @Component({
   selector: 'crime-list-component',
   templateUrl: './crime-list.component.html',
-  styleUrls: ['./../fetch-data/fetch-data.component.css']
+  styleUrls: ['./crime-list.component.css']
 })
 
 
 export class CrimeListComponent implements OnInit {
   //list with list holding objects from db
-
   crimelist: Array<Array<Municipality>> = [];
   // reducing the layer once to display objects in HTML
   renderlist: Array<Municipality> = [];
+  panelOpenState: boolean;
   expanded: any = false;
 
   //country data
@@ -56,47 +57,36 @@ export class CrimeListComponent implements OnInit {
   //Dropdown title;
   sortTitle = "all";
   errorMessage = "";
-  
 
-  //Currentsearch
   // appending style rules to the selected munic
   selectedMunic: Municipality;
 
   //USER VALUE BY LARS
   user;
 
-
-  
   constructor(private http: HttpClient, private dataService: DataService, private dbConnect: DatabaseConnectorService) {}
 
   // on initalizing the page
   ngOnInit() {
-
-    this.dataService.currentSearch.subscribe(search => {
-
-      //gets statistics from all of norway
-      this.req = this.http.post('http://localhost:8084/search/norway', {} ).subscribe(data=>{ 
-        this.allofnorway = data;
-        this.allofnorway = this.allofnorway.crimes
-      });
-
-
-      this.name = search
-      this.getSearch(this.int);
+    //fetching all data on load
+    this.req = this.http.post('/search/norway', {} ).subscribe(data=>{ 
+      this.allofnorway = data;
+      this.allofnorway = this.allofnorway.crimes;
+    });
+      
     this.dataService.currentUser.subscribe(user => {
       this.user = user;
     })
     this.dataService.currentSearchMy.subscribe(search =>{
       this.name = search; 
       this.searchClick(this.name);
-
-    });
+    })
   }
 
   // SEARCHFIELD METHODS MADE BY LARS....START
-
-  // Onaction from search-bar.
-  searchClick(value: string) {
+  //Onaction from search-bar. 
+  searchClick(value: string){
+    
     this.renderlist = [];
     this.name = value;
     this.dataService.changeSearch(value);
@@ -107,7 +97,6 @@ export class CrimeListComponent implements OnInit {
     //Dont post to db if not logged in
     if(value.length !== 0){
       this.postSearchToDb(this.name);
-      console.log("string " + value);
     }
     
   }
@@ -120,7 +109,6 @@ export class CrimeListComponent implements OnInit {
     }
   }
 
-
   // SEARCHFIELD METHODS MADE BY LARS ....END
 
   //Onaction from dropdown
@@ -131,7 +119,6 @@ export class CrimeListComponent implements OnInit {
     this.int = 0;
     this.getSearch(this.int);
   }
-
 
   //On action from toggle button
   radioClick(value: string){
@@ -145,8 +132,7 @@ export class CrimeListComponent implements OnInit {
     this.getSearch(this.int),
   }
 
-
-  // fetching 10 objects from db starting at int
+  //fetching 10 objects from db starting at int
   getSearch(int) {
     this.errorMessage = "";
 
@@ -162,9 +148,7 @@ export class CrimeListComponent implements OnInit {
       'sortAscDesc': this.ascDesc
     };
 
-
     this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
-      // console.log("This data : " + (JSON.stringify(data)));
       // storing data
       if (data['crimes'].length === 0) {
         this.errorMessage = 'No result for this search';
@@ -185,15 +169,13 @@ export class CrimeListComponent implements OnInit {
   // separate function to create html rendering list
   checkList() {
     for (let i in this.crimelist) {
-      //console.log("in for løkke")
-      //console.log(this.crimelist[i])
       for (let b in this.crimelist[i]) {
-        //console.log(this.crimelist[i][b].municipacility)
         this.renderlist.push(this.crimelist[i][b])
       }
     }
   }
 
+<<<<<<< HEAD
   // ngOnDestroy(){
   //   this.req.unsubscribe();
   // }
@@ -206,15 +188,34 @@ export class CrimeListComponent implements OnInit {
   // Makes the list longer by 10
   // every time it's scrolled down
   onScroll() {
+=======
+  // Makes the list longer by 10 every time it's scrolled down
+  onScrollDown() {
+>>>>>>> 756503ee8612b11e24dde0f2c4a497d8847cc975
     console.log('fetching more data');
     this.int += 10;
     this.getSearch(this.int);
   }
 
+
   onSelect(munic: Municipality): void {
     this.selectedMunic = munic;
   }
 
+<<<<<<< HEAD
   trackByCrimes(index: number, munic: Municipality):
     number { return munic.id; }
+=======
+  //expand list elements 
+   expand(event) {
+    if (event.expanded === false) {
+      console.log(event.expanded);
+      event.expanded = true;
+    } 
+    else if (event.expanded === true) {
+      event.expanded = false;
+      console.log(event.expanded);
+    }
+}
+>>>>>>> 756503ee8612b11e24dde0f2c4a497d8847cc975
 }
