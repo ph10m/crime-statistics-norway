@@ -51,3 +51,7 @@ a {
 .viewHeight {
   height: 110vh;
 }
+
+.errorMessage p{
+  text-align: center;
+}

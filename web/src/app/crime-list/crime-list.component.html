@@ -13,6 +13,9 @@
     <!-- SEARCHFIELD LARS -->
     <!-- DROPDOWN AND CHECKBOXES LARS -->
   </div>
+  <div class="errorMessage" >
+    <p *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+  </div>
   <div>
     <div class="sort-options">
       <!--<h6- class="menuItem">Sort by:</h6-->
@@ -58,15 +61,16 @@
           </div>
           <div id="collapse{{crime.id}}" class="collapse" role="tabpanel" attr.aria-labelledby="heading{{crime.id}}">
             <div class="card-block">
-              In {{crime.municipacility}}, as any other municipality in Norway there are commited crimes. Below you will find statistics
-              about these crimes. The graph shows you the absolute numbers if you click on a color.
+              In {{crime.municipacility}}, as in any other municipality in Norway there are commited crimes. Below you will find statistics
+              for these crimes. The graph shows you the absolute numbers if you click on a color.
               <br/>
               <div>
                 <span class="tableElement">
                   <ChartComponent [ChartLabels]="['Theft', 'Violence,', 'Drug-related', 'Public-order', 'Traffic violations', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
                 </span>
                 <span class="chartElement">
-                  <BarChartComponent [BarChartLabels]="['Theft', 'Violence,', 'Drug-related', 'Public-order', 'Traffic violations', 'Other']" [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: 'Norway'}]"></BarChartComponent>
+                  <BarChartComponent [BarChartLabels]="['Theft', 'Violence,', 'Drug-related', 'Public-order', 'Traffic violations', 'Other']"
+                    [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: 'Norway'}]"></BarChartComponent>
                 </span>
               </div>
 

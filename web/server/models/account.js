@@ -89,7 +89,7 @@ exports.getsearch = function(username, name, date, unique, hit, cb){
             cb(false);
         }
         else {
-            console.log("ROW ID: " + row.id);
+            //console.log("ROW ID: " + row.id);
             //Sort by date, not unique
             if((date === true) && (unique === false) && (hit === false)){
                 //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
