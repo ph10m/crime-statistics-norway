@@ -17,45 +17,44 @@ describe('LogInComponent', () => {
   let dbConnector: DatabaseConnectorService;
   let dataService: DataService;
   let de: DebugElement;
-  
-  //"Testuser"
-  let testuser = "test@test.no";
-  let testPass = "1234567";
 
-  //Fake db connector service. 
+  // "Testuser"
+  let testuser = 'test@test.no';
+  let testPass = '1234567';
+
+  // Fake db connector service.
   let dbConnectorStub = {
-    logIn(mail: string, pass: string){
-        //Makes observable to return to method in component. 
-        if(mail == testuser && pass == testPass){
+    logIn(mail: string, pass: string) {
+        // Makes observable to return to method in component.
+        if (mail === testuser && pass === testPass){
             let objt = JSON.parse('{"status": true}');
             let subject = new BehaviorSubject<JSON>(objt);
             subject.next(objt);
             return subject.asObservable();
-        }else{
+        } else {
             let objf = JSON.parse('{"status": false}');
             let subjectf = new BehaviorSubject<JSON>(objf);
-            subjectf.next(objf)
+            subjectf.next(objf);
             return subjectf.asObservable();
         }
-        
     }
-  }
- 
-  //Behavoiur subject for dataservice stub. 
-  let usersub = new BehaviorSubject<string>("");
+ };
+
+  // Behavoiur subject for dataservice stub.
+  let usersub = new BehaviorSubject<string>('');
   let subj = usersub.asObservable();
   //fake dataservice
   let dataServiceStub = {
     currentUser: subj,
-    changeUser(user: string){
+    changeUser(user: string) {
         usersub.next(user);
     }
-}
+};
 
-//Setup
+// Setup
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[RouterTestingModule],  
+      imports: [RouterTestingModule],
       declarations: [ LogInComponent ],
       providers: [
           {provide: DatabaseConnectorService, useValue: dbConnectorStub},
@@ -72,31 +71,31 @@ describe('LogInComponent', () => {
     dataService = TestBed.get(DataService);
   });
 
-  //Should be created test.
+  // Should be created test.
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  //Initial user should be "". 
+  // Initial user should be "".
   it('Check initial user = ""', () => {
       component.ngOnInit();
       fixture.detectChanges();
-      expect(component.user).toEqual("");      
-  })
+      expect(component.user).toEqual('');
+  });
 
-  //Test false login. 
+  // Test false login.
   it('Login should retrun error', () => {
-      component.logInClick("NO", "NO");
+      component.logInClick('NO', 'NO');
       fixture.detectChanges();
       expect(component.errorMessage.length).toBeGreaterThan(0);
-  })
+  });
 
-  //Test validlogin 
+  // Test validlogin 
   it('User should be set to test@test.no', () => {
     component.logInClick(testuser, testPass);
     fixture.detectChanges();
     expect(component.user).toEqual(testuser);
-})
+});
 });
 
 
