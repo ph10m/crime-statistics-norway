@@ -53,6 +53,6 @@ export class DatabaseConnectorService {
     let body = {
       "username ": testuser,
     };
-    return this.http.post('http://localhost:8084/account/deleteuser', body);
+    return this.http.post('/account/deleteuser', body);
   }
 }
