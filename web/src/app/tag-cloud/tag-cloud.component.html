@@ -8,13 +8,13 @@
 </div>
 
 <div class="buttonPanel">
-  <button class="btn selected" (click)="choose($event,'all')">All</button>
-  <button class="btn" (click)="choose($event,'property')">Theft</button>
-  <button class="btn" (click)="choose($event,'violence')">Violence</button>
-  <button class="btn" (click)="choose($event,'drugs')">Drug-related</button>
-  <button class="btn" (click)="choose($event,'order')">Public-order</button>
-  <button class="btn" (click)="choose($event,'traffic')">Traffic</button>
-  <button class="btn" (click)="choose($event,'other')">Other</button>
+  <button class=" btn btn-secondary selected" (click)="choose($event,'all')">All</button>
+  <button class=" btn btn-secondary" (click)="choose($event,'property')">Theft</button>
+  <button class=" btn btn-secondary" (click)="choose($event,'violence')">Violence</button>
+  <button class=" btn btn-secondary" (click)="choose($event,'drugs')">Drug-related</button>
+  <button class=" btn btn-secondary" (click)="choose($event,'order')">Public-order</button>
+  <button class=" btn btn-secondary" (click)="choose($event,'traffic')">Traffic</button>
+  <button class=" btn btn-secondary" (click)="choose($event,'other')">Other</button>
 </div>
 <br/>
 <div class="bg-primary tagCloud" [ngSwitch]="type">

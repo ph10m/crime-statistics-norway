@@ -3,14 +3,14 @@ var sha512 = require("js-sha512");
 
 //registrates a user
 exports.registrate = function(username, password, cb) {
-    console.log(username);
-    console.log(password);
+    //console.log(username);
+    //console.log(password);
     let result = false;
     let crypt = sha512(password);
     
     //Check if user exists.
     db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
-        console.log("THIS ROW:" + row)
+        //console.log("THIS ROW:" + row)
         if (row == undefined) {
             //If row is undefined it means that it is safe to add new user. 
             //Sets true to register user. 
@@ -46,13 +46,13 @@ exports.delete = function(username, cd){
 }
 
 exports.checkLogin = function(username, password, cb){
-    console.log(username);
-    console.log(password);
+    //console.log(username);
+    //console.log(password);
     let crypt = sha512(password);
 
     //Check if user exists.
     db.get("SELECT * FROM Users WHERE username='" + username + "' AND password='" + crypt + "'", function(err, row){
-        console.log("THIS ROW:" + row)
+        //console.log("THIS ROW:" + row)
         if (row == undefined) {
             //If undefined there is noe user with this credentials.  
             cb(false);
@@ -90,7 +90,6 @@ exports.getsearch = function(username, name, date, unique, hit, cb){
         }
         else {
             console.log("ROW ID: " + row.id);
-            console.log("HIT: " + hit);
             //Sort by date, not unique
             if((date === true) && (unique === false) && (hit === false)){
                 //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
@@ -134,45 +133,119 @@ exports.getsearch = function(username, name, date, unique, hit, cb){
                 
                 //IF SUCSESS WITH CONTENT I BD.
             }else if((date === true) && (unique === false) && (hit === true)){
-                //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
+                //New username and password added to database. --> Commented out for not adding stupid information to database atm.
+                
+                let result = new Array();
+                let timer = new Array();
+
+                let check = 0
+                
                 db.all("SELECT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid = "+ row.id + " ORDER BY time", function(err, row){
                     if(row == undefined){
-                        
                         cb(false);
                     }else{
-                        console.log(row);
-                        cb(row);
+                        check = 0;
+                        for(var i = 0; i < row.length; i++){
+                            if(result.length == 0){
+                                result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                            }else{
+                                for(var j = 0; j < result.length; j++){
+                                    if(row[i].time == result[j].time){
+                                        check = check + 1;
+                                    }   
+                                }if(check == 0){
+                                    result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                                }
+                                check = 0;
+                            }
+                        }
+                        cb(result);
                     }
                 });
                 
-                //Sort bt date, unique
-                
-                // "SELECT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid
+                //Sort by date, unique, valid
             }else if(date === true && unique === true && hit === true){
+
+                let result = new Array();
+                let timer = new Array();
+                let check = 0
+
                 db.all("SELECT DISTINCT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid= " + row.id + " GROUP BY Content ORDER BY time", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{
-                        cb(row);
+                        check = 0;
+                        for(var i = 0; i < row.length; i++){
+                            if(result.length == 0){
+                                result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                            }else{
+                                for(var j = 0; j < result.length; j++){
+                                    if(row[i].time == result[j].time){
+                                        check = check + 1;
+                                    }   
+                                }if(check == 0){
+                                    result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                                }
+                                check = 0;
+                            }
+                        }
+                        cb(result);
                     }
                     
                 });
-            //sort by contentname, not unique
+            //sort by contentname, not unique, valid
             }else if(name === true && unique === false && hit === true){
+                let result = new Array();
+                let timer = new Array();
+                let check = 0
+
                 db.all("SELECT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid = " + row.id + " ORDER BY content", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{
-                        cb(row);
+                        check = 0;
+                        for(var i = 0; i < row.length; i++){
+                            if(result.length == 0){
+                                result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                            }else{
+                                for(var j = 0; j < result.length; j++){
+                                    if(row[i].time == result[j].time){
+                                        check = check + 1;
+                                    }   
+                                }if(check == 0){
+                                    result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                                }
+                                check = 0;
+                            }
+                        }
+                        cb(result);
                     }
                 });
-            //Sort by contentname, unique
+            //Sort by contentname, unique, valid
             }else if(name === true && unique === true && hit === true){
+                let result = new Array();
+                let timer = new Array();
+                let check = 0
                 db.all("SELECT DISTINCT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid = " + row.id + " GROUP BY Content ORDER BY content", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{
-                        cb(row);
+                        check = 0;
+                        for(var i = 0; i < row.length; i++){
+                            if(result.length == 0){
+                                result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                            }else{
+                                for(var j = 0; j < result.length; j++){
+                                    if(row[i].time == result[j].time){
+                                        check = check + 1;
+                                    }   
+                                }if(check == 0){
+                                    result.push({"id" : row[i].id, "type": "search",  "content": row[i].content, "time" : row[i].time, "userid": row[i].userid});
+                                }
+                                check = 0;
+                            }
+                        }
+                        cb(result);
                     }
                 });
             }
