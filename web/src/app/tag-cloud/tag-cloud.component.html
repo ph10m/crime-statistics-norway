@@ -1,20 +1,20 @@
 <div>
-  <h1 class="ov">Welcome to the cloud</h1>
+  <h1 class="ov">Word Clouds</h1>
 </div>
 <p>
   Here you can see word clouds for various types of crimes in Norway, the numbers used are crimes per 1000 inhabiants. Loading
   the various clouds may take several seconds.
 </p>
-<div class="buttonPanel">
-  <button class="btn btn-secondary" (click)="choose($event,'all')">All</button>
-  <button class="btn btn-secondary" (click)="choose($event,'property')">Property</button>
-  <button class="btn btn-secondary" (click)="choose($event,'violence')">Violence</button>
-  <button class="btn btn-secondary" (click)="choose($event,'drugs')">Drugs</button>
-  <button class="btn btn-secondary" (click)="choose($event,'order')">Order</button>
-  <button class="btn btn-secondary" (click)="choose($event,'traffic')">Traffic</button>
-  <button class="btn btn-secondary" (click)="choose($event,'other')">Other</button>
+<div>
+  <button class="btn selected" (click)="choose($event,'all')">All</button>
+  <button class="btn" (click)="choose($event,'property')">Property</button>
+  <button class="btn" (click)="choose($event,'violence')">Violence</button>
+  <button class="btn" (click)="choose($event,'drugs')">Drugs</button>
+  <button class="btn" (click)="choose($event,'order')">Order</button>
+  <button class="btn" (click)="choose($event,'traffic')">Traffic</button>
+  <button class="btn" (click)="choose($event,'other')">Other</button>
 </div>
-
+<br/>
 <div [ngSwitch]="type">
   <angular-tag-cloud *ngSwitchCase="'all'" angular-tag-cloud [data]="data1" [width]="options.width" [height]="options.height"
     [overflow]="options.overflow">
@@ -39,44 +39,3 @@
   </angular-tag-cloud>
 </div>
 
-
-<!-- 
-  this code did the same thing as the code above in an effort to increase loading times,
-   but it did not function properly so was discarded.
-  
-  <div>
-  <h1 class="ov">Welcome to the cloud</h1>
-</div>
-<div>
-  <button (click)="choose('all')">All</button>
-  <button (click)="choose('property')">Property</button>
-  <button (click)="choose('violence')">Violence</button>
-  <button (click)="choose('drugs')">Drugs</button>
-  <button (click)="choose('order')">Order</button>
-  <button (click)="choose('traffic')">Traffic</button>
-  <button (click)="choose('other')">Other</button>
-</div>
-<div>
-  <angular-tag-cloud [ngStyle]="{'display':type === 'all' || type === 'init' ? 'block' : 'none' }"
-   angular-tag-cloud [data]="data1" [width]="options.width" [height]="options.height"
-    [overflow]="options.overflow">
-  </angular-tag-cloud>
-  <angular-tag-cloud [ngStyle]="{'display':type === 'property' || type === 'init' ? 'block' : 'none' }" angular-tag-cloud [data]="data2" [width]="options.width" [height]="options.height"
-    [overflow]="options.overflow">
-  </angular-tag-cloud>
-  <angular-tag-cloud [ngStyle]="{'display':type === 'violence' || type === 'init' ? 'block' : 'none' }" angular-tag-cloud [data]="data3" [width]="options.width" [height]="options.height"
-    [overflow]="options.overflow">
-  </angular-tag-cloud>
-  <angular-tag-cloud [ngStyle]="{'display':type === 'drugs' || type === 'init' ? 'block' : 'none' }" angular-tag-cloud [data]="data4" [width]="options.width" [height]="options.height"
-    [overflow]="options.overflow">
-  </angular-tag-cloud>
-  <angular-tag-cloud [ngStyle]="{'display':type === 'order' || type === 'init' ? 'block' : 'none' }" angular-tag-cloud [data]="data5" [width]="options.width" [height]="options.height"
-    [overflow]="options.overflow">
-  </angular-tag-cloud>
-  <angular-tag-cloud [ngStyle]="{'display':type === 'traffic' || type === 'init' ? 'block' : 'none' }" angular-tag-cloud [data]="data6" [width]="options.width" [height]="options.height"
-    [overflow]="options.overflow">
-  </angular-tag-cloud>
-  <angular-tag-cloud [ngStyle]="{'display':type === 'other' || type === 'init' ? 'block' : 'none' }" angular-tag-cloud [data]="data7" [width]="options.width" [height]="options.height"
-    [overflow]="options.overflow" >
-  </angular-tag-cloud>
-</div> -->

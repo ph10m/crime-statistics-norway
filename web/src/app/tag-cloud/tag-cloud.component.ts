@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-tag-cloud',
@@ -11,9 +11,11 @@ import 'rxjs/add/observable/of';
   styleUrls: ['./tag-cloud.component.css'],
 })
 
-
-
-//
+// class that that is used to create the component used for the word clouds
+// the way we chose to implement it has 7 different cloud objects rendered, and only showing 1 at a time,
+// instead of having 1 cloud object that changes its data based on what is selected. 
+// this was done because with the amount of data used in the clouds the loading times were far too long (over a minute)
+// with only 1 component, and just about 10 seconds with 7 components.
 export class TagCloudComponent implements OnInit {
   private req: any;
 
@@ -61,8 +63,7 @@ export class TagCloudComponent implements OnInit {
 
   ngOnInit() {
 
-    this.req = this.http.get('http://localhost:8084/cloud/everything').subscribe(data => {
-      //console.log(data);
+    this.req = this.http.get('http://localhost:8084/cloud/cloudData').subscribe(data => {
       this.retrieved = data
       this.changeData(this.retrieved);
       this.req.unsubscribe();
@@ -72,7 +73,8 @@ export class TagCloudComponent implements OnInit {
 
   choose(event, type) {
     this.type = type;
-    event.target.ClassList.add('selected');
+    $('.selected').removeClass('selected');
+    $(event.target).addClass('selected');
   }
 
 
