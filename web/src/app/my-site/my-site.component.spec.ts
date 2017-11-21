@@ -27,7 +27,6 @@ describe('MysiteComponent', () => {
     //Fake db connector service. 
     let dbConnectorStub = {
 
-      //TODO make equal dbObject. 
       getPreviousSearches(user, date, name, unique){
         let obj = JSON.parse('{"returnVal": {"Id": 3, "searchname": "dritogdra"}}');
         let subject = new BehaviorSubject<JSON>(obj);

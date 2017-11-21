@@ -6,9 +6,9 @@ var express = require('express')
 
 //lets the user login
 router.post('/login', function(req, res) {
-    console.log("LOGIN");
+    //console.log("LOGIN");
     account.checkLogin(req.body.username, req.body.password, function(returnVal){
-        console.log(returnVal)
+        //console.log(returnVal)
         res.json({
             status : returnVal
         })

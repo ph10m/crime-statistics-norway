@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 //DatabaseConnector
 import { DatabaseConnectorService } from '../database-connector.service';
@@ -18,7 +19,7 @@ export class NewUserComponent implements OnInit {
   errorColorEmail = "";
   errorColorPass = "";
   
-  constructor(private databaseConnector: DatabaseConnectorService) { }
+  constructor(private databaseConnector: DatabaseConnectorService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -69,7 +70,9 @@ export class NewUserComponent implements OnInit {
           this.error = true;
           this.errorColorEmail = "#FF0000";
         }else{
-          this.sucsessMessage = "The user '" + mail + "' is created";
+          window.alert("New user created");
+          //Sucsess move to loginpage. 
+          this.router.navigate(['/mySite']);
         }
       });
     }

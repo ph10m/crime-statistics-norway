@@ -13,6 +13,9 @@
     <!-- SEARCHFIELD LARS -->
     <!-- DROPDOWN AND CHECKBOXES LARS -->
   </div>
+  <div class="errorMessage" >
+    <p *ngIf="errorMessage.length > 0">{{errorMessage}}</p>
+  </div>
   <div>
     <div class="sort-options">
       <!--<h6- class="menuItem">Sort by:</h6-->
@@ -22,13 +25,13 @@
           {{sortTitle}}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" (click)="dropdownClick('all')">All Crimes</a>
-          <a class="dropdown-item" (click)="dropdownClick('property')">Property crimes</a>
-          <a class="dropdown-item" (click)="dropdownClick('violence')">Voilence crimes</a>
-          <a class="dropdown-item" (click)="dropdownClick('drugs')">Drugs crimes</a>
-          <a class="dropdown-item" (click)="dropdownClick('order')">Order crimes</a>
-          <a class="dropdown-item" (click)="dropdownClick('traffic')">Traffic crimes</a>
-          <a class="dropdown-item" (click)="dropdownClick('other')">Other crimes</a>
+          <a class="dropdown-item" (click)="dropdownClick('all')">All crime</a>
+          <a class="dropdown-item" (click)="dropdownClick('property')">Theft</a>
+          <a class="dropdown-item" (click)="dropdownClick('violence')">Violent crime</a>
+          <a class="dropdown-item" (click)="dropdownClick('drugs')">Drug-related crime</a>
+          <a class="dropdown-item" (click)="dropdownClick('order')">Public-order crime</a>
+          <a class="dropdown-item" (click)="dropdownClick('traffic')">Traffic violations</a>
+          <a class="dropdown-item" (click)="dropdownClick('other')">Other crime</a>
         </div>
       </div>
       <!-- DROPDOWN CHECKBOXES LARS -->
@@ -58,15 +61,16 @@
           </div>
           <div id="collapse{{crime.id}}" class="collapse" role="tabpanel" attr.aria-labelledby="heading{{crime.id}}">
             <div class="card-block">
-              In {{crime.municipacility}}, as any other municipality in Norway there are commited crimes. Below you will find statistics
-              about these crimes. The graph shows you the absolute numbers if you click on a color.
+              In {{crime.municipacility}}, as in any other municipality in Norway there are commited crimes. Below you will find statistics
+              for these crimes. The graph shows you the absolute numbers if you click on a color.
               <br/>
               <div>
                 <span class="tableElement">
-                  <ChartComponent [ChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
+                  <ChartComponent [ChartLabels]="['Theft', 'Violence,', 'Drug-related', 'Public-order', 'Traffic violations', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
                 </span>
                 <span class="chartElement">
-                  <BarChartComponent [BarChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: 'Norway'}]"></BarChartComponent>
+                  <BarChartComponent [BarChartLabels]="['Theft', 'Violence,', 'Drug-related', 'Public-order', 'Traffic violations', 'Other']"
+                    [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: 'Norway'}]"></BarChartComponent>
                 </span>
               </div>
 
@@ -75,18 +79,18 @@
                 <thead>
                   <tr>
                     <th scope="col">Crime</th>
-                    <th scope="col">Per thousand inhabitant</th>
+                    <th scope="col">Per 1000 inhabitants</th>
                     <th scope="col">Absolute numbers</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <th scope="row">Everything</th>
+                    <th scope="row">All</th>
                     <td>{{crime.all_1000}}</td>
                     <td>{{crime.all_abs}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">Property</th>
+                    <th scope="row">Theft</th>
                     <td>{{crime.property_1000}}</td>
                     <td>{{crime.property_abs}}</td>
                   </tr>
@@ -96,17 +100,17 @@
                     <td>{{crime.violence_abs}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">Drugs</th>
+                    <th scope="row">Drug-related</th>
                     <td>{{crime.drugs_1000}}</td>
                     <td>{{crime.drugs_abs}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">Order</th>
+                    <th scope="row">Public-order</th>
                     <td>{{crime.order_1000}}</td>
                     <td>{{crime.order_abs}}</td>
                   </tr>
                   <tr>
-                    <th scope="row">Traffic</th>
+                    <th scope="row">Traffic violations</th>
                     <td>{{crime.traffic_1000}}</td>
                     <td>{{crime.traffic_abs}}</td>
                   </tr>

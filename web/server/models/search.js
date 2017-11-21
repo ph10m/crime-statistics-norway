@@ -15,9 +15,9 @@ exports.search = function(name, sort, sortAscDesc, limit, cb) {
 
     //this is not done i prepared statement style since it doesnt work with the orderby keyword in sqlite3 in node.
     if (sort != undefined && sort != undefined) {
-        console.log("GET in here")
+        //console.log("GET in here")
         if (sortAscDesc != undefined) {
-            console.log("und")
+            //console.log("und")
             sqlQuery += " ORDER BY " + sort + "  ASC";
         } else {
             sqlQuery += " ORDER BY " + sort + " DESC";
@@ -33,12 +33,12 @@ exports.search = function(name, sort, sortAscDesc, limit, cb) {
 
     sqlQuery += " LIMIT ?, 10"
 
-    console.log("sql query " + sqlQuery)
-    console.log(parameterList)
+    //console.log("sql query " + sqlQuery)
+    //console.log(parameterList)
 
     db.all(sqlQuery, parameterList, function(err, row) {
         if (row == undefined) {
-            console.log("error " + err)
+            //console.log("error " + err)
             cb(false);
         } else {
             cb(row);
