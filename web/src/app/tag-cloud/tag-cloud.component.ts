@@ -3,7 +3,7 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-
+import * as $ from "jquery";
 
 @Component({
   selector: 'app-tag-cloud',
