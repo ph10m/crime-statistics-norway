@@ -38,7 +38,7 @@ export class DataService {
     //Observable for myserach click
 
     //Sessionstorage
-    this.storage = JSON.parse(sessionStorage.getItem('currentStorage'))
+    this.storage = JSON.parse(sessionStorage.getItem('currentStorage'));
     if(this.storage != null){
       this.changeUser(this.storage[0]);
       this.changeSearch(this.storage[1]);
@@ -54,7 +54,7 @@ export class DataService {
       //Sessionstorage for user. 
       this.storage[0] = user;
       sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));
-      if(user == ""){
+      if(user === ""){
         sessionStorage.clear();  
       }
     }
@@ -67,7 +67,7 @@ export class DataService {
     //The search object is changed. 
     changeSearch(search: string){
       //Sessionstorage
-      if(search != this.prevSearch){
+      if(search !== this.prevSearch){
         // this.storage[1] = search;
         
         // sessionStorage.setItem('currentStorage', JSON.stringify(this.storage));

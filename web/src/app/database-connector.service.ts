@@ -51,7 +51,7 @@ export class DatabaseConnectorService {
   deleteUser(testuser: string){
     let body = {
       "username ": testuser,
-    }
+    };
     return this.http.post('http://localhost:8084/account/deleteuser', body);
   }
 }

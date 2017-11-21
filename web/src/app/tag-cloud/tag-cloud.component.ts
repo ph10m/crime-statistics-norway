@@ -3,7 +3,7 @@ import { CloudData, CloudOptions } from 'angular-tag-cloud-module';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import * as $ from "jquery";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-tag-cloud',
@@ -64,7 +64,7 @@ export class TagCloudComponent implements OnInit {
   ngOnInit() {
 
     this.req = this.http.get('http://localhost:8084/cloud/cloudData').subscribe(data => {
-      this.retrieved = data
+      this.retrieved = data;
       this.changeData(this.retrieved);
       this.req.unsubscribe();
     })
