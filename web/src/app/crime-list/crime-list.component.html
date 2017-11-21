@@ -1,12 +1,12 @@
 <!-- DIV AROUND HOLE PAGE -->
-<div>
+<div class="viewHeight">
   <!-- DIV AROUND USER INPUT -->
   <div class="search-field ">
     <!-- SEARCH FIELD LARS -->
     <div>
       <form class="form-inline my-2 my-lg-0">
         <input #search class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchClick(search.value)">Search</button>
+        <button class="btn btn-primary my-2 my-sm-0" (click)="searchClick(search.value)">Search</button>
         <!-- Only to show is someone is logged in.  -->
       </form>
     </div>
@@ -44,7 +44,8 @@
         </label>
       </div>
     </div>
-    <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" [scrollWindow]="true" (scrolled)="onScrollDown()">
+    <div class="cardList" infiniteScroll [infiniteScrollDistance]="0.4" [infiniteScrollThrottle]="200" [scrollWindow]="true"
+      (scrolled)="onScrollDown()">
       <div id="accordion" role="tablist" aria-multiselectable="true" *ngFor="let crime of renderlist" [class.selected]="crime === selectedMunic">
 
         <div class="card">

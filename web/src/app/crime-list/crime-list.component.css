@@ -31,12 +31,12 @@ a {
 }
 
 .chartElement {
-  width: 50%;
+  width: 60%;
   float: right;
 }
 
 .tableElement {
-  width: 50%;
+  width: 40%;
   float: left;
 }
 
@@ -46,4 +46,8 @@ a {
 
 .btn {
   height: 40px;
+}
+
+.viewHeight {
+  height: 110vh;
 }
