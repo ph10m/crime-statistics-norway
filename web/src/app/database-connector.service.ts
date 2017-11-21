@@ -32,16 +32,17 @@ export class DatabaseConnectorService {
       "searchkey" : searchkey,
       "date": new Date().toLocaleString(),
     };
-    this.http.post('/account/searchpost', body).subscribe(res => console.log("Response: " + JSON.stringify(res)))
+  this.http.post('/account/searchpost', body).subscribe(res => console.log(/*"Response: " + JSON.stringify(res)'*/));
   }
 
   //Returns object from database with the current users previous searches. 
-  getPreviousSearches(username: string, name: boolean, date: boolean, unique: boolean){
+  getPreviousSearches(username: string, name: boolean, date: boolean, unique: boolean, hit: boolean){
     let body =  {
       "username" : username,
       "name" : name,
       "date" : date,
       "unique" : unique,
+      "hit": hit,
     };
     return this.http.post('/account/getsearch', body);
   }
