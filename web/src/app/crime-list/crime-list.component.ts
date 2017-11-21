@@ -90,15 +90,13 @@ export class CrimeListComponent implements OnInit {
       this.name = search; 
       this.searchClick(this.name);
 
-    })
-    
+    });
   }
 
   // SEARCHFIELD METHODS MADE BY LARS....START
 
-  //Onaction from search-bar. 
-  searchClick(value: string){
-    
+  // Onaction from search-bar.
+  searchClick(value: string) {
     this.renderlist = [];
     this.name = value;
     this.dataService.changeSearch(value);
@@ -144,7 +142,7 @@ export class CrimeListComponent implements OnInit {
     }else {
       this.ascDesc = undefined;
     }
-    this.getSearch(this.int);
+    this.getSearch(this.int),
   }
 
 
