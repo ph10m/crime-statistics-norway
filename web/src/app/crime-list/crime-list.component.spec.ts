@@ -13,12 +13,6 @@ import { DebugElement } from '@angular/core';
    let component: CrimeListComponent;
    let fixture: ComponentFixture<CrimeListComponent>;
    let de: DebugElement;
-//    let el: HTMLElement;
-
-  
-
-   //it('List should be empty t start', () => expect(component.renderlist).toEqual(component.checkList()));
-
 
    beforeEach(async(() => {
      TestBed.configureTestingModule({
@@ -33,15 +27,4 @@ import { DebugElement } from '@angular/core';
      component = fixture.componentInstance;
      fixture.detectChanges();
    });
-
-   //    it('true is true', () => expect(true).toBe(true));
- 
-//    it('checks if list are empty at start', () =>
-//     expect(list).toEqual(this.component.renderlist)
-//     );
-   
-
-//    it('should create', () => {
-//      expect(component).toBeTruthy();
-//    });
 });

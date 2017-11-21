@@ -11,7 +11,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 
 describe('MysiteComponent', () => {
-  //SETUP FOR TESTS. 
+  // SETUP FOR TESTS.
     let component: MySiteComponent;
     let component1: LogInComponent;
     let fixture: ComponentFixture<MySiteComponent>;
@@ -38,7 +38,7 @@ describe('MysiteComponent', () => {
       //Login to switch user, same as in userLogin. 
       logIn(mail: string, pass: string){
         //Makes observable to return to method in component. 
-        if(mail == testuser && pass == testPass){
+        if(mail === testuser && pass === testPass){
             let objt = JSON.parse('{"status": true}');
             let subject = new BehaviorSubject<JSON>(objt);
             subject.next(objt);
@@ -46,7 +46,7 @@ describe('MysiteComponent', () => {
         }else{
             let objf = JSON.parse('{"status": false}');
             let subjectf = new BehaviorSubject<JSON>(objf);
-            subjectf.next(objf)
+            subjectf.next(objf);
             return subjectf.asObservable();
         }
       }
@@ -69,7 +69,7 @@ describe('MysiteComponent', () => {
   //Setup
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-        imports:[RouterTestingModule],
+        imports: [RouterTestingModule],
         declarations: [ MySiteComponent, LogInComponent ],
         providers: [
           {provide: DatabaseConnectorService, useValue: dbConnectorStub},
@@ -97,14 +97,14 @@ describe('MysiteComponent', () => {
     component.ngOnInit();
     fixture.detectChanges();
     expect(component.user).toEqual("");
-  })
+  });
 
   it('User should be logged in', () => {
     component1.logInClick(testuser, testPass);
     fixture1.detectChanges();
     fixture.detectChanges();
     expect(component.user).toEqual("test@test.no");
-  })
+  });
 
   //Checks that unique changes value
   it('Test unique to be true and false', () => {
@@ -114,7 +114,7 @@ describe('MysiteComponent', () => {
     expect(component.unique).toEqual(false);
     component.onCheckClicked();
     expect(component.unique).toEqual(true);
-  })
+  });
 
    //Checks radiobuttons change. 
    it('Test radiobuttons date and name', () => {
@@ -126,5 +126,5 @@ describe('MysiteComponent', () => {
     component.onRadioClick("name");
     expect(component.name).toEqual(true);
     expect(component.date).toEqual(false);
-  })  
-})
+  });
+});
