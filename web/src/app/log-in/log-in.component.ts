@@ -38,7 +38,6 @@ export class LogInComponent implements OnInit{
       let status = this.databaseConnector.logIn(mail, pass);
       status.subscribe(data => {
         if(data['status'] == true){
-          console.log("IM IN");
           this.dataService.changeUser(mail);
         }else{
           this.errorMessage.push("Wrong username or password");

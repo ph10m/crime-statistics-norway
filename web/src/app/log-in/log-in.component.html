@@ -1,7 +1,7 @@
 <br>
-<h1>Login</h1>
+<h2>Login to access your page</h2>
 
-<form>
+<form class="loginFields">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input #mail type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -15,13 +15,13 @@
     <a routerLink="/newUser">Register new user</a>
   </div>
   <br>
-  
+
   <button type="button" class="btn btn-primary" (click)="logInClick(mail.value, pass.value)">Login</button>
 </form>
 <p>{{user}}</p>
 <div class="container">
   <ul>
-      <li style="color: red;" *ngFor="let eMessage of errorMessage">{{eMessage}}</li>
+    <li style="color: red;" *ngFor="let eMessage of errorMessage">{{eMessage}}</li>
   </ul>
   <!-- <p style="color:green;" >{{sucsessMessage}}</p> -->
 </div>

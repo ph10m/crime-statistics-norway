@@ -1,124 +1,129 @@
-<!-- SEARCH FIELD LARS -->
+<!-- DIV AROUND HOLE PAGE -->
 <div>
-    <form class="form-inline my-2 my-lg-0">
+  <!-- DIV AROUND USER INPUT -->
+  <div class="search-field ">
+    <!-- SEARCH FIELD LARS -->
+    <div>
+      <form class="form-inline my-2 my-lg-0">
         <input #search class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchClick(search.value)">Search</button>
         <!-- Only to show is someone is logged in.  -->
-    </form>
-</div>
-<!-- SEARCHFIELD LARS -->
-
-<!-- DROPDOWN AND CHECKBOXES LARS -->
-<p>Results for <span *ngIf="name != undefined">{{name}}</span></p>
+      </form>
+    </div>
+    <!-- SEARCHFIELD LARS -->
+    <!-- DROPDOWN AND CHECKBOXES LARS 
+    <p>Results for
+      <span *ngIf="name != undefined">{{name}}</span>
+    </p>
     <p>{{errorMessage}}</p>
-    <br>
-    <p>Sort:</p>
-    <div>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [value]="Hay">
-                {{sortTitle}}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" (click)="dropdownClick('all')">All Crimes</a>
-                <a class="dropdown-item" (click)="dropdownClick('property')">Property crimes</a>
-                <a class="dropdown-item" (click)="dropdownClick('violence')">Voilence crimes</a>
-                <a class="dropdown-item" (click)="dropdownClick('drugs')">Drugs crimes</a>
-                <a class="dropdown-item" (click)="dropdownClick('order')">Order crimes</a>
-                <a class="dropdown-item" (click)="dropdownClick('traffic')">Traffic crimes</a>
-                <a class="dropdown-item" (click)="dropdownClick('other')">Other crimes</a>
-            </div>
+    <br>-->
+  </div>
+  <div>
+    <div class="sort-options">
+      <!--<h6- class="menuItem">Sort by:</h6-->
+      <div class="dropdown menuItem">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false" [value]="Hay">
+          {{sortTitle}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" (click)="dropdownClick('all')">All Crimes</a>
+          <a class="dropdown-item" (click)="dropdownClick('property')">Property crimes</a>
+          <a class="dropdown-item" (click)="dropdownClick('violence')">Voilence crimes</a>
+          <a class="dropdown-item" (click)="dropdownClick('drugs')">Drugs crimes</a>
+          <a class="dropdown-item" (click)="dropdownClick('order')">Order crimes</a>
+          <a class="dropdown-item" (click)="dropdownClick('traffic')">Traffic crimes</a>
+          <a class="dropdown-item" (click)="dropdownClick('other')">Other crimes</a>
         </div>
-        <!-- ASC DESC -->
-        <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" checked="" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="radioClick('true')"> Asc
-                </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="radioClick('false')"> Desc
-                </label>
-        </div>
+      </div>
+      <!-- DROPDOWN CHECKBOXES LARS -->
+      <!-- ASC DESC -->
+      <div class="form-check form-check-inline menuItem">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" (click)="radioClick('true')"> Ascending
+        </label>
+      </div>
+      <div class="form-check form-check-inline menuItem">
+        <label class="form-check-label">
+          <input class="form-check-input" type="radio" checked="" name="inlineRadioOptions" id="inlineRadio2" value="option2" (click)="radioClick('false')"> Descending
+        </label>
+      </div>
     </div>
-    <!-- DROPDOWN CHECKBOXES LARS -->
- <div
-  id="accordion"
-  role="tablist"
-  aria-multiselectable="true"
-  infiniteScroll
-  [infiniteScrollDistance]="2"
-  [infiniteScrollThrottle]="50"
-  *ngFor="let crime of renderlist"
-  [class.selected]="crime === selectedMunic">     
+    <div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" [scrollWindow]="true" (scrolled)="onScrollDown()">
+      <div id="accordion" role="tablist" aria-multiselectable="true" *ngFor="let crime of renderlist" [class.selected]="crime === selectedMunic">
 
-  <div class="card">
-    <div class="card-header" role="tab" id="heading{{crime.id}}">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{crime.id}}" aria-expanded="false" attr.aria-controls="collapse{{crime.id}}">
-          {{crime.municipacility}}
-        </a>
-      </h5>
-    </div>
-    <div id="collapse{{crime.id}}" class="collapse" role="tabpanel" attr.aria-labelledby="heading{{crime.id}}">
-      <div class="card-block">
-        In {{crime.municipacility}}, as any other municipacility in Norway there are commited crimes. Below you will find statistics about these crimes. The graph shows you the absolute numbers if you click on a color.
-        <br />
-        <div>
-          <span style="width: 50%">
-              <ChartComponent [ChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
-          </span>
-          <span style="width: 50%; float: right;">
-              <BarChartComponent [BarChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: allofnorway.municipacility}]"></BarChartComponent>
-          </span>
+        <div class="card">
+          <div class="card-header" role="tab" id="heading{{crime.id}}">
+            <h5 class="mb-0">
+              <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{crime.id}}" aria-expanded="false" attr.aria-controls="collapse{{crime.id}}">
+                {{crime.municipacility}}
+              </a>
+            </h5>
+          </div>
+          <div id="collapse{{crime.id}}" class="collapse" role="tabpanel" attr.aria-labelledby="heading{{crime.id}}">
+            <div class="card-block">
+              In {{crime.municipacility}}, as any other municipality in Norway there are commited crimes. Below you will find statistics
+              about these crimes. The graph shows you the absolute numbers if you click on a color.
+              <br />
+              <div>
+                <span class="tableElement">
+                  <ChartComponent [ChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [ChartData]="[crime.property_abs, crime.violence_abs, crime.drugs_abs, crime.order_abs, crime.traffic_abs, crime.other_abs]"></ChartComponent>
+                </span>
+                <span class="chartElement">
+                  <BarChartComponent [BarChartLabels]="['Property crimes', 'Violence,', 'Drugs', 'Order', 'Traffic', 'Other']" [BarChartData]="[{data: [crime.property_1000, crime.violence_1000, crime.drugs_1000, crime.order_1000, crime.traffic_1000, crime.other_1000], label: crime.municipacility},{data: [allofnorway.property_1000, allofnorway.violence_1000, allofnorway.drugs_1000, allofnorway.order_1000, allofnorway.traffic_1000, allofnorway.other_1000], label: 'Norway'}]"></BarChartComponent>
+                </span>
+              </div>
+
+
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Crime</th>
+                    <th scope="col">Per thousand inhabitant</th>
+                    <th scope="col">Absolute numbers</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">Everything</th>
+                    <td>{{crime.all_1000}}</td>
+                    <td>{{crime.all_abs}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Property</th>
+                    <td>{{crime.property_1000}}</td>
+                    <td>{{crime.property_abs}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Violence</th>
+                    <td>{{crime.violence_1000}}</td>
+                    <td>{{crime.violence_abs}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Drugs</th>
+                    <td>{{crime.drugs_1000}}</td>
+                    <td>{{crime.drugs_abs}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Order</th>
+                    <td>{{crime.order_1000}}</td>
+                    <td>{{crime.order_abs}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Traffic</th>
+                    <td>{{crime.traffic_1000}}</td>
+                    <td>{{crime.traffic_abs}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Other</th>
+                    <td>{{crime.other_1000}}</td>
+                    <td>{{crime.other_abs}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        
-        
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Crime</th>
-              <th scope="col">Per thousand inhabitant</th>
-              <th scope="col">Absolute numbers</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Everything</th>
-              <td>{{crime.all_1000}}</td>
-              <td>{{crime.all_abs}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Property</th>
-              <td>{{crime.property_1000}}</td>
-              <td>{{crime.property_abs}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Violence</th>
-              <td>{{crime.violence_1000}}</td>
-              <td>{{crime.violence_abs}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Drugs</th>
-              <td>{{crime.drugs_1000}}</td>
-              <td>{{crime.drugs_abs}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Order</th>
-              <td>{{crime.order_1000}}</td>
-              <td>{{crime.order_abs}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Traffic</th>
-              <td>{{crime.traffic_1000}}</td>
-              <td>{{crime.traffic_abs}}</td>
-            </tr>
-            <tr>
-              <th scope="row">Other</th>
-              <td>{{crime.other_1000}}</td>
-              <td>{{crime.other_abs}}</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>
