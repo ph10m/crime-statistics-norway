@@ -23,6 +23,8 @@ export class TagCloudComponent implements OnInit {
 
   type = 'all';
 
+  url = 'http://www.google.com/search?q=';
+
   options: CloudOptions = {
     // if width is between 0 and 1 it will be set to the size of the upper element multiplied by the value  
     width: 1,
@@ -88,25 +90,32 @@ export class TagCloudComponent implements OnInit {
     let parsedData7 = [];
 
     for (let i = 0; i < newData.length; i++) {
-      parsedData1.push({ 'text': newData[i].text, 'weight': newData[i].all });
+      parsedData1.push({ 'text': newData[i].text, 'weight': newData[i].all,
+       link: this.url + String(newData[i].text)});
     }
     for (let i = 0; i < newData.length; i++) {
-      parsedData2.push({ 'text': newData[i].text, 'weight': newData[i].property });
+      parsedData2.push({ 'text': newData[i].text, 'weight': newData[i].property,
+       link: this.url + String(newData[i].text)});
     }
     for (let i = 0; i < newData.length; i++) {
-      parsedData3.push({ 'text': newData[i].text, 'weight': newData[i].violence });
+      parsedData3.push({ 'text': newData[i].text, 'weight': newData[i].violence,
+       link: this.url + String(newData[i].text)});
     }
     for (let i = 0; i < newData.length; i++) {
-      parsedData4.push({ 'text': newData[i].text, 'weight': newData[i].drugs });
+      parsedData4.push({ 'text': newData[i].text, 'weight': newData[i].drugs,
+       link: this.url + String(newData[i].text)});
     }
     for (let i = 0; i < newData.length; i++) {
-      parsedData5.push({ 'text': newData[i].text, 'weight': newData[i].order });
+      parsedData5.push({ 'text': newData[i].text, 'weight': newData[i].order,
+       link: this.url + String(newData[i].text)});
     }
     for (let i = 0; i < newData.length; i++) {
-      parsedData6.push({ 'text': newData[i].text, 'weight': newData[i].traffic });
+      parsedData6.push({ 'text': newData[i].text, 'weight': newData[i].traffic,
+       link: this.url + String(newData[i].text)});
     }
     for (let i = 0; i < newData.length; i++) {
-      parsedData7.push({ 'text': newData[i].text, 'weight': newData[i].other });
+      parsedData7.push({ 'text': newData[i].text, 'weight': newData[i].other,
+       link: this.url + String(newData[i].text)});
     }
 
     let changedData1$: Observable<Array<CloudData>> = Observable.of(parsedData1);
