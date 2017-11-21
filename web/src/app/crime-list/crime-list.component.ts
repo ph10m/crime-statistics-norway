@@ -150,7 +150,7 @@ export class CrimeListComponent implements OnInit {
       'sortAscDesc': this.ascDesc
     };
 
-    this.req = this.http.post('http://localhost:8084/search/search', body).subscribe(data=>{ 
+    this.req = this.http.post('/search/search', body).subscribe(data=>{ 
       // storing data
       if (data['crimes'].length === 0) {
         this.errorMessage = 'No result for this search';
