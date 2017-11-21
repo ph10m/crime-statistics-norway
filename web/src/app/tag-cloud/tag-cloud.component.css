@@ -37,16 +37,13 @@ button:hover {
 
 /* use of :host and ::ng-deep is depreceated, and !important as well, 
   but it was the only way to get the styles applied due to how the tag cloud component library works */
-:host ::ng-deep a {
+/* :host ::ng-deep a {
   color: inherit;
-}
+} */
 :host ::ng-deep a:hover {
-  color: #0df;
+  filter: brightness(70%) !important;
+  cursor: pointer;
 }
-:host ::ng-deep a:hover {
-  color: #0cf;
-}
-
 :host ::ng-deep span.w10 {
   color: red !important;
   font-size: 200% !important;
