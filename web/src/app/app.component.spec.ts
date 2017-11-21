@@ -27,7 +27,8 @@ describe('AppComponent', () => {
         changeUser(user: string){
             usersub.next(user);
         }
-    }
+    };
+    
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports:[RouterTestingModule],
@@ -56,6 +57,6 @@ describe('AppComponent', () => {
         component.logOut();
         fixture.detectChanges();
         expect(component.user).toEqual("");
-    })
+    });
   
 });
