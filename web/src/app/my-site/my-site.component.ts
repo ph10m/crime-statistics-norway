@@ -81,7 +81,6 @@ export class MySiteComponent implements OnInit {
   }
 
   onCheckClickedHit(){
-    console.log("RUNMAN");
     if(this.hit == false){
       this.hit = true;
       this.previousSearches();
