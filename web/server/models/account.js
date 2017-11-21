@@ -82,7 +82,7 @@ exports.searchPost = function(username, searchkey, date, cb){
 
 
 //Returns from database based on the sql sentence. 
-exports.getsearch = function(username, name, date, unique, cb){
+exports.getsearch = function(username, name, date, unique, hit, cb){
     db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
         if (row == undefined) {
             //If user not exists --> Should really not happen, like ever. 
@@ -90,8 +90,9 @@ exports.getsearch = function(username, name, date, unique, cb){
         }
         else {
             console.log("ROW ID: " + row.id);
+            console.log("HIT: " + hit);
             //Sort by date, not unique
-            if((date === true) && (unique === false)){
+            if((date === true) && (unique === false) && (hit === false)){
                 //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
                 db.all("SELECT * FROM Log WHERE userid = " + row.id + " ORDER BY Time", function(err, row){
                     if(row == undefined){
@@ -100,8 +101,9 @@ exports.getsearch = function(username, name, date, unique, cb){
                         cb(row);
                     }
                 });
+                
                 //Sort bt date, unique
-            }else if(date === true && unique === true){
+            }else if(date === true && unique === true && hit === false){
                 db.all("SELECT DISTINCT * FROM Log WHERE userid = " + row.id + " GROUP BY Content ORDER BY time", function(err, row){
                     if(row == undefined){
                         cb(false);
@@ -111,7 +113,7 @@ exports.getsearch = function(username, name, date, unique, cb){
                     
                 });
             //sort by contentname, not unique
-            }else if(name === true && unique === false){
+            }else if(name === true && unique === false && hit === false){
                 db.all("SELECT * FROM Log WHERE userid = " + row.id + " ORDER BY content", function(err, row){
                     if(row == undefined){
                         cb(false);
@@ -120,8 +122,53 @@ exports.getsearch = function(username, name, date, unique, cb){
                     }
                 });
             //Sort by contentname, unique
-            }else if(name === true && unique === true){
+            }else if(name === true && unique === true && hit === false){
+                
                 db.all("SELECT DISTINCT * FROM Log WHERE userid = " + row.id + " GROUP BY Content ORDER BY content", function(err, row){
+                    if(row == undefined){
+                        cb(false);
+                    }else{
+                        cb(row);
+                    }
+                });
+                
+                //IF SUCSESS WITH CONTENT I BD.
+            }else if((date === true) && (unique === false) && (hit === true)){
+                //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
+                db.all("SELECT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid = "+ row.id + " ORDER BY time", function(err, row){
+                    if(row == undefined){
+                        
+                        cb(false);
+                    }else{
+                        console.log(row);
+                        cb(row);
+                    }
+                });
+                
+                //Sort bt date, unique
+                
+                // "SELECT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid
+            }else if(date === true && unique === true && hit === true){
+                db.all("SELECT DISTINCT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid= " + row.id + " GROUP BY Content ORDER BY time", function(err, row){
+                    if(row == undefined){
+                        cb(false);
+                    }else{
+                        cb(row);
+                    }
+                    
+                });
+            //sort by contentname, not unique
+            }else if(name === true && unique === false && hit === true){
+                db.all("SELECT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid = " + row.id + " ORDER BY content", function(err, row){
+                    if(row == undefined){
+                        cb(false);
+                    }else{
+                        cb(row);
+                    }
+                });
+            //Sort by contentname, unique
+            }else if(name === true && unique === true && hit === true){
+                db.all("SELECT DISTINCT * FROM Log JOIN Crimestat ON Crimestat.municipacility LIKE '%' || Log.content || '%' WHERE Log.userid = " + row.id + " GROUP BY Content ORDER BY content", function(err, row){
                     if(row == undefined){
                         cb(false);
                     }else{

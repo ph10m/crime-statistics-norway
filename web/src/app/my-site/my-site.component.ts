@@ -20,6 +20,7 @@ export class MySiteComponent implements OnInit {
   unique = false;
   name = false;
   date = true;
+  hit = false;
 
   constructor(private dataService: DataService, private databaseConnect: DatabaseConnectorService) { }
 
@@ -43,7 +44,7 @@ export class MySiteComponent implements OnInit {
     if(this.user != ""){
       console.log("Where");
       this.searches = []
-      let prevSearches = this.databaseConnect.getPreviousSearches(this.user, this.name, this.date, this.unique);
+      let prevSearches = this.databaseConnect.getPreviousSearches(this.user, this.name, this.date, this.unique, this.hit);
       prevSearches.subscribe(data => {
         //Pushes data to local list. 
         for (var i = 0; i < data['returnVal'].length; i++){
@@ -78,6 +79,17 @@ export class MySiteComponent implements OnInit {
       this.previousSearches();
     }else{
       this.unique = false;
+      this.previousSearches();
+    }
+  }
+
+  onCheckClickedHit(){
+    console.log("RUNMAN");
+    if(this.hit == false){
+      this.hit = true;
+      this.previousSearches();
+    }else{
+      this.hit = false;
       this.previousSearches();
     }
   }

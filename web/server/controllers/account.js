@@ -49,7 +49,7 @@ router.post('/searchpost', function(req, res){
 
 //Get users previous searches. 
 router.post('/getsearch', function(req, res){
-    account.getsearch(req.body.username, req.body.name, req.body.date, req.body.unique, function(returnVal){
+    account.getsearch(req.body.username, req.body.name, req.body.date, req.body.unique, req.body.hit, function(returnVal){
         res.json({
             returnVal
         })

@@ -36,12 +36,13 @@ export class DatabaseConnectorService {
   }
 
   //Returns object from database with the current users previous searches. 
-  getPreviousSearches(username: string, name: boolean, date: boolean, unique: boolean){
+  getPreviousSearches(username: string, name: boolean, date: boolean, unique: boolean, hit: boolean){
     let body =  {
       "username" : username,
       "name" : name,
       "date" : date,
       "unique" : unique,
+      "hit": hit,
     };
     return this.http.post('/account/getsearch', body);
   }
