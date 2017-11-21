@@ -19,6 +19,7 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { MySiteComponent } from './my-site/my-site.component';
 import { TagCloudComponent } from './tag-cloud/tag-cloud.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { CrimeListComponent } from './crime-list/crime-list.component';
 import { HttpClient } from '@angular/common/http/src/client';
@@ -57,3 +58,5 @@ import { BarChartComponent } from './barchart/barchart.component';
 })
 
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);

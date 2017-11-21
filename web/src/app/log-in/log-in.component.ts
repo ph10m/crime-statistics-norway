@@ -20,32 +20,32 @@ export class LogInComponent implements OnInit{
   currentUser: string;
 
   constructor(private router: Router, private dataService: DataService, private databaseConnector: DatabaseConnectorService) {
-    
+
   }
 
-  ngOnInit(){
-    //UserListener
+  ngOnInit() {
+    // UserListener
     this.dataService.currentUser.subscribe(user => this.user = user);
   }
 
-  //Onclick from logIn. 
-  logInClick(mail: string, pass: string){
+  // Onclick from logIn.
+  logInClick(mail: string, pass: string) {
     let check = true;
     this.errorMessage = [];
-    
-    if(check){
-      //Check if user in database. 
+
+    if (check) {
+      // Check if user in database.
       let status = this.databaseConnector.logIn(mail, pass);
       status.subscribe(data => {
-        if(data['status'] == true){
+        if (data['status'] === true) {
           this.dataService.changeUser(mail);
-        }else{
-          this.errorMessage.push("Wrong username or password");
+        } else {
+          this.errorMessage.push('Wrong username or password');
         }
-      })
-    }else{
+      });
+    } else {
       this.errorMessage = [];
-      this.errorMessage.push("No connection to database sry bro");
+      this.errorMessage.push('No connection to database sry bro');
     }
   }
 }

@@ -35,7 +35,7 @@ const appRoutes: Routes = [
     },
     {
         path:"cloud",
-        component:TagCloudComponent,
+        component: TagCloudComponent,
     },
     {
         path:"data",
