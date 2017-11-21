@@ -18,10 +18,10 @@ describe('NewUserComponent', () => {
 
   //Fake DBconnectorservice. 
   let dbConnectorStub = {
-    newUser (username: string, pass1 :string, pass2: string){
+    newUser (username: string, pass1: string, pass2: string){
       //Makes observable to return to method in component. 
       let subject = new Subject<any>();
-      subject.next({status : true})
+      subject.next({status: true});
       return subject.asObservable();
     }
   }
@@ -32,15 +32,15 @@ describe('NewUserComponent', () => {
     TestBed.configureTestingModule({ //Kalles senere med mer metadata som definerer tilleggsimport. 
       declarations:  [NewUserComponent],
       providers: [{provide: DatabaseConnectorService, useValue: dbConnectorStub} ] //Fake db connector
-    })
-  }))
+    });
+  }));
   
   beforeEach(() =>{//If you have ngOnInit in component it works when you declerate in before each. 
     fixture = TestBed.createComponent(NewUserComponent);
     comp = fixture.componentInstance;
     de = fixture.debugElement;
     dbConnector = TestBed.get(DatabaseConnectorService);
-  })
+  });
 
   //Check that it component is created. 
   it('should create', () => {
@@ -53,7 +53,7 @@ describe('NewUserComponent', () => {
     fixture.detectChanges();
     expect(comp.errorMessage.length).toBeGreaterThan(0);
     expect(comp.errorColorPass).toEqual('#FF0000');
-  })
+  });
 
   //When email is wrong. 
   it('Should be error, inValidEmail', () =>{
@@ -61,26 +61,26 @@ describe('NewUserComponent', () => {
     fixture.detectChanges();
     expect(comp.errorMessage.length).toBeGreaterThan(0);
     expect(comp.errorColorEmail).toEqual('#FF0000');
-  })
+  });
 
   //Test email validator, true
   it('Should return true, Email', () =>{
     let check = comp.validateEmail("test@123.no");
     fixture.detectChanges();
     expect(check).toEqual(true);
-  })
+  });
 
   //Test email validator, false
   it('Should return false, Email', () =>{
     let check = comp.validateEmail("testno");
     fixture.detectChanges();
     expect(check).toEqual(false);
-  })
+  });
 
   // Find out how to make an http. subscribe returnable from dummy. 
   it('Errormessages length should be 0', () =>{
     comp.newUserClick("test@123.no", "1234567", "1234567");
     fixture.detectChanges();
     expect(comp.errorMessage.length).toEqual(0);
-  })
-})
+  });
+});
