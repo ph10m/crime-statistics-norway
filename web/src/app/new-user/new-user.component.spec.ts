@@ -6,6 +6,7 @@ import { DebugElement } from '@angular/core/src/debug/debug_node';
 import { Observable } from 'rxjs/Observable';
 import { HttpClientModule } from '@angular/common/http/src/module';
 import { Subject } from 'rxjs/Subject';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NewUserComponent', () => {
   let username = "test@test.no";
@@ -27,9 +28,8 @@ describe('NewUserComponent', () => {
   }
 
   beforeEach(async(() => { 
-    //Deklarerer komponentens som skal testes. 
-    //deklareres i en before each, slik at kan resete tilstanden før hver test kjører. 
-    TestBed.configureTestingModule({ //Kalles senere med mer metadata som definerer tilleggsimport. 
+    TestBed.configureTestingModule({ 
+      imports:[RouterTestingModule],
       declarations:  [NewUserComponent],
       providers: [{provide: DatabaseConnectorService, useValue: dbConnectorStub} ] //Fake db connector
     });
