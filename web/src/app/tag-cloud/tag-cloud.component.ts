@@ -65,7 +65,7 @@ export class TagCloudComponent implements OnInit {
 
   // retrieves the data from the DB and sends it to the changeData function
   ngOnInit() {
-    this.req = this.http.get('http://localhost:8084/cloud/cloudData').subscribe(data => {
+    this.req = this.http.get('/cloud/cloudData').subscribe(data => {
       this.retrieved = data;
       this.changeData(this.retrieved);
       this.req.unsubscribe();

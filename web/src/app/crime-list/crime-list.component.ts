@@ -113,7 +113,11 @@ export class CrimeListComponent implements OnInit {
   dropdownClick(value){
     this.renderlist = [];
     this.sort = value + '_abs';
-    this.sortTitle = value;
+    if(value == 'property'){
+      this.sortTitle = 'theft';
+    } else{
+      this.sortTitle = value;
+    }
     this.int = 0;
     this.getSearch(this.int);
   }

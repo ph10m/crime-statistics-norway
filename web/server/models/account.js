@@ -3,14 +3,14 @@ var sha512 = require("js-sha512");
 
 //registrates a user
 exports.registrate = function(username, password, cb) {
-    console.log(username);
-    console.log(password);
+    //console.log(username);
+    //console.log(password);
     let result = false;
     let crypt = sha512(password);
     
     //Check if user exists.
     db.get("SELECT * FROM Users WHERE username='" + username + "'", function(err, row){
-        console.log("THIS ROW:" + row)
+        //console.log("THIS ROW:" + row)
         if (row == undefined) {
             //If row is undefined it means that it is safe to add new user. 
             //Sets true to register user. 
@@ -46,13 +46,13 @@ exports.delete = function(username, cd){
 }
 
 exports.checkLogin = function(username, password, cb){
-    console.log(username);
-    console.log(password);
+    //console.log(username);
+    //console.log(password);
     let crypt = sha512(password);
 
     //Check if user exists.
     db.get("SELECT * FROM Users WHERE username='" + username + "' AND password='" + crypt + "'", function(err, row){
-        console.log("THIS ROW:" + row)
+        //console.log("THIS ROW:" + row)
         if (row == undefined) {
             //If undefined there is noe user with this credentials.  
             cb(false);
@@ -89,7 +89,7 @@ exports.getsearch = function(username, name, date, unique, hit, cb){
             cb(false);
         }
         else {
-            console.log("ROW ID: " + row.id);
+            //console.log("ROW ID: " + row.id);
             //Sort by date, not unique
             if((date === true) && (unique === false) && (hit === false)){
                 //New username and password added to database. --> Commented out for not adding stupid information to database atm. 
