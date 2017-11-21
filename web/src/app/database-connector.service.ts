@@ -32,7 +32,7 @@ export class DatabaseConnectorService {
       "searchkey" : searchkey,
       "date": new Date().toLocaleString(),
     };
-    this.http.post('/account/searchpost', body).subscribe(res => console.log("Response: " + JSON.stringify(res)))
+  this.http.post('/account/searchpost', body).subscribe(res => console.log(/*"Response: " + JSON.stringify(res)'*/));
   }
 
   //Returns object from database with the current users previous searches. 
