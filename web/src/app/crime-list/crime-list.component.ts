@@ -179,7 +179,7 @@ export class CrimeListComponent implements OnInit {
     this.getSearch(this.int);
   }
 
-
+  // setting munic as selected
   onSelect(munic: Municipality): void {
     this.selectedMunic = munic;
   }

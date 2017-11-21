@@ -1,5 +1,6 @@
 .registerFields,
-h2 {
+h2,
+.container {
   margin: auto;
   width: 60%;
 }
